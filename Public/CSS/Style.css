@@ -474,5 +474,6 @@ ul#ul-class-price li {
     color: #fff;
 }
 .addToCartButton.btn {
-background-color: #32CD32;
+    background-color: #32CD32;
+    font-weight: bold;
 }
