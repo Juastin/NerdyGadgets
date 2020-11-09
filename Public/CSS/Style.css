@@ -189,7 +189,7 @@ ul#ul-class-navigation li {
     position: absolute;
     height: 100%;
     right: 0;
-    width: 200px;
+    width: 250px;
 }
 .CenterPriceLeftChild {
     position: relative;
@@ -472,4 +472,7 @@ ul#ul-class-price li {
     background: rgb(36, 41, 143);
     border: 1px rgb(98, 158, 255) solid;
     color: #fff;
+}
+.addToCartButton.btn {
+background-color: #32CD32;
 }
