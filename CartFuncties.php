@@ -24,7 +24,17 @@ function AddProductToCart($stockItemID){
     SaveCart($cart);
 }
 
+// Verwijderen van product uit winkelmandje
+// Parameter: StockitemId van het item dat verwijderd wordt
+function RemoveProductFromCart($stockItemID) {
+    $cart = GetCart();
+
+    if(array_key_exists($stockItemID, $cart)) {
+        $cart[$stockItemID] = 0;
+    }
+}
+
 //winkelmandje opslaan in sessie variabele
-function SaveCart($cart){
+function SaveCart($cart) {
     $_SESSION['cart'] = $cart;
 }
