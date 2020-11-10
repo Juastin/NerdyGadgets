@@ -122,8 +122,14 @@ if ($R) {
                         <h6> Inclusief BTW </h6>
                         <form method="post">
                             <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockItemID" hidden>
-                            <input type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="addToCart" value="Toevoegen aan winkelmand">
+                            <input type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="submit" value="Toevoegen aan winkelmand">
                         </form>
+                        <?php
+                        include 'CartFuncties.php';
+                        if (isset($_POST['submit'])){
+                            AddProductToCart($_POST['stockItemID']);
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
