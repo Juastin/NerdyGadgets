@@ -129,7 +129,7 @@ if ($R) {
                         if(isset($_POST['addToCart'])){
                             $stockItemID = $_POST['stockItemID'];
                             AddProductToCart($stockItemID);
-                            print("Product is toegevoegd aan het mandje");
+                            print("Product is toegevoegd aan het <a href='cart.php'> winkelmandje </a>");
                         }
                         ?>
                     </div>
