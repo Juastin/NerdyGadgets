@@ -20,6 +20,11 @@ print_r($cart);
         <th style="text-align:right width="5%";">Aantal</th>
         <th style="text-align:right width="10%";">Prijs</th>
     </tr>
+
+    <form method="post">
+        <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockItemID" hidden>
+        <input type="submit" class="btn btn-primary btn-outline-dark removeFromCartButton" name="submit" value="Verwijderen">
+    </form>
     </tbody>
 </table>
 

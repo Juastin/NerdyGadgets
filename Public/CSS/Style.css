@@ -474,6 +474,10 @@ ul#ul-class-price li {
     color: #fff;
 }
 .addToCartButton.btn {
-    background-color: #32CD32;
+    background-color: #32cd32;
+    font-weight: bold;
+}
+.removeFromCartButton.btn {
+    background_color: #ff0000;
     font-weight: bold;
 }
