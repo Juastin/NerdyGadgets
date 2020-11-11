@@ -30,16 +30,18 @@ print_r($cart);
 <div id="StockItemHeaderLeft">
     <div class="CenterPriceLeft">
         <div class="CenterPriceLeftChild">
+
+
 <form method="post" >
-    <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockItemID" hidden>
+    <input type="number" value='<?php print($cart["StockItemID"]) ?>' name="stockItemID" hidden>
     <input type="submit" class="btn btn-primary btn-outline-dark removeFromCartButton" name="submit" value="Verwijder product">
 </form>
-
             <?php
             include 'CartFuncties.php';
-            if (isset($_POST['submit'])){
-                RemoveProductFromCart($_POST['stockItemID']);
-            }
+            if ($cart["StockItemID"] == 220) {
+                if (isset($_POST['submit'])){
+                RemoveProductFromCart($_POST["stockItemID"]);
+            } }
             ?>
         </div>
     </div>
