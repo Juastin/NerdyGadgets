@@ -41,21 +41,22 @@ function ProductVooraad()
 
 
 //Stap 2 Query maken en uitvoeren
-    $sql = "SELECT * FROM stockitemholdings";
-    $result = mysqli_query($connection, $sql);
+
 
 //Stap 3 Resultaten uitlezen
-    $voorraadcheck = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    $cart = GetCart();
-    foreach ($cart as $product => $voorraad{
-    print("NIET OP VOORAAD");
 
-}
-        //"product ID: " . $voorraadcheck["StockItemID"] . " heeft nog " . $voorraadcheck["QuantityOnHand"] . " op voorraad " . "<br>");
+    $cart = GetCart();
+    foreach ($cart as $product => $aantal) {
+        $sql = "SELECT QuantityOnHand FROM stockitemholdings WHERE stockitemid=".$product;
+        $result = mysqli_query($connection, $sql);
+        $voorraadcheck = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+        print_r($voorraadcheck);
+
+    }
+    //"product ID: " . $voorraadcheck["StockItemID"] . " heeft nog " . $voorraadcheck["QuantityOnHand"] . " op voorraad " . "<br>");
 
 //Stap 4 Verbinding opruimen
     mysqli_close($connection);
-
+}
  ?>
-
-
