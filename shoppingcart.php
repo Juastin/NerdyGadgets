@@ -6,6 +6,7 @@ include __DIR__ . "/header.php";
 include "CartFuncties.php";
 $cart = GetCart();
 print_r($cart);
+
 ?>
 
 <div>
@@ -31,12 +32,15 @@ print_r($cart);
     <div class="CenterPriceLeft">
         <div class="CenterPriceLeftChild">
 
-            <?php $StockItemID = 220; ?>
-
+<?php foreach($cart as $index => $key) {
+    print $key;
+    print $index;
+    ?>
 <form method="post" >
-    <input type="number" value='<?php print($cart[$StockItemID]) ?>' name="stockItemID" hidden>
+    <input type="number" value='<?php print($index) ?>' name="stockItemID" hidden>
     <input type="submit" class="btn btn-primary btn-outline-dark removeFromCartButton" name="submit" value="Verwijder product">
 </form>
+            <?php } ?>
 
         </div>
     </div>
@@ -46,6 +50,7 @@ print_r($cart);
 <?php
 if (isset($_POST["submit"])){
     RemoveProductFromCart($_POST["stockItemID"]);
+    print($_POST["stockItemID"]);
 }
 print_r($_POST);
 print_r($cart);

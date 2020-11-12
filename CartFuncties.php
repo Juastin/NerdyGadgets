@@ -28,10 +28,11 @@ function AddProductToCart($stockItemID){
 // Parameter: StockitemId van het item dat verwijderd wordt
 function RemoveProductFromCart($stockItemID){
     $cart = GetCart();
-        if (array_key_exists($stockItemID, $cart)) { // product uit winkelmandje verwijderen
+//        if (array_key_exists($stockItemID, $cart)) { // product uit winkelmandje verwijderen
             unset($cart[$stockItemID]);
-        }
+//        }
         SaveCart($cart);
+        print_r($cart);
     }
 
 
