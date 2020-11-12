@@ -44,9 +44,10 @@ print_r($cart);
 </div>
 
 <?php
-include "CartFuncties.php";
 if (isset($_POST["submit"])){
     RemoveProductFromCart($_POST["stockItemID"]);
 }
+print_r($_POST);
+print_r($cart);
 ?>
 
