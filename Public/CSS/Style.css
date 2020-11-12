@@ -189,11 +189,7 @@ ul#ul-class-navigation li {
     position: absolute;
     height: 100%;
     right: 0;
-<<<<<<< HEAD
     width: 300px;
-=======
-    width: 250px;
->>>>>>> 3007559... Added green button and added css + bootstrap
 }
 .CenterPriceLeftChild {
     position: relative;
