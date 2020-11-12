@@ -120,16 +120,6 @@ if ($R) {
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $Result['SellPrice']); ?></b></p>
                         <h6> Inclusief BTW </h6>
-                        <form method="post">
-                            <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockItemID" hidden>
-                            <input type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="submit" value="Toevoegen aan winkelmand">
-                        </form>
-                        <?php
-                        include 'CartFuncties.php';
-                        if (isset($_POST['submit'])){
-                            AddProductToCart($_POST['stockItemID']);
-                        }
-                        ?>
                     </div>
                 </div>
             </div>
