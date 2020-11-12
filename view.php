@@ -120,6 +120,10 @@ if ($R) {
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $Result['SellPrice']); ?></b></p>
                         <h6> Inclusief BTW </h6>
+                        <form method="post">
+                            <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockItemID" hidden>
+                            <input type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="addToCart" value="Toevoegen aan winkelmand">
+                        </form>
                     </div>
                 </div>
             </div>
