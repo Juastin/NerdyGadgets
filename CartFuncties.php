@@ -10,8 +10,7 @@ function GetCart() {
     return $cart;
 }
 
-// Toevoegen van product aan winkelmandje
-// Parameter: StockitemId van item dat toegevoegd wordt
+//toevoegen van product aan winkelmandje
 function AddProductToCart($stockItemID){
     $cart = GetCart();
 
