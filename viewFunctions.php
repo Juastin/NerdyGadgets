@@ -1,5 +1,5 @@
 <?php
-//Get Images
+// Gets information from db of product by passing $id as parameter
 function GetResult ($Connection, $id) {
     $Query = " 
            SELECT SI.StockItemID, 
@@ -25,6 +25,7 @@ function GetResult ($Connection, $id) {
         return $Result = null;
     }
 }
+// Gets Images from db of product by using $_GET['id']
 function GetImages ($Connection) {
     $Query = "
                     SELECT ImagePath
@@ -39,6 +40,7 @@ function GetImages ($Connection) {
             return $Images = $R;
         }
 }
+// Gets single image from db of product by passing $id as productID as parameter.
 function GetSingleImage ($Connection, $id) {
 $Query = "
                     SELECT ImagePath

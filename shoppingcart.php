@@ -22,13 +22,16 @@ print_r($cart);
 
     <hr color="white">
     <br>
-    <?php foreach ($cart as $item => $amount) { ?>
+    <?php foreach ($cart as $item => $amount) {
+        $Result = GetResult($Connection, $item);
+        $Image = GetSingleImage($Connection, $item);
+        ?>
         <table class="tbl-cart" cellpadding="10" cellspacing="5">
             <tbody>
             <tr>
                 <td>
                     <?php
-                    $Image = GetSingleImage($Connection, $item);
+                    // Prints single image from product.
                     if ($Image != null) {
                     ?>
                     <div id="ImageFrame"
@@ -36,8 +39,10 @@ print_r($cart);
                              print ($Image);
                          ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;">
                     </div>
-                <?php } else {
-                        $Result = GetResult($Connection, $item); ?>
+                <?php
+                    // Prints backup image when there is no picture available.
+                    } else {
+                        ?>
                         <div id="ImageFrame"
                          style="background-image: url('Public/StockGroupIMG/<?php
                              print ($Result['BackupImagePath']);
@@ -45,8 +50,10 @@ print_r($cart);
                     </div>
                    <?php } ?>
                 </td>
-
-                <td style="text-align:left;" name="Productname">Productnaam<br>Beschrijving</td>
+                <?php
+//                print_r($Result)
+                ?>
+                <td style="text-align:left;" name="Productname"><?php print ($Result['StockItemName']); ?><br>Beschrijving</td>
 
                 <td style="text-align:left;">Verzend Informatie<br>Aanvullende Informatie</td>
 
