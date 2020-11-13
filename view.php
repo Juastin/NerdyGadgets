@@ -125,6 +125,7 @@ if ($R) {
                             <input type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="submit" value="Toevoegen aan winkelmand">
                         </form>
                         <?php
+                        //Controleren of er op de knop is gedrukt, zo ja voer functie AddProductToCart in het bestand CartFuncties.php uit.
                         include 'CartFuncties.php';
                         if (isset($_POST['submit'])){
                             AddProductToCart($_POST['stockItemID']);
