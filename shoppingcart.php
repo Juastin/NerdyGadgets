@@ -28,21 +28,22 @@ print_r($cart);
             <tr>
                 <td>
                     <?php
-
+                    $Image = GetSingleImage($Connection, $item);
+                    if ($Image != null) {
                     ?>
                     <div id="ImageFrame"
                          style="background-image: url('Public/StockItemIMG/<?php
-//                         if (isset($R)) {
-                             print (GetSingleImage($Connection, $item));
-//                         }
-//                         else {
-//                             $Result = GetResult($Connection, $item);
-//                             print $Result['BackupImagePath'];
-//                         }
+                             print ($Image);
                          ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;">
                     </div>
-                    <?php ?>
-                    <img border="5" src="Public\ProductIMGHighRes\mug.png" width="100" height="100" alt="kop">
+                <?php } else {
+                        $Result = GetResult($Connection, $item); ?>
+                        <div id="ImageFrame"
+                         style="background-image: url('Public/StockGroupIMG/<?php
+                             print ($Result['BackupImagePath']);
+                         ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;">
+                    </div>
+                   <?php } ?>
                 </td>
 
                 <td style="text-align:left;" name="Productname">Productnaam<br>Beschrijving</td>
