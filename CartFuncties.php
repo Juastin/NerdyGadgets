@@ -50,9 +50,12 @@ function ProductVooraad()
         $sql = "SELECT QuantityOnHand FROM stockitemholdings WHERE stockitemid=".$product;
         $result = mysqli_query($connection, $sql);
         $voorraadcheck = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
 
-        print_r($voorraadcheck);
-
+    foreach ($voorraadcheck as $vooraad) {
+        if ($aantal < $vooraad) {
+            print ("Product $product heeft minder dan het geselecteerde aantal beschikbaar!<br>");
+        }
     }
     //"product ID: " . $voorraadcheck["StockItemID"] . " heeft nog " . $voorraadcheck["QuantityOnHand"] . " op voorraad " . "<br>");
 
