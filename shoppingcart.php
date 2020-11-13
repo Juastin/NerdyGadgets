@@ -4,9 +4,13 @@ mysqli_set_charset($Connection, 'latin1');
 include __DIR__ . "/header.php";
 
 include "CartFuncties.php";
-$cart = GetCart();
-print_r($cart);
 
+if (isset($_POST["submit"])){
+    RemoveProductFromCart($_POST["stockItemID"]);
+    print("Het product is verwijderd uit het winkelmandje");
+    print($_POST["stockItemID"]); // losse getal dat je ziet na knop drukken "verwijderen product"
+}
+$cart = GetCart();
 ?>
 
 <div>
@@ -47,12 +51,4 @@ print_r($cart);
 </div>
 </div>
 
-<?php
-if (isset($_POST["submit"])){
-    RemoveProductFromCart($_POST["stockItemID"]);
-    print($_POST["stockItemID"]);
-}
-print_r($_POST);
-print_r($cart);
-?>
 
