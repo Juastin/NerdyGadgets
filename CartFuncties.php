@@ -27,11 +27,10 @@ function AddProductToCart($stockItemID){
 // Verwijderen van product uit winkelmandje
 // Parameter: StockitemId van het item dat verwijderd wordt
 function RemoveProductFromCart($stockItemID){
-    $cart = GetCart();
-//        if (array_key_exists($stockItemID, $cart)) { // product uit winkelmandje verwijderen
-            unset($cart[$stockItemID]);
-        SaveCart($cart);
-        print_r($cart); // eerste array die te zien is na op "verwijderen product" te hebben geklikt (twee keer klikken)
+    $cart = GetCart(); // winkelmandje ophalen
+            unset($cart[$stockItemID]); // item uit winkelmand verwijderen
+        SaveCart($cart); // winkelmandje opslaan
+        print_r($cart); // inhoud winkelmandje na item uit winkelmand te hebben verwijderd
     }
 
 

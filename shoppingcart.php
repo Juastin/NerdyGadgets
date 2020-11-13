@@ -5,12 +5,15 @@ include __DIR__ . "/header.php";
 
 include "CartFuncties.php";
 
-if (isset($_POST["submit"])){
+
+if (!isset($_POST["submit"])){
+    $cart = GetCart();
+    print_r($cart);
+    } else {
     RemoveProductFromCart($_POST["stockItemID"]);
-    print("Het product is verwijderd uit het winkelmandje");
-    print($_POST["stockItemID"]); // losse getal dat je ziet na knop drukken "verwijderen product"
+    $cart = GetCart();
 }
-$cart = GetCart();
+
 ?>
 
 <div>
@@ -37,8 +40,6 @@ $cart = GetCart();
         <div class="CenterPriceLeftChild">
 
 <?php foreach($cart as $index => $key) {
-    print $key;
-    print $index;
     ?>
 <form method="post" >
     <input type="number" value='<?php print($index) ?>' name="stockItemID" hidden>
