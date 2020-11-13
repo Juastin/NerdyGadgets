@@ -3,9 +3,10 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 include __DIR__ . "/header.php";
 include "CartFuncties.php";
+include "viewFunctions.php";
 $cart = GetCart();
 print_r($cart);
-
+//$Images['ImagePath'];
 ?>
 
 <div>
@@ -26,6 +27,21 @@ print_r($cart);
             <tbody>
             <tr>
                 <td>
+                    <?php
+
+                    ?>
+                    <div id="ImageFrame"
+                         style="background-image: url('Public/StockItemIMG/<?php
+//                         if (isset($R)) {
+                             print (GetSingleImage($Connection, $item));
+//                         }
+//                         else {
+//                             $Result = GetResult($Connection, $item);
+//                             print $Result['BackupImagePath'];
+//                         }
+                         ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;">
+                    </div>
+                    <?php ?>
                     <img border="5" src="Public\ProductIMGHighRes\mug.png" width="100" height="100" alt="kop">
                 </td>
 
