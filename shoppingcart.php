@@ -21,7 +21,7 @@ print_r($cart);
 
     <hr color="white">
     <br>
-    <?php foreach ($cart as $item) { ?>
+    <?php foreach ($cart as $item => $amount) { ?>
         <table class="tbl-cart" cellpadding="10" cellspacing="5">
             <tbody>
             <tr>
@@ -33,15 +33,17 @@ print_r($cart);
 
                 <td style="text-align:left;">Verzend Informatie<br>Aanvullende Informatie</td>
 
-                <td><label for="aantal">Selecteer aantal:</label></td>
+                <td><label for="amount">Selecteer aantal:</label></td>
 
-                <td><select class="" name="Aantal" id="Aantal">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select></td>
+                <td><input type="number" id="$=amount" name="amount" value="<?php print($amount) ?>">
+<!--                    <select class="" name="Aantal" id="Aantal">-->
+<!--                        <option value="1">1</option>-->
+<!--                        <option value="2">2</option>-->
+<!--                        <option value="3">3</option>-->
+<!--                        <option value="4">4</option>-->
+<!--                        <option value="5">5</option>-->
+<!--                    </select>-->
+                </td>
 
                 <td style="text-align:right;">Prijs:</td>
             </tr>
