@@ -1,11 +1,14 @@
+<head>
+    <script type='text/javascript' src='Public/JS/adjustbutton.js'></script>
+</head>
+<body>
 <?php
 $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 include __DIR__ . "/header.php";
 
 ?>
-
-<div>
+    <div>
 
     <header>
     <h2 style="text-align: left;">Winkelwagen</h2>
@@ -32,6 +35,14 @@ include __DIR__ . "/header.php";
 
             <td><label for="aantal">Selecteer aantal:</label></td>
 
+            <td>
+                <div id=field1>
+                    Aantal
+                    <button type="button" id="sub" class=sub>-</button>
+                    <input type="text" id="1" value=0 class=field>
+                    <button type="button" id="add" class=add>+</button>
+                </div>
+            </td>
             <td><select class="" name="Aantal" id="Aantal">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -79,3 +90,4 @@ include "CartFuncties.php";
 $cart = GetCart();
 print_r($cart);
 ?>
+</body>
