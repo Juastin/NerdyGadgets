@@ -1,5 +1,7 @@
 <head>
-    <script type='text/javascript' src='Public/JS/adjustbutton.js'></script>
+    <title> </title>
+    <link rel="stylesheet" type="text/css" href="Public/CSS/Style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
 <?php
@@ -32,23 +34,15 @@ include __DIR__ . "/header.php";
             <td style="text-align:left;" name="Productname">Productnaam<br>Beschrijving</td>
 
             <td style="text-align:left;">Verzend Informatie<br>Aanvullende Informatie</td>
-
-            <td><label for="aantal">Selecteer aantal:</label></td>
-
             <td>
                 <div id=field1>
-                    Aantal
+                    Selecteer aantal:
                     <button type="button" id="sub" class=sub>-</button>
                     <input type="text" id="1" value=0 class=field>
                     <button type="button" id="add" class=add>+</button>
+                    <script type='text/javascript' src='Public/JS/adjustbutton.js'></script>
                 </div>
             </td>
-            <td><select class="" name="Aantal" id="Aantal">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
             </select></td>
 
             <td style="text-align:right;">Prijs:</td>
