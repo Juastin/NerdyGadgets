@@ -5,8 +5,6 @@ include __DIR__ . "/header.php";
 include "CartFuncties.php";
 include "viewFunctions.php";
 $cart = GetCart();
-print_r($cart);
-//$Images['ImagePath'];
 ?>
 
 <div>
