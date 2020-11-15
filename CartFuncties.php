@@ -30,7 +30,6 @@ function RemoveProductFromCart($stockItemID){
     $cart = GetCart(); // winkelmandje ophalen
             unset($cart[$stockItemID]); // item uit winkelmand verwijderen
         SaveCart($cart); // winkelmandje opslaan
-        print_r($cart); // inhoud winkelmandje na item uit winkelmand te hebben verwijderd
     }
 
 
