@@ -38,15 +38,14 @@ if (!isset($_POST["submit"])){
 <div id="StockItemHeaderLeft">
     <div class="CenterPriceLeft">
         <div class="CenterPriceLeftChild">
-
-<?php foreach($cart as $index => $key) {
+<?php
+foreach($cart as $index => $key) {
     ?>
 <form method="post" >
     <input type="number" value='<?php print($index) ?>' name="stockItemID" hidden>
     <input type="submit" class="btn btn-primary btn-outline-dark removeFromCartButton" name="submit" value="Verwijder product">
 </form>
             <?php } ?>
-
         </div>
     </div>
 </div>
