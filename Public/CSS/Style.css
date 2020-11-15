@@ -482,3 +482,23 @@ ul#ul-class-price li {
     background-color: #ff0000;
     font-weight: bold;
 }
+button.add {
+    margin: 4px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background-color: #676EFF;
+}
+button.sub {
+    margin: 4px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background-color: #676EFF;
+}
+input.field {
+    text-align: center;
+    width: 50px;
+    margin: 4px;
+    color: #23232F;
+}
