@@ -489,16 +489,16 @@ button.add {
     height: 40px;
     background-color: #676EFF;
 }
-input.field {
-    text-align: center;
-    width: 50px;
-    margin: 4px;
-    color: #23232F;
-}
 button.sub {
     margin: 4px;
     cursor: pointer;
     width: 40px;
     height: 40px;
     background-color: #676EFF;
+}
+input.field {
+    text-align: center;
+    width: 50px;
+    margin: 4px;
+    color: #23232F;
 }
