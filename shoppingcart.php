@@ -34,6 +34,7 @@ if (!isset($_POST["submit"])){
     <br>
 
     <?php foreach ($cart as $item => $amount) {
+        print_r($cart);
         $Result = GetResult($Connection, $item);
         $Image = GetSingleImage($Connection, $item);
         ?>

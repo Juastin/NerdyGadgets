@@ -37,8 +37,8 @@ function ProductVooraad($Connection, $id) {
         $voorraadcheck = mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
 
-    foreach ($voorraadcheck as $vooraad) {
-        if ($aantal < $vooraad) {
+    foreach ($voorraadcheck as $voorraad) {
+        if ($aantal > $voorraad['QuantityOnHand']) {
             print ("Product $id heeft minder dan het geselecteerde aantal beschikbaar!<br>");
         }
     }
