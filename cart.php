@@ -2,7 +2,13 @@
 include "CartFuncties.php";
 session_start();
 $cart = GetCart();
-print_r($cart);
+foreach ($cart as $product => $aantal) {
+    print("product: " . $product . " aantal: " . $aantal . "<br>");
+
+
+}
+
+ProductVooraad();
 
 //gegevens per artikel (naam, prijs, etc.) in $cart-array  uit database halen
 //totaal prijs berekeken

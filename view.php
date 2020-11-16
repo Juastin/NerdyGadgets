@@ -2,11 +2,48 @@
 $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 include __DIR__ . "/header.php";
-include "viewFunctions.php";
-$ShowStockLevel = 1000;
-$Result = GetResult($Connection, $_GET['id']);
-GetImages($Connection);
+include "CartFuncties.php";
 
+$Query = " 
+           SELECT SI.StockItemID, 
+            (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
+            StockItemName,
+            CONCAT('Voorraad: ',QuantityOnHand)AS QuantityOnHand,
+            SearchDetails, 
+            (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
+            (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath   
+            FROM stockitems SI 
+            JOIN stockitemholdings SIH USING(stockitemid)
+            JOIN stockitemstockgroups ON SI.StockItemID = stockitemstockgroups.StockItemID
+            JOIN stockgroups USING(StockGroupID)
+            WHERE SI.stockitemid = ?
+            GROUP BY StockItemID";
+
+$ShowStockLevel = 1000;
+$Statement = mysqli_prepare($Connection, $Query);
+mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
+mysqli_stmt_execute($Statement);
+$ReturnableResult = mysqli_stmt_get_result($Statement);
+if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
+    $Result = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC)[0];
+} else {
+    $Result = null;
+}
+//Get Images
+$Query = "
+                SELECT ImagePath
+                FROM stockitemimages 
+                WHERE StockItemID = ?";
+
+$Statement = mysqli_prepare($Connection, $Query);
+mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
+mysqli_stmt_execute($Statement);
+$R = mysqli_stmt_get_result($Statement);
+$R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+
+if ($R) {
+    $Images = $R;
+}
 ?>
 <div id="CenteredContent">
     <?php
@@ -86,12 +123,13 @@ GetImages($Connection);
                         <h6> Inclusief BTW </h6>
                         <form method="post">
                             <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockItemID" hidden>
-                            <input type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="submit" value="Toevoegen aan winkelmand">
+                            <input type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="addToCart" value="Toevoegen aan winkelmand">
                         </form>
                         <?php
-                        include 'CartFuncties.php';
-                        if (isset($_POST['submit'])){
-                            AddProductToCart($_POST['stockItemID']);
+                        if(isset($_POST['addToCart'])){
+                            $stockItemID = $_POST['stockItemID'];
+                            AddProductToCart($stockItemID);
+                            print("Product is toegevoegd aan het <a href='cart.php'> winkelmandje </a>");
                         }
                         ?>
                     </div>
