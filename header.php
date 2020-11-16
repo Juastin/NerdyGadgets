@@ -73,11 +73,15 @@ include "connect.php";
                 <li>
                     <a href="categories.php" class="HrefDecoration">Alle categorieën</a>
                 </li>
+
             </ul>
         </div>
-        <ul id="ul-class-navigation">
+        <ul id="ul-class-navigation" class="">
             <li>
-                <a href="browse.php" class="HrefDecoration"><i class="fas fa-search" style="color:#676EFF;"></i> Zoeken</a>
+                <a href="shoppingcart.php" class="HrefDecoration col-4"><i class="fas fa-shopping-cart"></i> Winkelmand</a>
+            </li>
+            <li>
+                <a href="browse.php" class="HrefDecoration col-4"><i class="fas fa-search" style="color:#676EFF;"></i> Zoeken</a>
             </li>
         </ul>
     </div>

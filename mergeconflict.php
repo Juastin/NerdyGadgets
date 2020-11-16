@@ -1,19 +1,33 @@
 <?php
-$Image = 1;
-if ($Image != null) {
-    ?>
-    <div id="ImageFrame"
-         style="background-image: url('Public/StockItemIMG/<?php
-         print ($Image);
-         ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;">
-    </div>
-    <?php
-    // Prints backup image when there is no picture available.
-} else {
-    ?>
-    <div id="ImageFrame"
-         style="background-image: url('Public/StockGroupIMG/<?php
-         print ($Image);
-         ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;">
-    </div>
-<?php } ?>
+function GetImages ($Connection) {
+    $Query = "
+                    SELECT ImagePath
+                    FROM stockitemimages 
+                    WHERE StockItemID = ?";
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
+    mysqli_stmt_execute($Statement);
+    $R = mysqli_stmt_get_result($Statement);
+    $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+    if ($R) {
+        return $Images = $R;
+    }
+}
+// Gets single image from db of product by passing $id as productID as parameter.
+function GetSingleImage ($Connection, $id) {
+    $Query = "
+                    SELECT ImagePath
+                    FROM stockitemimages 
+                    WHERE StockItemID = ?";
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $id);
+    mysqli_stmt_execute($Statement);
+    $R = mysqli_stmt_get_result($Statement);
+    $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+    if (isset($R[0]['ImagePath'])) {
+        return $R[0]['ImagePath'];
+    }
+    else {
+        return null;
+    }
+}
