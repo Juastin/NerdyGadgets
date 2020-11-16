@@ -2,6 +2,7 @@
 $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 include __DIR__ . "/header.php";
+include "CartFuncties.php";
 
 $Query = " 
            SELECT SI.StockItemID, 
@@ -120,6 +121,17 @@ if ($R) {
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $Result['SellPrice']); ?></b></p>
                         <h6> Inclusief BTW </h6>
+                        <form method="post">
+                            <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockItemID" hidden>
+                            <input type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="addToCart" value="Toevoegen aan winkelmand">
+                        </form>
+                        <?php
+                        if(isset($_POST['addToCart'])){
+                            $stockItemID = $_POST['stockItemID'];
+                            AddProductToCart($stockItemID);
+                            print("Product is toegevoegd aan het <a href='cart.php'> winkelmandje </a>");
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
