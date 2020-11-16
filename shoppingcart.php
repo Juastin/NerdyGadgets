@@ -6,6 +6,7 @@
 <?php
 $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
+session_start();
 include __DIR__ . "/header.php";
 include "CartFuncties.php";
 include "viewFunctions.php";
@@ -74,6 +75,7 @@ if (!isset($_POST["submit"])){
                         <input type="text" id="1" value=0 class=field>
                         <button type="button" id="add" class=add>+</button>
                         <script type='text/javascript' src='Public/JS/adjustbutton.js'></script>
+                        <br><?php ProductVooraad($Connection, $item); ?>
                     </div>
                 </td>
 <!--                <td><label for="amount">Selecteer aantal:</label>-->
