@@ -75,7 +75,7 @@ if (!isset($_POST["submit"])){
                         <input type="text" id="1" value=0 class=field>
                         <button type="button" id="add" class=add>+</button>
                         <script type='text/javascript' src='Public/JS/adjustbutton.js'></script>
-                        <?php ProductVooraad($Connection); ?>
+                        <br><?php ProductVooraad($Connection, $item); ?>
                     </div>
                 </td>
 <!--                <td><label for="amount">Selecteer aantal:</label>-->

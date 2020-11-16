@@ -28,24 +28,24 @@ function SaveCart($cart){
     $_SESSION['cart'] = $cart;
 }
 //winkelmand product niet boven de vooraad
-function ProductVooraad($Connection) {
+function ProductVooraad($Connection, $id) {
 
     $cart = GetCart();
     foreach ($cart as $product => $aantal) {
-        $sql = "SELECT QuantityOnHand FROM stockitemholdings WHERE stockitemid=".$product;
+        $sql = "SELECT QuantityOnHand FROM stockitemholdings WHERE stockitemid=".$id;
         $result = mysqli_query($Connection, $sql);
         $voorraadcheck = mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
 
     foreach ($voorraadcheck as $vooraad) {
         if ($aantal < $vooraad) {
-            print ("Product $product heeft minder dan het geselecteerde aantal beschikbaar!<br>");
+            print ("Product $id heeft minder dan het geselecteerde aantal beschikbaar!<br>");
         }
     }
     //"product ID: " . $voorraadcheck["StockItemID"] . " heeft nog " . $voorraadcheck["QuantityOnHand"] . " op voorraad " . "<br>");
 
 //Stap 4 Verbinding opruimen
-    mysqli_close($Connection);
+//    mysqli_close($Connection);
 }
 
 // Verwijderen van product uit winkelmandje
