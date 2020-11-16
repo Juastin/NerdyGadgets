@@ -130,4 +130,3 @@ if (!isset($_POST["submit"])){
     <td style="text-align:right;" name="Prijs3">Prijs</td>
     </td>
 </table>
->>>>>>> development
