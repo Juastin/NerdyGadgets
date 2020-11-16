@@ -59,7 +59,7 @@ input {
 }
 table tr th,
 table tr td {
-    padding: 10px;
+    padding: 50px;
 }
 ul#ul-class-navigation {
     right: 10px;
@@ -189,7 +189,7 @@ ul#ul-class-navigation li {
     position: absolute;
     height: 100%;
     right: 0;
-    width: 250px;
+    width: 300px;
 }
 .CenterPriceLeftChild {
     position: relative;
@@ -474,6 +474,31 @@ ul#ul-class-price li {
     color: #fff;
 }
 .addToCartButton.btn {
-    background-color: #32CD32;
+    background-color: #32cd32;
     font-weight: bold;
+}
+/* voegt een rode knop toe met dikgedrukte letters voor het verwijderen van producten uit een winkelmand */
+.removeFromCartButton.btn {
+    background-color: #ff0000;
+    font-weight: bold;
+}
+button.add {
+    margin: 4px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background-color: #676EFF;
+}
+button.sub {
+    margin: 4px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background-color: #676EFF;
+}
+input.field {
+    text-align: center;
+    width: 50px;
+    margin: 4px;
+    color: #23232F;
 }
