@@ -42,7 +42,6 @@ if (!isset($_POST["submit"])){
                 <td>
                     <?php
                     // Prints single image from product.
-                    if ($Image != null) {
                     ?>
                     <div id="ImageFrame"
                          style="background-image: url('Public/StockItemIMG/<?php
@@ -51,7 +50,7 @@ if (!isset($_POST["submit"])){
                     </div>
                 <?php
                     // Prints backup image when there is no picture available.
-                    } else {
+                    if ($Image == null) {
                         ?>
                         <div id="ImageFrame"
                          style="background-image: url('Public/StockGroupIMG/<?php
