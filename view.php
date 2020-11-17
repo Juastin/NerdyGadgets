@@ -5,7 +5,11 @@ include __DIR__ . "/header.php";
 include "viewFunctions.php";
 include 'CartFuncties.php';
 $ShowStockLevel = 1000;
-$Result = GetResult($Connection, $_GET['id']);
+if(isset($_GET["id"])) {
+    $Result = GetResult($Connection, $_GET['id']);
+} else {
+    $Result = FALSE;
+}
 GetImages($Connection);
 
 ?>
