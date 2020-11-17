@@ -27,10 +27,10 @@ include "viewFunctions.php";
     <br>
     <!--Begin hieronder aan de formulieren.-->
     <form method='get' action='NAW.php'>
-        <label for='fname'><i class='fa fa-user' style=" margin-left: 20px;"></i> Full Name</label><br>
-        <input style="width:30%; margin-left: 100px;" type='text' id='firstname' name='firstname' placeholder='John M. Doe'><br>
-        <label for='email'><i class='fa fa-envelope'></i> Email</label>
-        <input type='text' id='email' name='email' placeholder='john@example.com'><br>
+        <label for='fname'><i class='fa fa-user' style=" margin-left: 100px;"></i> Full Name</label>
+        <label for='email'><i class='fa fa-envelope' style=" margin-left: 580px;"></i> Email</label><br>
+        <input style="width:30%; margin-left: 100px;" type='text' id='firstname' name='firstname' placeholder='John M. Doe'>
+        <input style="width:30%; margin-left: 100px;" type='text' id='email' name='email' placeholder='john@example.com'><br>
         <label for='adr'><i class='fa fa-address-card-o'></i> Address</label>
         <input type='text' id='adr' name='address' placeholder='42 W. 15th Street'><br>
         <label for='place'><i class='fa fa-place'></i> Place</label>
