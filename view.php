@@ -8,7 +8,7 @@ $ShowStockLevel = 1000;
 if(isset($_GET["id"])) {
     $Result = GetResult($Connection, $_GET['id']);
 } else {
-    $Result = FALSE;
+    $Result = null;
 }
 GetImages($Connection);
 
