@@ -87,12 +87,15 @@ GetImages($Connection);
                         <h6> Inclusief BTW </h6>
                         <form method="post">
                             <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockItemID" hidden>
-                            <input type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="submit" value="Toevoegen aan winkelmand">
+                            <input id= "button" type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="submit" value="Toevoegen aan winkelwagen">
                         </form>
                         <?php
                         if (isset($_POST['submit'])){
-                            AddProductToCart($_POST['stockItemID']);
-                        }
+                            AddProductToCart($_POST['stockItemID']); ?>
+                            <script> Notification_();
+                            setTimeout(StopNotification, 2000);
+                            </script>
+                        <?php }
                         ?>
                     </div>
                 </div>

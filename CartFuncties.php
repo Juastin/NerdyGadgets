@@ -55,3 +55,16 @@ function RemoveProductFromCart($stockItemID){
             unset($cart[$stockItemID]); // item uit winkelmand verwijderen
         SaveCart($cart); // winkelmandje opslaan
     }
+    ?>
+
+<script>
+    // Melding op knop dat het product is toegevoegd na toevoegen van het product
+    function Notification_() {
+        document.getElementById('button').value = "Item is toegevoegd!"; // de waarde van value wordt vervangen
+    }
+
+    // De knop krijgt zijn oude tekst terug
+    function StopNotification() {
+        document.getElementById('button').value = "Toevoegen aan winkelwagen"; // de waarde van value wordt vervangen
+    }
+</script>
