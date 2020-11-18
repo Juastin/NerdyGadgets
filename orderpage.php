@@ -35,7 +35,7 @@ $name = $email = $address = $place = $postalcode = $housenumber = "";
     <form method='post'>
         <!--Name + Email-->
         <label for='fname'><i class='fa fa-user' style=" margin-left: 50px;"></i> Full Name</label>
-        <label for='email'><i class='fa fa-envelope' style=" margin-left: 770px;"></i> Email</label><br>
+        <label for='email'><i class='fa fa-envelope' style=" margin-left: 785px;"></i> Email</label><br>
         <!--Input Name + Email-->
         <input style="width:43.5%; margin-left: 50px;" type='text' name='name' placeholder="John" required>
         <input style="width:43.5%; margin-left: 50px;" type='text' id='email' name='email' placeholder='john@example.com' required><br>
@@ -52,13 +52,13 @@ $name = $email = $address = $place = $postalcode = $housenumber = "";
         <input type="radio" id="other" name="gender" value="other" style="transform: scale(2);width: 50px; height: auto; margin-left: 20px;">
         <label for="other">Other</label>
         <!--Adress input-->
-        <input type='text' style="margin-left: 100px; width: 66%" id='adr' name='address' placeholder='42 W. 15th Street' required><br>
+        <input type='text' style="margin-left: 100px; width: 66.5%" id='adr' name='address' placeholder='42 W. 15th Street' required><br>
         <!--Place-->
         <br><label for='place'><i style="margin-left: 50px;"></i> Place</label><br>
         <input type='text' style="margin-left: 50px; width: 90%" id='place' name='place' placeholder='New York' required><br>
         <!--Postal code and house number-->
         <br><label for='adr'><i style="margin-left: 50px;"></i> Postal Code</label>
-        <label for='adr'><i style="margin-left: 1490px;"></i> House Number</label><br>
+        <label for='adr'><i style="margin-left: 1520px;"></i> House Number</label><br>
         <!--Input postal code and House number-->
         <input type='text' style="margin-left: 50px; width: 85%" id='postalcode' name='postalcode' placeholder='4444KA' required>
         <input type='text' style="margin-left: 15px; width: 4%" id='adr' name='housenumber' placeholder='10' required><br>
@@ -71,13 +71,15 @@ $name = $email = $address = $place = $postalcode = $housenumber = "";
 
         if (isset($_POST["submit"])) {
 
+            //Code hieronder zou checken of de velden 'name' en 'email' zijn ingevuld. Heb het toch anders gedaan
+            //met justin's advies voor een required in de html tag
             //if (empty($_POST["name"]) OR empty($_POST["email"]) ) {
             //    print("Niet alle velden zijn ingevuld");
             //} else {
             //    $name = test_input($_POST["name"]);
             //    print($name);
             //}
-            // Onderstaande code checkt of het een email is.
+            // Onderstaande code checkt of het een email is. en print dat uit onder de send knop.
             $email = test_input($_POST["email"]);
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $emailErr = "Dit is geen email joh"; ?>
@@ -89,13 +91,17 @@ $name = $email = $address = $place = $postalcode = $housenumber = "";
 
 
 
-
+//Code hieronder zou de ingevulde gegevns ophalen uit de ingevoerde velden.
 //$name = test_input($_POST["name"]);
 //$email = test_input($_POST["email"]);
 //$address = test_input($_POST["address"]);
 //$place = test_input($_POST["place"]);
 //$postalcode = test_input($_POST["postalcode"]);
 //$housenumber = test_input($_POST["housenumber"]);
+            //Functie test_input maakt de string mooier.
+            //trim($data) zorgt ervoor dat de spatie voor en achteraan worden weg gehaald
+            //stripslashes($data) haalt de \ weg.
+            //htmlspecialchars($data) doet ook iets. kunnen we vast zonder leven.!
         }
 
         function test_input($data) {
