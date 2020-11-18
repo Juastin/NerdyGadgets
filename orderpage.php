@@ -35,22 +35,33 @@ $name = $email = $address = $place = $postalcode = $housenumber = "";
     <form method='post'>
         <!--Name + Email-->
         <label for='fname'><i class='fa fa-user' style=" margin-left: 50px;"></i> Full Name</label>
-        <label for='email'><i class='fa fa-envelope' style=" margin-left: 790px;"></i> Email</label><br>
+        <label for='email'><i class='fa fa-envelope' style=" margin-left: 770px;"></i> Email</label><br>
         <!--Input Name + Email-->
         <input style="width:43.5%; margin-left: 50px;" type='text' name='name' placeholder="John" required>
         <input style="width:43.5%; margin-left: 50px;" type='text' id='email' name='email' placeholder='john@example.com' required><br>
-        <!--Adress-->
-        <br><label for='adr'><i style="margin-left: 50px;"></i> Address</label><br>
-        <input type='text' style="margin-left: 50px; width: 90%" id='adr' name='address' placeholder='42 W. 15th Street'><br>
+        <!--Gender en Address-->
+        <br><label for="gender"><i style="margin-left: 170px;"</i> Gender:</label>
+        <label for='adr'><i style="margin-left: 100px;"></i> Address</label><br>
+        <!--Male-->
+        <input type="radio" id="male" name="gender" value="male" style="transform: scale(2);width: 50px; height: auto; margin-left: 50px;">
+        <label for="male">Male</label>
+        <!--Female-->
+        <input type="radio" id="female" name="gender" value="female" style="transform: scale(2);width: 50px; height: auto; margin-left: 20px;">
+        <label for="female">Female</label>
+        <!--Other-->
+        <input type="radio" id="other" name="gender" value="other" style="transform: scale(2);width: 50px; height: auto; margin-left: 20px;">
+        <label for="other">Other</label>
+        <!--Adress input-->
+        <input type='text' style="margin-left: 100px; width: 66%" id='adr' name='address' placeholder='42 W. 15th Street' required><br>
         <!--Place-->
         <br><label for='place'><i style="margin-left: 50px;"></i> Place</label><br>
-        <input type='text' style="margin-left: 50px; width: 90%" id='place' name='place' placeholder='New York'><br>
+        <input type='text' style="margin-left: 50px; width: 90%" id='place' name='place' placeholder='New York' required><br>
         <!--Postal code and house number-->
         <br><label for='adr'><i style="margin-left: 50px;"></i> Postal Code</label>
-        <label for='adr'><i style="margin-left: 1530px;"></i> House Number</label><br>
+        <label for='adr'><i style="margin-left: 1490px;"></i> House Number</label><br>
         <!--Input postal code and House number-->
-        <input type='text' style="margin-left: 50px; width: 85%" id='postalcode' name='postalcode' placeholder='4444KA'>
-        <input type='text' style="margin-left: 15px; width: 4%" id='adr' name='housenumber' placeholder='10'><br>
+        <input type='text' style="margin-left: 50px; width: 85%" id='postalcode' name='postalcode' placeholder='4444KA' required>
+        <input type='text' style="margin-left: 15px; width: 4%" id='adr' name='housenumber' placeholder='10' required><br>
         <br>
         <div style="text-align: center;">
         <input type='submit' style="width: 20%;"value='Send' name="submit">
@@ -60,9 +71,8 @@ $name = $email = $address = $place = $postalcode = $housenumber = "";
 
         if (isset($_POST["submit"])) {
 
-            if (empty($_POST["name"])) {
-                $nameErr = "Name is required";
-                print($nameErr);
+            if (empty($_POST["name"]) OR empty($_POST["email"]) ) {
+                print("Niet alle velden zijn ingevuld");
             } else {
                 $name = test_input($_POST["name"]);
                 print($name);
