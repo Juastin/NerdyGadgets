@@ -37,8 +37,8 @@ $name = $email = $address = $place = $postalcode = $housenumber = "";
         <label for='fname'><i class='fa fa-user' style=" margin-left: 50px;"></i> Full Name</label>
         <label for='email'><i class='fa fa-envelope' style=" margin-left: 790px;"></i> Email</label><br>
         <!--Input Name + Email-->
-        <input style="width:43.5%; margin-left: 50px;" type='text' name='name' placeholder="John">
-        <input style="width:43.5%; margin-left: 50px;" type='text' id='email' name='email' placeholder='john@example.com'><br>
+        <input style="width:43.5%; margin-left: 50px;" type='text' name='name' placeholder="John" required>
+        <input style="width:43.5%; margin-left: 50px;" type='text' id='email' name='email' placeholder='john@example.com' required><br>
         <!--Adress-->
         <br><label for='adr'><i style="margin-left: 50px;"></i> Address</label><br>
         <input type='text' style="margin-left: 50px; width: 90%" id='adr' name='address' placeholder='42 W. 15th Street'><br>
