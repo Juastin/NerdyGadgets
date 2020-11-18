@@ -30,24 +30,26 @@ include "viewFunctions.php";
     <form method='get' action='php'>
         <!--Name + Email-->
         <label for='fname'><i class='fa fa-user' style=" margin-left: 50px;"></i> Full Name</label>
-        <label for='email'><i class='fa fa-envelope' style=" margin-left: 770px;"></i> Email</label><br>
+        <label for='email'><i class='fa fa-envelope' style=" margin-left: 790px;"></i> Email</label><br>
         <!--Input Name + Email-->
-        <input style="width:42.5%; margin-left: 50px;" type='text' id='firstname' name='name' placeholder='John M. Doe'>
-        <input style="width:42.5%; margin-left: 100px;" type='text' id='email' name='email' placeholder='john@example.com'><br>
+        <input style="width:43.5%; margin-left: 50px;" type='text' id='firstname' name='name' placeholder='John M. Doe'>
+        <input style="width:43.5%; margin-left: 50px;" type='text' id='email' name='email' placeholder='john@example.com'><br>
         <!--Adress-->
         <br><label for='adr'><i style="margin-left: 50px;"></i> Address</label><br>
         <input type='text' style="margin-left: 50px; width: 90%" id='adr' name='address' placeholder='42 W. 15th Street'><br>
         <!--Place-->
         <br><label for='place'><i style="margin-left: 50px;"></i> Place</label><br>
         <input type='text' style="margin-left: 50px; width: 90%" id='place' name='place' placeholder='New York'><br>
-        <!--Postal code-->
-        <br><label for='adr'><i style="margin-left: 50px;"></i> Postal Code</label><br>
-        <input type='text' style="margin-left: 50px; width: 90%" id='postalcode' name='postalcode' placeholder='4444KA'><br>
-        <!--House number-->
-        <br><label for='adr'><i style="margin-left: 50px;"></i> House Number</label><br>
-        <input type='text' style="margin-left: 50px; width: 90%" id='adr' name='housenumber' placeholder='10'><br>
-        <br><input type='submit' style="width: 20%;"value='Send'>
-
+        <!--Postal code and house number-->
+        <br><label for='adr'><i style="margin-left: 50px;"></i> Postal Code</label>
+        <label for='adr'><i style="margin-left: 1530px;"></i> House Number</label><br>
+        <!--Input postal code and House number-->
+        <input type='text' style="margin-left: 50px; width: 85%" id='postalcode' name='postalcode' placeholder='4444KA'>
+        <input type='text' style="margin-left: 15px; width: 4%" id='adr' name='housenumber' placeholder='10'><br>
+        <br>
+        <div style="text-align: center;">
+        <input type='submit' style="width: 20%;"value='Send'>
+        </div>
 
 </div>
 <div style="width:20%;">
