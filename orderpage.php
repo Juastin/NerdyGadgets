@@ -9,6 +9,9 @@ mysqli_set_charset($Connection, 'latin1');
 session_start();
 include __DIR__ . "/header.php";
 include "viewFunctions.php";
+
+$nameErr = $emailErr = $addressErr = $placeErr = $postalcodeErr = $houseErr = "";
+$name = $email = $address = $place = $postalcode = $housenumber = "";
 ?>
 
 
@@ -34,7 +37,7 @@ include "viewFunctions.php";
         <label for='fname'><i class='fa fa-user' style=" margin-left: 50px;"></i> Full Name</label>
         <label for='email'><i class='fa fa-envelope' style=" margin-left: 790px;"></i> Email</label><br>
         <!--Input Name + Email-->
-        <input style="width:43.5%; margin-left: 50px;" type='text' name='name' placeholder="John" >
+        <input style="width:43.5%; margin-left: 50px;" type='text' name='name' placeholder="John">
         <input style="width:43.5%; margin-left: 50px;" type='text' id='email' name='email' placeholder='john@example.com'><br>
         <!--Adress-->
         <br><label for='adr'><i style="margin-left: 50px;"></i> Address</label><br>
@@ -54,8 +57,32 @@ include "viewFunctions.php";
         </div>
 
         <?php
+
         if (isset($_POST["submit"])) {
-echo("Knop gedrukt");
+
+            if (empty($_POST["name"])) {
+                $nameErr = "Name is required";
+                print($nameErr);
+            } else {
+                $name = test_input($_POST["name"]);
+                print($name);
+            }
+
+
+
+//$name = test_input($_POST["name"]);
+//$email = test_input($_POST["email"]);
+//$address = test_input($_POST["address"]);
+//$place = test_input($_POST["place"]);
+//$postalcode = test_input($_POST["postalcode"]);
+//$housenumber = test_input($_POST["housenumber"]);
+        }
+
+        function test_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
         }
         ?>
 
