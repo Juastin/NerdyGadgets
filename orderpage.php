@@ -11,6 +11,8 @@ include __DIR__ . "/header.php";
 include "viewFunctions.php";
 ?>
 
+
+
 <div>
     <header>
         <br>
@@ -27,12 +29,12 @@ include "viewFunctions.php";
 
     <br>
     <!--Begin hieronder aan de formulieren.-->
-    <form method='get' action='php'>
+    <form method='post'>
         <!--Name + Email-->
         <label for='fname'><i class='fa fa-user' style=" margin-left: 50px;"></i> Full Name</label>
         <label for='email'><i class='fa fa-envelope' style=" margin-left: 790px;"></i> Email</label><br>
         <!--Input Name + Email-->
-        <input style="width:43.5%; margin-left: 50px;" type='text' id='firstname' name='name' placeholder='John M. Doe'>
+        <input style="width:43.5%; margin-left: 50px;" type='text' name='name' placeholder="John" >
         <input style="width:43.5%; margin-left: 50px;" type='text' id='email' name='email' placeholder='john@example.com'><br>
         <!--Adress-->
         <br><label for='adr'><i style="margin-left: 50px;"></i> Address</label><br>
@@ -48,8 +50,14 @@ include "viewFunctions.php";
         <input type='text' style="margin-left: 15px; width: 4%" id='adr' name='housenumber' placeholder='10'><br>
         <br>
         <div style="text-align: center;">
-        <input type='submit' style="width: 20%;"value='Send'>
+        <input type='submit' style="width: 20%;"value='Send' name="submit">
         </div>
+
+        <?php
+        if (isset($_POST["submit"])) {
+echo("Knop gedrukt");
+        }
+        ?>
 
 </div>
 <div style="width:20%;">
