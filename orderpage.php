@@ -64,19 +64,29 @@ $name = $email = $address = $place = $postalcode = $housenumber = "";
         <input type='text' style="margin-left: 15px; width: 4%" id='adr' name='housenumber' placeholder='10' required><br>
         <br>
         <div style="text-align: center;">
-        <input type='submit' style="width: 20%;"value='Send' name="submit">
+        <br><input type='submit' style="width: 20%;"value='Send' name="submit">
         </div>
 
         <?php
 
         if (isset($_POST["submit"])) {
 
-            if (empty($_POST["name"]) OR empty($_POST["email"]) ) {
-                print("Niet alle velden zijn ingevuld");
-            } else {
-                $name = test_input($_POST["name"]);
-                print($name);
+            //if (empty($_POST["name"]) OR empty($_POST["email"]) ) {
+            //    print("Niet alle velden zijn ingevuld");
+            //} else {
+            //    $name = test_input($_POST["name"]);
+            //    print($name);
+            //}
+            // Onderstaande code checkt of het een email is.
+            $email = test_input($_POST["email"]);
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $emailErr = "Dit is geen email joh"; ?>
+                <h3 style="color: red; text-align: center;"><?php print($emailErr); ?></h3>
+        <?php
+            } else { ?>
+                <h3 style="color: green; text-align: center;"><?php print("Ja dat kan kloppen!"); ?></h3> <?php
             }
+
 
 
 
