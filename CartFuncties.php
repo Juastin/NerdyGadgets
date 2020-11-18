@@ -65,6 +65,6 @@ function RemoveProductFromCart($stockItemID){
 
     // De knop krijgt zijn oude tekst terug
     function StopNotification() {
-        document.getElementById('button').value = "Toevoegen aan winkelwagen"; // de waarde van value wordt vervangen
+        document.getElementById('button').value = "Toevoegen aan winkelmand"; // de waarde van value wordt vervangen
     }
 </script>
