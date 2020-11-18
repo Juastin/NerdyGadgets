@@ -13,6 +13,7 @@ include "viewFunctions.php";
 
 <div>
     <header>
+        <br>
         <h2 style="text-align: center;">Betaalpagina</h2>
     </header>
 
@@ -26,20 +27,26 @@ include "viewFunctions.php";
 
     <br>
     <!--Begin hieronder aan de formulieren.-->
-    <form method='get' action='NAW.php'>
-        <label for='fname'><i class='fa fa-user' style=" margin-left: 100px;"></i> Full Name</label>
-        <label for='email'><i class='fa fa-envelope' style=" margin-left: 580px;"></i> Email</label><br>
-        <input style="width:30%; margin-left: 100px;" type='text' id='firstname' name='firstname' placeholder='John M. Doe'>
-        <input style="width:30%; margin-left: 100px;" type='text' id='email' name='email' placeholder='john@example.com'><br>
-        <label for='adr'><i class='fa fa-address-card-o'></i> Address</label>
-        <input type='text' id='adr' name='address' placeholder='42 W. 15th Street'><br>
-        <label for='place'><i class='fa fa-place'></i> Place</label>
-        <input type='text' id='place' name='place' placeholder='New York'><br>
-        <label for='adr'><i class='fa fa-postal-code-o'></i> Postal Code</label>
-        <input type='text' id='postalcode' name='postalcode' placeholder='4444KA'><br>
-        <label for='adr'><i class='fa fa-house_number-o'></i> House Number</label>
-        <input type='text' id='adr' name='housenumber' placeholder='10'><br>
-        <br><input type='submit' value='Verzenden'>
+    <form method='get' action='php'>
+        <!--Name + Email-->
+        <label for='fname'><i class='fa fa-user' style=" margin-left: 50px;"></i> Full Name</label>
+        <label for='email'><i class='fa fa-envelope' style=" margin-left: 770px;"></i> Email</label><br>
+        <!--Input Name + Email-->
+        <input style="width:42.5%; margin-left: 50px;" type='text' id='firstname' name='name' placeholder='John M. Doe'>
+        <input style="width:42.5%; margin-left: 100px;" type='text' id='email' name='email' placeholder='john@example.com'><br>
+        <!--Adress-->
+        <br><label for='adr'><i style="margin-left: 50px;"></i> Address</label><br>
+        <input type='text' style="margin-left: 50px; width: 90%" id='adr' name='address' placeholder='42 W. 15th Street'><br>
+        <!--Place-->
+        <br><label for='place'><i style="margin-left: 50px;"></i> Place</label><br>
+        <input type='text' style="margin-left: 50px; width: 90%" id='place' name='place' placeholder='New York'><br>
+        <!--Postal code-->
+        <br><label for='adr'><i style="margin-left: 50px;"></i> Postal Code</label><br>
+        <input type='text' style="margin-left: 50px; width: 90%" id='postalcode' name='postalcode' placeholder='4444KA'><br>
+        <!--House number-->
+        <br><label for='adr'><i style="margin-left: 50px;"></i> House Number</label><br>
+        <input type='text' style="margin-left: 50px; width: 90%" id='adr' name='housenumber' placeholder='10'><br>
+        <br><input type='submit' style="width: 20%;"value='Send'>
 
 
 </div>
