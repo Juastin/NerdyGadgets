@@ -505,3 +505,7 @@ input.field {
 .img-container {
     text-align: center;
 }
+.borderOrderItems{
+    border: 1px;
+    color: #ffffff;
+}

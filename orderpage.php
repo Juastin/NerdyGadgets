@@ -22,53 +22,56 @@ $cart = GetCart();
 
 <div>
     <header>
+        <h2 style="text-align:left;">Orderpage</h2>
         <h6 style="text-align:right;">Aanvullende beschrijving</h6>
     </header>
+
+    <hr color="white">
 
     <style>
 
     </style>
     <!--Kale witte lijn: <hr color="white">-->
     <!--Begin hieronder aan de formulieren.-->
-    <form method='post' style="border: 1px">
-        <div class="row">
-            <div class="col-8"
-                 <h4 style="text-align: center;">Order gegevens</h4><br>
-        <!--Name + Email-->
-        <label for='fname'><i class='fa fa-user' style=" margin-left: 50px;"></i> Full Name</label>
-        <label for='email'><i class='fa fa-envelope' style=" margin-left: 785px;"></i> Email</label><br>
-        <!--Input Name + Email-->
-        <input style="width:43.5%; margin-left: 50px;" type='text' name='name' placeholder="John" required>
-        <input style="width:43.5%; margin-left: 50px;" type='text' id='email' name='email' placeholder='john@example.com' required><br>
-        <!--Gender en Address-->
-        <br><label for="gender"><i style="margin-left: 50px;"</i> Gender</label>
-        <label for='adr'><i style="margin-left: 200px;"></i> Address</label><br>
-        <!--Gender-->
-        <select name="gender" id="gender" style="width:10%; margin-left: 50px" required>
-            <option value="hidden" hidden></option>
-            <option value="man">Man</option>
-            <option value="vrouw">Vrouw</option>
-            <option value="onzijdig">Onzijdig</option>
-        </select>
-        <!--Adress input-->
-        <input type='text' style="margin-left: 105px; width:74%" id='adr' name='address' placeholder='42 W. 15th Street' required><br>
-        <!--Place-->
-        <br><label for='place'><i style="margin-left: 50px;"></i> Place</label><br>
-        <input type='text' style="margin-left: 50px; width: 90%" id='place' name='place' placeholder='New York' required><br>
-        <!--Postal code and house number-->
-        <br><label for='adr' style="margin-left: 50px;"> Postal Code</label>
-        <label for='adr'><i style="margin-left: 100px;"></i> House Number</label><br>
-        <!--Input postal code and House number-->
-        <input type='text' style="margin-left: 50px; width: 85%" id='postalcode' name='postalcode' placeholder='4444KA' required>
-        <input type='text' style="margin-left: 15px; width: 4%" id='adr' name='housenumber' placeholder='10' required><br>
-        <br>
-        <div style="text-align: center;">
-        <br><input type='submit' style="width: 20%;"value='Send' name="submit">
-            </form>
+    <div class="row">
+        <div class="col-8">
+        <form method='post'>
+                     <h4 style="text-align: center;">Order gegevens</h4><br>
+            <!--Name + Email-->
+            <label for='fname'><i class='fa fa-user' style=" margin-left: 50px;"></i> Full Name</label>
+            <label for='email'><i class='fa fa-envelope' style=" margin-left: 785px;"></i> Email</label><br>
+            <!--Input Name + Email-->
+            <input style="width:43.5%; margin-left: 50px;" type='text' name='name' placeholder="John" required>
+            <input style="width:43.5%; margin-left: 50px;" type='text' id='email' name='email' placeholder='john@example.com' required><br>
+            <!--Gender en Address-->
+            <br><label for="gender"><i style="margin-left: 50px;"</i> Gender</label>
+            <label for='adr'><i style="margin-left: 200px;"></i> Address</label><br>
+            <!--Gender-->
+            <select name="gender" id="gender" style="width:10%; margin-left: 61px" required>
+                <option value="hidden" hidden></option>
+                <option value="man">Man</option>
+                <option value="vrouw">Vrouw</option>
+                <option value="onzijdig">Onzijdig</option>
+            </select>
+            <!--Adress input-->
+            <input type='text' style="margin-left: 105px; width:74%" id='adr' name='address' placeholder='42 W. 15th Street' required><br>
+            <!--Place-->
+            <br><label for='place'><i style="margin-left: 50px;"></i> Place</label><br>
+            <input type='text' style="margin-left: 50px; width: 90%" id='place' name='place' placeholder='New York' required><br>
+            <!--Postal code and house number-->
+            <br><label for='adr' style="margin-left: 50px;"> Postal Code</label>
+            <label for='adr'><i style="margin-left: 100px;"></i> House Number</label><br>
+            <!--Input postal code and House number-->
+            <input type='text' style="margin-left: 50px; width: 85%" id='postalcode' name='postalcode' placeholder='4444KA' required>
+            <input type='text' style="margin-left: 15px; width: 4%" id='adr' name='housenumber' placeholder='10' required><br>
+            <br>
+            <div style="text-align: center;">
+            <br><input type='submit' style="width: 20%;"value='Send' name="submit">
+                </form>
         </div>
-        </div>
+    </div>
 
-        <div class="col-lg-12">
+        <div class="col-4">
             <div class="container">
                 <h4 style="text-align: center">Cart</h4>
                 <h2><a href="#">Product 1</a> <span class="price">$15</span></h2>
@@ -86,48 +89,53 @@ $cart = GetCart();
              <h6 style="text-align: center">Artikelen</h6>
         <br>
         <hr color="white">
+    </div>
 
 
         <?php foreach ($cart as $item => $amount) {
         $Result = GetResult($Connection, $item);
         $Image = GetSingleImage($Connection, $item);
         ?>
-            <div class="col-8"
-        <table class="tbl-cart" cellpadding="10" cellspacing="5">
-            <tbody>
-            <tr>
-                <td>
-                    <?php
-                    // Prints single image from product.
-                    if ($Image != null) {
-                        ?>
-                        <div id="ImageFrame"
-                             style="background-image: url('Public/StockItemIMG/<?php
-                             print ($Image);
-                             ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;">
-                        </div>
+            <div class="col-6"
+            <table class="tbl-cart" cellpadding="10" cellspacing="5">
+                <tbody>
+                <tr>
+                    <td>
                         <?php
-                        // Prints backup image when there is no picture available.
-                    } else {
-                        ?>
-                        <div id="ImageFrame"
-                             style="background-image: url('Public/StockGroupIMG/<?php
-                             print ($Result['BackupImagePath']);
-                             ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;">
-                        </div><br>
-                    <?php } ?>
-                </td>
-                <?php
-                //
-                ?>
-                    <br><br><br><br><br><td style="text-align:left;" name="Productname"><?php print ($Result['StockItemName']); ?>
-                                    <h2><?php print($amount)?></h2><br><br><br><br>
-                    <br>
+                        // Prints single image from product.
+                        if ($Image != null) {
+                            ?>
+                            <div id="ImageFrame"
+                                 style="background-image: url('Public/StockItemIMG/<?php
+                                 print ($Image);
+                                 ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;">
+                            </div>
+                            <?php
+                            // Prints backup image when there is no picture available.
+                        } else {
+                            ?>
+                            <div id="ImageFrame"
+                                 style="background-image: url('Public/StockGroupIMG/<?php
+                                 print ($Result['BackupImagePath']);
+                                 ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;">
+                            </div><br>
+                        <?php } ?>
+                    </td>
+                    <?php
+                    //
+                    ?>
+                        <br><br><br><br><td style="text-align:left;" name="Productname"><?php print ($Result['StockItemName']); ?>
+                                        <h2><?php print($amount)?></h2><br><br><br><br>
+                        <br><br>
 
-                    <hr color="white">
-                </td>
-                <div></div>
+                        <hr color="white">
+                    </td>
+            </div>
+    <div class="col-2">
+    <div class="container">
+            <h2>blablablalblba</h2>
     </div>
+</div>
 
 
             </tr>
