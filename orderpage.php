@@ -18,21 +18,22 @@ $name = $email = $address = $place = $postalcode = $housenumber = "";
 
 <div>
     <header>
-        <br>
-        <h2 style="text-align: center;">Betaalpagina</h2>
+        <h2 style="text-align: left;"></h2>
+        <h6 style="text-align:right;">Aanvullende beschrijving</h6>
     </header>
+
+    <hr color="white">
+    <br>
 
     <style>
 
     </style>
     <!--Kale witte lijn: <hr color="white">-->
-    <br>
-        <table class="tbl-cart" cellpadding="10" cellspacing="5">
-        </table>
-
-    <br>
     <!--Begin hieronder aan de formulieren.-->
     <form method='post'>
+        <div class="row">
+            <div class="col-8"
+                 <h3 style="text-align: center;">Order gegevens</h3><br>
         <!--Name + Email-->
         <label for='fname'><i class='fa fa-user' style=" margin-left: 50px;"></i> Full Name</label>
         <label for='email'><i class='fa fa-envelope' style=" margin-left: 785px;"></i> Email</label><br>
@@ -40,16 +41,17 @@ $name = $email = $address = $place = $postalcode = $housenumber = "";
         <input style="width:43.5%; margin-left: 50px;" type='text' name='name' placeholder="John" required>
         <input style="width:43.5%; margin-left: 50px;" type='text' id='email' name='email' placeholder='john@example.com' required><br>
         <!--Gender en Address-->
-        <br><label for="gender"><i style="margin-left: 170px;"</i> Gender:</label>
-        <label for='adr'><i style="margin-left: 100px;"></i> Address</label><br>
+        <br><label for="gender"><i style="margin-left: 50px;"</i> Gender</label>
+        <label for='adr'><i style="margin-left: 200px;"></i> Address</label><br>
         <!--Gender-->
-        <select name="gender" id="gender" style="width:10%;" required>
+        <select name="gender" id="gender" style="width:10%; margin-left: 50px" required>
+            <option value="hidden" hidden></option>
             <option value="man">Man</option>
             <option value="vrouw">Vrouw</option>
             <option value="onzijdig">Onzijdig</option>
         </select>
         <!--Adress input-->
-        <input type='text' style="margin-left: 100px; width: 66.5%" id='adr' name='address' placeholder='42 W. 15th Street' required><br>
+        <input type='text' style="margin-left: 105px; width:74%" id='adr' name='address' placeholder='42 W. 15th Street' required><br>
         <!--Place-->
         <br><label for='place'><i style="margin-left: 50px;"></i> Place</label><br>
         <input type='text' style="margin-left: 50px; width: 90%" id='place' name='place' placeholder='New York' required><br>
