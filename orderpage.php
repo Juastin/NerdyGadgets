@@ -42,15 +42,12 @@ $name = $email = $address = $place = $postalcode = $housenumber = "";
         <!--Gender en Address-->
         <br><label for="gender"><i style="margin-left: 170px;"</i> Gender:</label>
         <label for='adr'><i style="margin-left: 100px;"></i> Address</label><br>
-        <!--Male-->
-        <input type="radio" id="male" name="gender" value="male" style="transform: scale(2);width: 50px; height: auto; margin-left: 50px;">
-        <label for="male">Male</label>
-        <!--Female-->
-        <input type="radio" id="female" name="gender" value="female" style="transform: scale(2);width: 50px; height: auto; margin-left: 20px;">
-        <label for="female">Female</label>
-        <!--Other-->
-        <input type="radio" id="other" name="gender" value="other" style="transform: scale(2);width: 50px; height: auto; margin-left: 20px;">
-        <label for="other">Other</label>
+        <!--Gender-->
+        <select name="gender" id="gender" style="width:10%;" required>
+            <option value="man">Man</option>
+            <option value="vrouw">Vrouw</option>
+            <option value="onzijdig">Onzijdig</option>
+        </select>
         <!--Adress input-->
         <input type='text' style="margin-left: 100px; width: 66.5%" id='adr' name='address' placeholder='42 W. 15th Street' required><br>
         <!--Place-->
