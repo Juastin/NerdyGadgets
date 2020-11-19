@@ -18,12 +18,8 @@ $name = $email = $address = $place = $postalcode = $housenumber = "";
 
 <div>
     <header>
-        <h2 style="text-align: left;"></h2>
         <h6 style="text-align:right;">Aanvullende beschrijving</h6>
     </header>
-
-    <hr color="white">
-    <br>
 
     <style>
 
@@ -33,7 +29,7 @@ $name = $email = $address = $place = $postalcode = $housenumber = "";
     <form method='post'>
         <div class="row">
             <div class="col-8"
-                 <h3 style="text-align: center;">Order gegevens</h3><br>
+                 <h4 style="text-align: center;">Order gegevens</h4><br>
         <!--Name + Email-->
         <label for='fname'><i class='fa fa-user' style=" margin-left: 50px;"></i> Full Name</label>
         <label for='email'><i class='fa fa-envelope' style=" margin-left: 785px;"></i> Email</label><br>
@@ -56,15 +52,36 @@ $name = $email = $address = $place = $postalcode = $housenumber = "";
         <br><label for='place'><i style="margin-left: 50px;"></i> Place</label><br>
         <input type='text' style="margin-left: 50px; width: 90%" id='place' name='place' placeholder='New York' required><br>
         <!--Postal code and house number-->
-        <br><label for='adr'><i style="margin-left: 50px;"></i> Postal Code</label>
-        <label for='adr'><i style="margin-left: 1520px;"></i> House Number</label><br>
+        <br><label for='adr' style="margin-left: 50px;"> Postal Code</label>
+        <label for='adr'><i style="margin-left: 100px;"></i> House Number</label><br>
         <!--Input postal code and House number-->
         <input type='text' style="margin-left: 50px; width: 85%" id='postalcode' name='postalcode' placeholder='4444KA' required>
         <input type='text' style="margin-left: 15px; width: 4%" id='adr' name='housenumber' placeholder='10' required><br>
         <br>
         <div style="text-align: center;">
         <br><input type='submit' style="width: 20%;"value='Send' name="submit">
+            </form>
         </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="container">
+                <h4 style="text-align: center">Cart</h4>
+                <h2><a href="#">Product 1</a> <span class="price">$15</span></h2>
+                <h2><a href="#">Product 2</a> <span class="price">$5</span></h2>
+                <h2><a href="#">Product 3</a> <span class="price">$8</span></h2>
+                <h2><a href="#">Product 4</a> <span class="price">$2</span></h2>
+                <hr>
+                <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-8"
+             <h6 style="text-align: center">Artikelen</h6>
+        <h2>lorem ipsum heel veel raar</h2>
+
 
         <?php
 
