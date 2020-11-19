@@ -74,12 +74,13 @@ $cart = GetCart();
         <div class="col-4">
             <div class="container">
                 <h4 style="text-align: center">Cart</h4>
-                <h2><a href="#">Product 1</a> <span class="price">$15</span></h2>
-                <h2><a href="#">Product 2</a> <span class="price">$5</span></h2>
-                <h2><a href="#">Product 3</a> <span class="price">$8</span></h2>
-                <h2><a href="#">Product 4</a> <span class="price">$2</span></h2>
+                <br><h4>Totaal artikelen:</h4>
+                <br><h4>Verzendkosten:</h4>
+                <br><h4>Kortingscode:</h4>
+                <br><hr color="white">
+
                 <hr>
-                <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+                <h4>Totaal:</h4>
             </div>
         </div>
     </div>
