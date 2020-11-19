@@ -46,7 +46,7 @@ GetImages($Connection);
                             </ul>
 
                             <!-- The slideshow -->
-                            <div class="carousel-inner">
+                            <div class="carousel-inner" >
                                 <?php for ($i = 0; $i < count($Images); $i++) {
                                     ?>
                                     <div class="carousel-item <?php print ($i == 0) ? 'active' : ''; ?>">
@@ -100,19 +100,48 @@ GetImages($Connection);
         </div>
 
         <div id="StockItemDescription">
-            <h3>Artikel beschrijving</h3>
-            <p><?php print $Result['SearchDetails']; ?></p>
+            <h3><b>Product Informatie</b></h3>
+            <?php print $Result['SearchDetails'];?></p>
+            <table>
+                <tr>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Etiam a facilisis turpis. In a nulla vestibulum, porttitor eros sit amet, lobortis leo.
+                    Nam malesuada faucibus velit, eu ultrices sapien condimentum vitae.</tr>
+
+                    <br>
+                    <br>
+
+                <tr>Sed ut libero euismod, vulputate risus id, hendrerit nibh. Maecenas auctor est in tellus ullamcorper venenatis.
+                    Aenean vestibulum velit vel laoreet bibendum.</tr>
+
+                    <br>
+                    <br>
+
+                <hd><b>Plus- en minpunten</b></hd>
+
+                <br>
+
+                <tr><i class="fas fa-plus-circle" style="color:green"></i></tr>
+                <tr>Donec pellentesque odio in nulla mollis, id convallis elit molestie. Nulla facilisi.</tr>
+
+                <br>
+
+                <tr><i class="fas fa-minus-circle" style="color:#ff0000"></i></tr>
+                <tr>Maecenas auctor est in tellus ullamcorper venenatis.
+                Aenean vestibulum velit vel laoreet bibendum.</tr>
+            </table>
         </div>
+
+    <div>
         <div id="StockItemSpecifications">
-            <h3>Artikel specificaties</h3>
+            <h3><b>Artikel specificaties</b></h3>
             <?php
             $CustomFields = json_decode($Result['CustomFields'], true);
             if (is_array($CustomFields)) { ?>
                 <table>
-                <thead>
-                <th>Naam</th>
-                <th>Data</th>
-                </thead>
+
+                <td><hd><b>Name</b></hd></td>
+                <td><hd><b>Data</b></hd></td>
+
                 <?php
                 foreach ($CustomFields as $SpecName => $SpecText) { ?>
                     <tr>
@@ -140,6 +169,7 @@ GetImages($Connection);
             }
             ?>
         </div>
+    </div>
         <?php
     } else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
