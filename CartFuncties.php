@@ -58,13 +58,15 @@ function RemoveProductFromCart($stockItemID){
     ?>
 
 <script>
-    // Melding op knop dat het product is toegevoegd na toevoegen van het product
+    // Melding op knop dat het product is toegevoegd na toevoegen van het product, de knop is (veranderd van paars naar) groen
     function Notification_() {
         document.getElementById('button').value = "Item is toegevoegd!"; // de waarde van value wordt vervangen
+        document.getElementById('button').className = "btn btn-primary btn-outline-dark addedToCartButton"; // de waarde van class wordt vervangen
     }
 
-    // De knop krijgt zijn oude tekst terug
+    // De knop krijgt de tekst "toevoegen aan winkelwagen" en de kleur paars (terug)
     function StopNotification() {
         document.getElementById('button').value = "Toevoegen aan winkelmand"; // de waarde van value wordt vervangen
+        document.getElementById('button').className = "btn btn-primary btn-outline-dark addToCartButton"; // de waarde van class wordt vervangen
     }
 </script>
