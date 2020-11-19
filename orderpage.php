@@ -60,7 +60,7 @@ $cart = GetCart();
             <input type='text' style="margin-left: 50px; width: 91%" id='place' name='place' placeholder='New York' required><br>
             <!--Postal code and house number-->
             <br><label for='adr' style="margin-left: 50px;"> Postal Code</label>
-            <label for='adr'><i style="margin-left: 100px;"></i> House Number</label><br>
+            <label for='adr'><i style="margin-left: 960px;"></i> House Number</label><br>
             <!--Input postal code and House number-->
             <input type='text' style="margin-left: 50px; width: 85%" id='postalcode' name='postalcode' placeholder='4444KA' required>
             <input type='text' style="margin-left: 15px; width: 4%" id='adr' name='housenumber' placeholder='10' required><br>
@@ -124,8 +124,8 @@ $cart = GetCart();
                     <?php
                     //
                     ?>
-                        <br><br><br><br><td style="text-align:left;" name="Productname"><?php print ($Result['StockItemName']); ?>
-                                        <h2><?php print($amount)?></h2><br><br><br><br>
+                        <br><br><br><br><td> <p style="text-align:center;" name="Productname"><?php print ($Result['StockItemName']); ?></p>
+                                        <h2 style="text-align: center;">Aantal: <?php print($amount)?></h2><br><br><br><br>
                         <br><br>
 
                         <hr color="white">
@@ -133,7 +133,12 @@ $cart = GetCart();
             </div>
     <div class="col-2">
     <div class="container">
-            <h2>blablablalblba</h2>
+            <br><h2 style="text-align: center;">Bezorging</h2><br>
+        <div style="height: auto;">
+            <p>Dag</p><br>
+            <p>Tijd</p><br>
+            <p>Verzendingstype</p>
+        </div>
     </div>
 </div>
 
