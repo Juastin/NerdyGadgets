@@ -502,3 +502,6 @@ input.field {
     margin: 4px;
     color: #23232F;
 }
+.loginTekst, .loginInput {
+    margin-top: 50px;
+}
