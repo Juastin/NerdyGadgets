@@ -1,5 +1,5 @@
 <?php
-function Register ($Connection, $post) {
+function register ($Connection, $post) {
     print_r($post);
     print($post['firstname']);
     $firstname = $post['firstname'];
@@ -21,4 +21,8 @@ function Register ($Connection, $post) {
     $Statement = mysqli_prepare($Connection, $Query);
 //    mysqli_stmt_bind_param($Statement, "i", );
     mysqli_stmt_execute($Statement);
+}
+function login ($Connection, $post) {
+    print ($post);
+    print $Connection;
 }

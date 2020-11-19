@@ -36,7 +36,7 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple"); ?>
     <?php
     if (isset($_POST['submit'])) {
         if ($_POST['password'] == $_POST['passwordcheck']) {
-            Register($Connection, $_POST);
+            register($Connection, $_POST);
         }
         else {
             echo "<script type='text/javascript'>alert('Wachtwoorden komen niet overeen met elkaar');</script>";
