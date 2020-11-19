@@ -43,7 +43,7 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple"); ?>
         }
     }
 //    Register($Connection, $_POST)
-    print_r($_POST);
+//    print_r($_POST);
     ?>
-    <div class="col-2"
+    <div class="col-2"></div>
 </div>

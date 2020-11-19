@@ -1,9 +1,11 @@
 <?php
 function Register ($Connection, $post) {
+    print_r($post);
+    print($post['firstname']);
     $firstname = $post['firstname'];
     $middlename = $post['middlename'];
     $lastname = $post['lastname'];
-    $password = $post['password'];
+    $password = password_hash($post['password'], PASSWORD_BCRYPT);
     $postalcode = $post['postalcode'];
     $email = $post['email'];
     $city = $post['city'];
@@ -15,8 +17,8 @@ function Register ($Connection, $post) {
     '".$middlename."','".$lastname."',
     '".$password."','".$postalcode."',
     '".$email."','".$city."',
-    '".$address."','".$tel."',)";
+    '".$address."','".$tel."')";
     $Statement = mysqli_prepare($Connection, $Query);
-    mysqli_stmt_bind_param($Statement, "i", $id);
+//    mysqli_stmt_bind_param($Statement, "i", );
     mysqli_stmt_execute($Statement);
 }
