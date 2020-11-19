@@ -2,16 +2,20 @@
     <title> </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
-<body>
+<>
 <?php
 $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 session_start();
 include __DIR__ . "/header.php";
 include "viewFunctions.php";
+include "CartFuncties.php";
 
 $nameErr = $emailErr = $addressErr = $placeErr = $postalcodeErr = $houseErr = "";
 $name = $email = $address = $place = $postalcode = $housenumber = "";
+
+$cart = GetCart();
+
 ?>
 
 
@@ -26,7 +30,7 @@ $name = $email = $address = $place = $postalcode = $housenumber = "";
     </style>
     <!--Kale witte lijn: <hr color="white">-->
     <!--Begin hieronder aan de formulieren.-->
-    <form method='post'>
+    <form method='post' style="border: 1px">
         <div class="row">
             <div class="col-8"
                  <h4 style="text-align: center;">Order gegevens</h4><br>
@@ -80,11 +84,59 @@ $name = $email = $address = $place = $postalcode = $housenumber = "";
     <div class="row">
         <div class="col-8"
              <h6 style="text-align: center">Artikelen</h6>
-        <h2>lorem ipsum heel veel raar</h2>
+        <br>
+        <hr color="white">
 
+
+        <?php foreach ($cart as $item => $amount) {
+        $Result = GetResult($Connection, $item);
+        $Image = GetSingleImage($Connection, $item);
+        ?>
+            <div class="col-8"
+        <table class="tbl-cart" cellpadding="10" cellspacing="5">
+            <tbody>
+            <tr>
+                <td>
+                    <?php
+                    // Prints single image from product.
+                    if ($Image != null) {
+                        ?>
+                        <div id="ImageFrame"
+                             style="background-image: url('Public/StockItemIMG/<?php
+                             print ($Image);
+                             ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;">
+                        </div>
+                        <?php
+                        // Prints backup image when there is no picture available.
+                    } else {
+                        ?>
+                        <div id="ImageFrame"
+                             style="background-image: url('Public/StockGroupIMG/<?php
+                             print ($Result['BackupImagePath']);
+                             ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;">
+                        </div><br>
+                    <?php } ?>
+                </td>
+                <?php
+                //
+                ?>
+                    <br><br><br><br><br><td style="text-align:left;" name="Productname"><?php print ($Result['StockItemName']); ?>
+                                    <h2><?php print($amount)?></h2><br><br><br><br>
+                    <br>
+
+                    <hr color="white">
+                </td>
+                <div></div>
+    </div>
+
+
+            </tr>
+            </tbody>
+        </table>
+            <br>
+        <?php } ?>
 
         <?php
-
         if (isset($_POST["submit"])) {
 
             //Code hieronder zou checken of de velden 'name' en 'email' zijn ingevuld. Heb het toch anders gedaan
@@ -126,7 +178,11 @@ $name = $email = $address = $place = $postalcode = $housenumber = "";
             $data = htmlspecialchars($data);
             return $data;
         }
+
         ?>
+    </div>
+</body>
+<br>
 
 </div>
 <div style="width:20%;">
