@@ -3,7 +3,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head><?php
 include __DIR__ . "/header.php";
-$Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");?>
+$Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple");?>
 <div class="row">
     <div class="col-2"></div>
     <form method="post" class="form-group col-8">
