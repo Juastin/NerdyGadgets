@@ -10,14 +10,15 @@ function register ($Connection, $post) {
     $email = $post['email'];
     $city = $post['city'];
     $address = $post['address'];
+    $housenumber = $post['housenumber'];
     $tel = $post['tel'];
-    $Query = "
-    INSERT INTO user (firstName, middleName, lastName, password, postalCode, email, city, address, tel) 
-    VALUES ('".$firstname."',
-    '".$middlename."','".$lastname."',
-    '".$password."','".$postalcode."',
-    '".$email."','".$city."',
-    '".$address."','".$tel."')";
+        $Query = "
+        INSERT INTO user (firstName, middleName, lastName, password, postalCode, email, city, address, houseNumber, tel) 
+        VALUES ('".$firstname."',
+        '".$middlename."','".$lastname."',
+        '".$password."','".$postalcode."',
+        '".$email."','".$city."',
+        '".$address."','".$housenumber."','".$tel."')";
     $Statement = mysqli_prepare($Connection, $Query);
 //    mysqli_stmt_bind_param($Statement, "i", );
     mysqli_stmt_execute($Statement);

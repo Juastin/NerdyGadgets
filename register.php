@@ -27,7 +27,9 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple"); ?>
             <input placeholder="Woonplaats*" name="city" required>
         <label for="address" class="loginInput">Adres*</label>
             <input placeholder="Adres*" name="address" required>
-        <label for="postalcode" class="loginInput">Postalcode*</label>
+        <label for="housenumber" class="loginInput">Huisnummer*</label>
+            <input placeholder="Huisnummer*" name="housenumber" required>
+        <label for="postalcode" class="loginInput">Postcode*</label>
             <input placeholder="Postcode*" name="postalcode" required>
         <label for="tel" class="loginInput">Telefoonnummer</label>
             <input placeholder="Telefoonnummer" name="tel">
