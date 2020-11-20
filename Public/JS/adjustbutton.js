@@ -1,6 +1,14 @@
-$('.add').click(function () {
-    $(this).prev().val(+$(this).prev().val() + 1);
-});
-$('.sub').click(function () {
-    if ($(this).next().val() > 0) $(this).next().val(+$(this).next().val() - 1);
-});
+
+function addOne(amount){
+    amount++
+   document.getElementById('amount').value = amount
+    console.log(amount);
+}
+
+function substractOne(amount){
+    if(amount > 0){
+        amount--
+        document.getElementById('amount').value = amount
+        console.log(amount);
+    }
+}

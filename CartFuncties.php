@@ -37,3 +37,4 @@ function RemoveProductFromCart($stockItemID){
 function SaveCart($cart) {
     $_SESSION['cart'] = $cart;
 }
+

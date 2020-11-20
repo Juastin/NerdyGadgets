@@ -17,6 +17,7 @@ if (!isset($_POST["submit"])){
     $cart = GetCart();
 }
 
+
 ?>
 
 <div>
@@ -32,9 +33,11 @@ if (!isset($_POST["submit"])){
     <hr color="white">
     <br>
 
-    <?php foreach ($cart as $item => $amount) {
+    <?php
+        foreach ($cart as $item => $amount) {
         $Result = GetResult($Connection, $item);
         $Image = GetSingleImage($Connection, $item);
+
         ?>
         <table class="tbl-cart" cellpadding="10" cellspacing="5">
             <tbody>
@@ -66,15 +69,17 @@ if (!isset($_POST["submit"])){
                 <td style="text-align:left;" name="Productname"><?php print ($Result['StockItemName']); ?><br>Beschrijving</td>
 
                 <td style="text-align:left;">Verzend Informatie<br>Aanvullende Informatie</td>
-
                 <td>
-                    <div id=field1>
-                        Selecteer aantal:
-                        <button type="button" id="sub" class=sub>-</button>
-                        <input type="text" id="1" value=0 class=field>
-                        <button type="button" id="add" class=add>+</button>
+                    <?php if (isset ($_POST['number'])) {
+                        $amount = $_POST['number'];
+                    }?>
+                    <form method="post">
+                    Selecteer aantal:
+                        <button type="button" name="-" id="sub" class="sub" onclick="substractOne(<?php print($amount)?>); this.form.submit()" >-</button>
+                        <input type="text" name="number" id="amount" value="<?php print($amount) ?>" class=field>
+                        <button type="button" name="+" id="add" class="add" onclick="addOne(<?php print ($amount)?>) ; this.form.submit()" >+</button>
                         <script type='text/javascript' src='Public/JS/adjustbutton.js'></script>
-                    </div>
+                    </form>
                 </td>
 <!--                <td><label for="amount">Selecteer aantal:</label>-->
 <!--                    <input type="number" id="$=amount" name="amount" value="--><?php //print($amount) ?><!--">-->
