@@ -16,7 +16,7 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple");?>
     </form>
     <?php
 //    login($Connection, $_POST['email']);
-    checkEmailExist($_POST['email'], $Connection)
+
     ?>
     <div class="col-2"
 </div>

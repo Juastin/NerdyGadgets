@@ -42,10 +42,10 @@ function checkEmailExist($email, $connection){
     mysqli_stmt_execute($statement);
     mysqli_stmt_store_result($statement);
     if (mysqli_stmt_num_rows($statement) > 0) {
-        return print "Bestaat al";
+        return true;
     }
     else {
-        return print "nah fam";
+        return false;
     }
 //    print($result);
 //    if ($result > 0) {
