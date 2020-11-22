@@ -40,11 +40,12 @@ function checkEmailExist($email, $connection){
     $query = "SELECT email FROM user WHERE email = '".$email."'";
     $statement = mysqli_prepare($connection, $query);
     mysqli_stmt_execute($statement);
+    mysqli_stmt_store_result($statement);
     if (mysqli_stmt_num_rows($statement) > 0) {
         return print "Bestaat al";
     }
     else {
-        return "nah fam";
+        return print "nah fam";
     }
 //    print($result);
 //    if ($result > 0) {

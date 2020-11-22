@@ -3,6 +3,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head><?php
 include __DIR__ . "/header.php";
+include "accountFunctions.php";
 $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple");?>
 <div class="row">
     <div class="col-2"></div>
@@ -13,6 +14,9 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple");?>
         <input placeholder="Wachtwoord" type="password" name="password" class="loginInput">
         <input type="submit" class="loginInput col-2 btn btn-primary btn-outline-dark addToCartButton" value="Inloggen" name="submit">
     </form>
-    <?php login($Connection, $_POST); ?>
+    <?php
+//    login($Connection, $_POST['email']);
+    checkEmailExist($_POST['email'], $Connection)
+    ?>
     <div class="col-2"
 </div>
