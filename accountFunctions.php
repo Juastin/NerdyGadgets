@@ -1,5 +1,5 @@
 <?php
-function register ($Connection, $post) {
+function register ($connection, $post) {
     print_r($post);
     print($post['firstname']);
     $firstname = $post['firstname'];
@@ -12,18 +12,45 @@ function register ($Connection, $post) {
     $address = $post['address'];
     $housenumber = $post['housenumber'];
     $tel = $post['tel'];
-        $Query = "
+        $query = "
         INSERT INTO user (firstName, middleName, lastName, password, postalCode, email, city, address, houseNumber, tel) 
         VALUES ('".$firstname."',
         '".$middlename."','".$lastname."',
         '".$password."','".$postalcode."',
         '".$email."','".$city."',
         '".$address."','".$housenumber."','".$tel."')";
-    $Statement = mysqli_prepare($Connection, $Query);
-//    mysqli_stmt_bind_param($Statement, "i", );
-    mysqli_stmt_execute($Statement);
+    $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_execute($statement);
 }
-function login ($Connection, $post) {
-    print ($post);
-    print $Connection;
+function login ($connection, $email, $password) {
+    $query = "
+                    SELECT password, userId
+                    FROM user
+                    WHERE email = '".$email."'";
+    $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_execute($statement);
+//    print($R);
+//    if (password_verify($password, $R) == TRUE){
+//        $_POST['login'] ==
+//    };
+}
+function checkEmailExist($email, $connection){
+//    print $email;
+//    $query = "SELECT COUNT(*) FROM user WHERE email = '".$email."'";
+    $query = "SELECT email FROM user WHERE email = '".$email."'";
+    $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_execute($statement);
+    if (mysqli_stmt_num_rows($statement) > 0) {
+        return print "Bestaat al";
+    }
+    else {
+        return "nah fam";
+    }
+//    print($result);
+//    if ($result > 0) {
+//        return print "email is bekend";
+//    }
+//    else {
+//        return print "nah man";
+//    }
 }
