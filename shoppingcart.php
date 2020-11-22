@@ -70,16 +70,19 @@ if (!isset($_POST["submit"])){
 
                 <td style="text-align:left;">Verzend Informatie<br>Aanvullende Informatie</td>
                 <td>
-                    <?php if (isset ($_POST['number'])) {
-                        $amount = $_POST['number'];
-                    }?>
+                    <?php
+                    print($item)?>
                     <form method="post">
                     Selecteer aantal:
-                        <button type="button" name="-" id="sub" class="sub" onclick="substractOne(<?php print($amount)?>); this.form.submit()" >-</button>
-                        <input type="text" name="number" id="amount" value="<?php print($amount) ?>" class=field>
+                        <button type="button" name="-" id="sub" class="sub" onclick="substractOne(<?php print($amount)?>,<?php print($item)?>); this.form.submit()" >-</button>
+                        <input type="text" name="number" id="<?php print($item)?>" value="<?php print($amount) ?>" class=field onclick="input(<?php print($item)?>)">
                         <button type="button" name="+" id="add" class="add" onclick="addOne(<?php print ($amount)?>) ; this.form.submit()" >+</button>
                         <script type='text/javascript' src='Public/JS/adjustbutton.js'></script>
                     </form>
+                    <?php print($item) ;
+                    print('<script>console.log("$item") </script>');
+
+                    ?>
                 </td>
 <!--                <td><label for="amount">Selecteer aantal:</label>-->
 <!--                    <input type="number" id="$=amount" name="amount" value="--><?php //print($amount) ?><!--">-->

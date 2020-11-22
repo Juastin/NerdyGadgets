@@ -1,14 +1,20 @@
 
 function addOne(amount){
     amount++
-   document.getElementById('amount').value = amount
+    document.getElementById(item).value = amount
     console.log(amount);
 }
 
-function substractOne(amount){
+function substractOne(amount,item){
     if(amount > 0){
         amount--
-        document.getElementById('amount').value = amount
+        item = item.toString()
+        document.getElementById(item).value = amount
         console.log(amount);
+        console.log(item);
     }
+}
+function input(item){
+    document.getElementById('item').value = item
+    console.log(item);
 }
