@@ -71,17 +71,26 @@ if (!isset($_POST["submit"])){
                 <td style="text-align:left;">Verzend Informatie<br>Aanvullende Informatie</td>
                 <td>
                     <?php
-                    print($item)?>
+                    if (isset ($_POST['number'])) {
+                        $amount = $_POST['number'];
+                    } ?>
                     <form method="post">
                     Selecteer aantal:
                         <button type="button" name="-" id="sub" class="sub" onclick="substractOne(<?php print($amount)?>,<?php print($item)?>); this.form.submit()" >-</button>
                         <input type="text" name="number" id="<?php print($item)?>" value="<?php print($amount) ?>" class=field onclick="input(<?php print($item)?>)">
-                        <button type="button" name="+" id="add" class="add" onclick="addOne(<?php print ($amount)?>) ; this.form.submit()" >+</button>
+                        <button type="button" name="+" id="add" class="add" onclick="addOne(<?php print ($amount)?>,<?php print($item)?>) ; this.form.submit()" >+</button>
                         <script type='text/javascript' src='Public/JS/adjustbutton.js'></script>
                     </form>
-                    <?php print($item) ;
-                    print('<script>console.log("$item") </script>');
-
+                    <?php
+                    $cart[$item] = $_POST['number'];
+                    print($cart[$item]);
+                    print_r($cart);
+                    /* print($item);
+                    print_r($_POST);
+                    $amountChange = array($item=>$_POST['number']);
+                    array_replace($cart,$amountChange);
+                    print_r($cart);
+                    print($cart[$item]);*/
                     ?>
                 </td>
 <!--                <td><label for="amount">Selecteer aantal:</label>-->

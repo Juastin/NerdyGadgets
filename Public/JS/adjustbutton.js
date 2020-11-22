@@ -1,8 +1,10 @@
 
-function addOne(amount){
+function addOne(amount,item){
     amount++
+    item = item.toString()
     document.getElementById(item).value = amount
     console.log(amount);
+    console.log(item);
 }
 
 function substractOne(amount,item){
