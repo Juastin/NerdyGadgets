@@ -38,7 +38,7 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple"); ?>
     <?php
     if (isset($_POST['submit'])) {
         if ($_POST['password'] == $_POST['passwordcheck']) {
-            if (checkEmailExist($_POST['email'], $Connection) == false){
+            if (checkEmailExist($Connection, $_POST['email']) == false){
                 register($Connection, $_POST);
             }
             else {

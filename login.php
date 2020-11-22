@@ -15,8 +15,7 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple");?>
         <input type="submit" class="loginInput col-2 btn btn-primary btn-outline-dark addToCartButton" value="Inloggen" name="submit">
     </form>
     <?php
-//    login($Connection, $_POST['email']);
-
+    login($Connection, $_POST['email'], $_POST['password']);
     ?>
     <div class="col-2"
 </div>
