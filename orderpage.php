@@ -97,6 +97,7 @@ $cart = GetCart();
         $Result = GetResult($Connection, $item);
         $Image = GetSingleImage($Connection, $item);
         ?>
+
             <div class="col-6"
             <table class="tbl-cart" cellpadding="10" cellspacing="5">
                 <tbody>
