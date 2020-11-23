@@ -15,7 +15,12 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple");?>
         <input type="submit" class="loginInput col-2 btn btn-primary btn-outline-dark addToCartButton" value="Inloggen" name="submit">
     </form>
     <?php
-    login($Connection, $_POST['email'], $_POST['password']);
+    if (login($Connection, $_POST['email'], $_POST['password']) == true){
+
+    }
+    else {
+        echo "<script type='text/javascript'>alert('De inloggegevens zijn onjuist, probeer het overnieuw.');</script>";
+    }
     ?>
     <div class="col-2"
 </div>

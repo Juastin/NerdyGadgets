@@ -32,28 +32,22 @@ function login ($connection, $email, $password) {
     mysqli_stmt_execute($statement);
     mysqli_stmt_store_result($statement);
     if (mysqli_stmt_num_rows($statement) > 0) {
-        print "JA HIJS BEKEND";
         mysqli_stmt_bind_result($statement, $email, $password_hash);
         mysqli_stmt_fetch($statement);
         if (password_verify($password, $password_hash)){
-            print "Password klopt";
+            unset($_SESSION['loggedIn']);
+            unset($_SESSION['user']);
+            $_SESSION['loggedIn'] = TRUE;
+            $_SESSION['user'] = $email;
+            return true;
         }
         else {
-            print "nah password klopt niet";
+            return false;
         }
-//            print $password;
-//        print $email;
     }
     else {
-        return print "nah fam";
+        return false;
     }
-//    mysqli_stmt_bind_result($statement, $email, $hash);
-//    if(password_verify($password, $hash)) {
-//        print "Nice, wachtwoord klopt";
-//    }
-//    else {
-//        print "Lol ur bad, password dont match";
-//    }
 }
 function checkEmailExist($connection, $email){
     $query = "SELECT email FROM user WHERE email = '".$email."'";
