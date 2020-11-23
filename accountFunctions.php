@@ -37,20 +37,8 @@ function login ($connection, $email, $password) {
     else {
         print "Lol ur bad, password dont match";
     }
-//    if (mysqli_stmt_num_rows($statement) == 0) {
-//        echo "<script type='text/javascript'>alert('Email is niet bekend bij ons, maak een account bij ons aan.');</script>";
-//    }
-//    if (password_verify($password, ) == true) {
-//
-//    }
-//    print($R);
-//    if (password_verify($password, $R) == TRUE){
-//        $_POST['login'] ==
-//    };
 }
 function checkEmailExist($connection, $email){
-//    print $email;
-//    $query = "SELECT COUNT(*) FROM user WHERE email = '".$email."'";
     $query = "SELECT email FROM user WHERE email = '".$email."'";
     $statement = mysqli_prepare($connection, $query);
     mysqli_stmt_execute($statement);
@@ -61,11 +49,4 @@ function checkEmailExist($connection, $email){
     else {
         return false;
     }
-//    print($result);
-//    if ($result > 0) {
-//        return print "email is bekend";
-//    }
-//    else {
-//        return print "nah man";
-//    }
 }
