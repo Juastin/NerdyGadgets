@@ -7,7 +7,8 @@ include "accountFunctions.php";
 $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple");?>
 <div class="row">
     <div class="col-2"></div>
-    <form method="post" class="form-group col-8">
+    <div class="form-group col-8">
+    <form method="post">
         <h3 class="row loginTekst">Login.</h3>
         <a class="row">Vul hier uw logingegevens in.</a>
         <input placeholder="E-mail" name="email" class="loginInput">
@@ -15,12 +16,22 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple");?>
         <input type="submit" class="loginInput col-2 btn btn-primary btn-outline-dark addToCartButton" value="Inloggen" name="submit">
     </form>
     <?php
-    if (login($Connection, $_POST['email'], $_POST['password']) == true){
-
-    }
-    else {
-        echo "<script type='text/javascript'>alert('De inloggegevens zijn onjuist, probeer het overnieuw.');</script>";
+    if (isset($_POST['email']) && isset($_POST['password'])){
+        if (login($Connection, $_POST['email'], $_POST['password']) == true) {
+            ?>
+            <div class="row"></div>
+            <div class="col-2"></div><br>
+            <form class="col-8" action="http://localhost/nerdygadgets/">
+                <a>U bent ingelogd, klik op de knop om terug te gaan.</a>
+                <input class="loginInput btn btn-primary btn-outline-dark addToCartButton" type="submit" value="Ga terug naar de homepagina." />
+            </form>
+            <?php
+        }
+        else {
+            echo "<script type='text/javascript'>alert('De inloggegevens zijn onjuist, probeer het overnieuw.');</script>";
+        }
     }
     ?>
+    </div>
     <div class="col-2"
 </div>
