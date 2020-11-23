@@ -475,7 +475,7 @@ ul#ul-class-price li {
 }
 /* voegt een paarse knop toe met dikgedrukte letters voor het toevoegen van producten aan de winkelmand*/
 .addToCartButton.btn {
-    background-color: #676EFF;
+    background-color: #676eff;
     font-weight: bold;
 }
 /* voegt een rode knop toe met dikgedrukte letters voor het verwijderen van producten uit de winkelmand */
@@ -483,10 +483,28 @@ ul#ul-class-price li {
     background-color: #ff0000;
     font-weight: bold;
 }
-/* maakt de (voorheen paarse) knop groen */
+/* maakt de (voorheen paarse) knop geel voor het melden dat er een item is toegevoegd aan de winkelwagen*/
 .addedToCartButton.btn {
-    background-color: #32cd32;
+    background-color: #ffff00;
     font-weight: bold;
+}
+/*Voegt een paarse knop toe met dikgedrukte letters voor het verder kunnen winkelen */
+.continueShopping.btn {
+    background-color: #676eff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+}
+/*Voegt een gele knop toe met dikgedrukte letters voor het naar de winkelmand kunnen gaan*/
+.goToCart.btn {
+    background-color: #ffff00;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
 }
 button.add {
     margin: 4px;

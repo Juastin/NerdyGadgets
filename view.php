@@ -9,6 +9,17 @@ $Result = GetResult($Connection, $_GET['id']);
 GetImages($Connection);
 
 ?>
+<head>
+  <div id="CenteredContent">
+  <?php  if (isset($_POST['submit1'])){ ?>
+        <div class="btn-group" id="ArticleHeader" style="height: 50px">
+            <a href="browse.php" class="btn btn-primary btn-outline-dark continueShopping" role="button"> <i class="fas fa-arrow-left"></i> &nbsp; Verder winkelen</a>
+            <a href="shoppingcart.php" class="btn btn-primary btn-outline-dark goToCart" role="button"> Naar de winkelwagen &nbsp; <i class="fas fa-arrow-right"></i></a>
+        </div>
+    <?php }
+    ?>
+  </div>
+</head>
 <div id="CenteredContent">
     <?php
     if ($Result != null) {
@@ -73,8 +84,6 @@ GetImages($Connection);
                 <?php
             }
             ?>
-
-
             <h1 class="StockItemID">Artikelnummer: <?php print $Result["StockItemID"]; ?></h1>
             <h2 class="StockItemNameViewSize StockItemName">
                 <?php print $Result['StockItemName']; ?>
@@ -87,10 +96,9 @@ GetImages($Connection);
                         <h6> Inclusief BTW </h6>
                         <form method="post">
                             <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockItemID" hidden>
-                            <input id= "button" type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="submit" value="Toevoegen aan winkelmand">
+                            <input id= "button" type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="submit1" value="Toevoegen aan winkelmand">
                         </form>
-                        <?php
-                        if (isset($_POST['submit'])){
+                        <?php  if (isset($_POST['submit1'])){
                             AddProductToCart($_POST['stockItemID']); ?>
                             <script> Notification_();
                             setTimeout(StopNotification, 2000);
