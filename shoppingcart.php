@@ -33,9 +33,9 @@ if (!isset($_POST["submit"])) {
 
     <?php
     SaveCart($cart);
-    if (isset($_GET['update'])){
-        $productId = $_GET['productId'];
-        $quantity = $_GET['quantity'];
+    if (isset($_POST['update'])){
+        $productId = $_POST['productId'];
+        $quantity = $_POST['quantity'];
         UpdateProduct($productId,$quantity);
     }
 
@@ -77,7 +77,7 @@ if (!isset($_POST["submit"])) {
                 <td style="text-align:left;">Verzend Informatie<br>Aanvullende Informatie</td>
                 <td>
                     <div id="field1">
-                        <form>
+                        <form method="post">
                             Selecteer aantal:
                             <input type="number" min="1" name="quantity" id="quantity" value="<?php print_r($amount) ?>"  class="field">
                             <input type="text" name="productId" id="productId" value="<?php print_r($item) ?>" hidden>
