@@ -10,10 +10,10 @@ GetImages($Connection);
 
 ?>
 <head>
-  <div class="CenteredContent">
+  <div id="CenteredContent">
   <?php  if (isset($_POST['submit1'])){ ?>
           <p id="MessageAfterAddingItem"><?php print("Wilt u verder winkelen of naar de winkelwagen gaan?") ?> </p>
-        <div class="btn-group ArticleHeader" style="height: 50px">
+        <div class="btn-group" id="ArticleHeader" style="height: 50px">
             <a href="browse.php" class="btn btn-primary btn-outline-dark continueShopping" role="button"> <i class="fas fa-arrow-left"></i> &nbsp; Verder winkelen</a>
             <a href="shoppingcart.php" class="btn btn-primary btn-outline-dark goToCart" role="button"> Naar de winkelwagen &nbsp; <i class="fas fa-arrow-right"></i></a>
         </div>
@@ -21,7 +21,7 @@ GetImages($Connection);
     ?>
   </div>
 </head>
-<div class="CenteredContent">
+<div id="CenteredContent">
     <?php
     if ($Result != null) {
         ?>
@@ -35,7 +35,7 @@ GetImages($Connection);
         ?>
 
 
-        <div class="ArticleHeader">
+        <div id="ArticleHeader">
             <?php
             if (isset($Images)) {
                 // print Single
