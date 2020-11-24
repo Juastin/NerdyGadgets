@@ -32,6 +32,7 @@ if (!isset($_POST["submit"])) {
     <br>
 
     <?php
+    SaveCart($cart);
     if (isset($_GET['update'])){
         $productId = $_GET['productId'];
         $quantity = $_GET['quantity'];
