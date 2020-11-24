@@ -1,6 +1,4 @@
 <head>
-    <title> </title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
 <?php
@@ -10,9 +8,9 @@ include __DIR__ . "/header.php";
 include "CartFuncties.php";
 include "viewFunctions.php";
 
-if (!isset($_POST["submit"])){
+if (!isset($_POST["submit"])) {
     $cart = GetCart();
-    } else {
+} else {
     RemoveProductFromCart($_POST["stockItemID"]);
     $cart = GetCart();
 }
@@ -34,7 +32,13 @@ if (!isset($_POST["submit"])){
     <br>
 
     <?php
-        foreach ($cart as $item => $amount) {
+    if (isset($_GET['update'])){
+        $productId = $_GET['productId'];
+        $quantity = $_GET['quantity'];
+        UpdateProduct($productId,$quantity);
+    }
+
+    foreach ($_SESSION['cart'] as $item => $amount) {
         $Result = GetResult($Connection, $item);
         $Image = GetSingleImage($Connection, $item);
 
@@ -46,69 +50,57 @@ if (!isset($_POST["submit"])){
                     <?php
                     // Prints single image from product.
                     if ($Image != null) {
-                    ?>
-                    <div id="ImageFrame"
-                         style="background-image: url('Public/StockItemIMG/<?php
+                        ?>
+                        <div id="ImageFrame"
+                             style="background-image: url('Public/StockItemIMG/<?php
                              print ($Image);
-                         ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;">
-                    </div>
-                <?php
-                    // Prints backup image when there is no picture available.
+                             ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;">
+                        </div>
+                        <?php
+                        // Prints backup image when there is no picture available.
                     } else {
                         ?>
                         <div id="ImageFrame"
-                         style="background-image: url('Public/StockGroupIMG/<?php
+                             style="background-image: url('Public/StockGroupIMG/<?php
                              print ($Result['BackupImagePath']);
-                         ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;">
-                    </div>
-                   <?php } ?>
+                             ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;">
+                        </div>
+                    <?php } ?>
                 </td>
                 <?php
-//                print_r($Result)
+                //                print_r($Result)
                 ?>
-                <td style="text-align:left;" name="Productname"><?php print ($Result['StockItemName']); ?><br>Beschrijving</td>
+                <td style="text-align:left;" name="Productname"><?php print ($Result['StockItemName']); ?><br>Beschrijving
+                </td>
 
                 <td style="text-align:left;">Verzend Informatie<br>Aanvullende Informatie</td>
                 <td>
-                    <?php
-                    if (isset ($_POST['number'])) {
-                        $amount = $_POST['number'];
-                    } ?>
-                    <form method="post">
-                    Selecteer aantal:
-                        <button type="button" name="-" id="sub" class="sub" onclick="substractOne(<?php print($amount)?>,<?php print($item)?>); this.form.submit()" >-</button>
-                        <input type="text" name="number" id="<?php print($item)?>" value="<?php print($amount) ?>" class=field onclick="input(<?php print($item)?>)">
-                        <button type="button" name="+" id="add" class="add" onclick="addOne(<?php print ($amount)?>,<?php print($item)?>) ; this.form.submit()" >+</button>
-                        <script type='text/javascript' src='Public/JS/adjustbutton.js'></script>
-                    </form>
-                    <?php
-                    $cart[$item] = $_POST['number'];
-                    print($cart[$item]);
-                    print_r($cart);
-                    /* print($item);
-                    print_r($_POST);
-                    $amountChange = array($item=>$_POST['number']);
-                    array_replace($cart,$amountChange);
-                    print_r($cart);
-                    print($cart[$item]);*/
-                    ?>
+                    <div id="field1">
+                        <form>
+                            Selecteer aantal:
+                            <input type="number" min="1" name="quantity" id="quantity" value="<?php print_r($amount) ?>"  class="field">
+                            <input type="text" name="productId" id="productId" value="<?php print_r($item) ?>" hidden>
+                            <button type="submit" name="update" id="update" class="update">Update</button>
+                        </form>
+                    </div>
                 </td>
-<!--                <td><label for="amount">Selecteer aantal:</label>-->
-<!--                    <input type="number" id="$=amount" name="amount" value="--><?php //print($amount) ?><!--">-->
-<!--                </td>-->
-<!--                    <select class="" name="Aantal" id="Aantal">-->
-<!--                        <option value="1">1</option>-->
-<!--                        <option value="2">2</option>-->
-<!--                        <option value="3">3</option>-->
-<!--                        <option value="4">4</option>-->
-<!--                        <option value="5">5</option>-->
+                <!--                <td><label for="amount">Selecteer aantal:</label>-->
+                <!--                    <input type="number" id="$=amount" name="amount" value="-->
+                <!--                </td>-->
+                <!--                    <select class="" name="Aantal" id="Aantal">-->
+                <!--                        <option value="1">1</option>-->
+                <!--                        <option value="2">2</option>-->
+                <!--                        <option value="3">3</option>-->
+                <!--                        <option value="4">4</option>-->
+                <!--                        <option value="5">5</option>-->
                 <!--                    </select></td>-->
 
                 <td style="text-align:right;">Prijs:</td>
                 <td>
-                    <form method="post" >
+                    <form method="post">
                         <input type="number" value='<?php print($item) ?>' name="stockItemID" hidden>
-                        <input type="submit" class="btn btn-primary btn-outline-dark removeFromCartButton" name="submit" value="Verwijder product">
+                        <input type="submit" class="btn btn-primary btn-outline-dark removeFromCartButton" name="submit"
+                               value="Verwijder product">
                     </form>
                 </td>
             </tr>
