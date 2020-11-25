@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "connect.php";
+include "CartFuncties.php";
 ?>
 <!DOCTYPE html>
 <html lang="en" style="background-color: rgb(35, 35, 47);">
@@ -78,7 +79,7 @@ include "connect.php";
         </div>
         <ul id="ul-class-navigation" class="">
             <li>
-                <a href="shoppingcart.php" class="HrefDecoration col-4"><i class="fas fa-shopping-cart"></i> Winkelmand</a>
+                <a href="shoppingcart.php" class="HrefDecoration col-4"><i class="fas fa-shopping-cart"></i> Winkelmand <?php headerCartAmount()?></a>
             </li>
             <li>
                 <a href="browse.php" class="HrefDecoration col-4"><i class="fas fa-search" style="color:#676EFF;"></i> Zoeken</a>
@@ -88,5 +89,7 @@ include "connect.php";
     <div class="row" id="Content">
         <div class="col-12">
             <div id="SubContent">
+
+
 
 

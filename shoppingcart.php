@@ -8,14 +8,15 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 session_start();
 include __DIR__ . "/header.php";
-include "CartFuncties.php";
 include "viewFunctions.php";
 
 if (!isset($_POST["submit"])){
     $cart = GetCart();
+    $_SESSON['cart'] = $cart;
     } else {
     RemoveProductFromCart($_POST["stockItemID"]);
     $cart = GetCart();
+    $_SESSON['cart'] = $cart;
 }
 
 ?>
@@ -36,8 +37,6 @@ if (!isset($_POST["submit"])){
     <?php foreach ($cart as $item => $amount) {
         $Result = GetResult($Connection, $item);
         $Image = GetSingleImage($Connection, $item);
-        //De array_sum($cart); zorgt ervoor dat alle cart hoeveelheden bij elkaar worden opgeteld.
-        $totaal = array_sum($cart);
         ?>
         <table class="tbl-cart" cellpadding="10" cellspacing="5">
             <tbody>
@@ -116,7 +115,7 @@ if (!isset($_POST["submit"])){
 </div>
 <table style="text-align:right">
     <td style="text-align:right;" name="Totaal">Totaal Artikelen</td>
-    <td style="text-align:right;" name="Prijs1">Prijs <?php print_r($cart) ?></td>
+    <td style="text-align:right;" name="Prijs1">Prijs <?php print_r($cart); ?></td>
 </table>
 
 <table>
