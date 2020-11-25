@@ -3,7 +3,6 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 include __DIR__ . "/header.php";
 include "viewFunctions.php";
-include 'CartFuncties.php';
 $ShowStockLevel = 1000;
 $Result = GetResult($Connection, $_GET['id']);
 GetImages($Connection);
@@ -11,7 +10,7 @@ GetImages($Connection);
 ?>
 <head>
   <div id="CenteredContent">
-  <?php  if (isset($_POST['submit1'])){ ?>
+  <?php  if (isset($_POST['submit'])){ ?>
           <p id="MessageAfterAddingItem"><?php print("Wilt u verder winkelen of naar de winkelwagen gaan?") ?> </p>
         <div class="btn-group" id="ArticleHeader" style="height: 50px">
             <a href="browse.php" class="btn btn-primary btn-outline-dark continueShopping" role="button"> <i class="fas fa-arrow-left"></i> &nbsp; Verder winkelen</a>
@@ -97,9 +96,9 @@ GetImages($Connection);
                         <h6> Inclusief BTW </h6>
                         <form method="post">
                             <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockItemID" hidden>
-                            <input id= "button" type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="submit1" value="Toevoegen aan winkelmand">
+                            <input id= "button" type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="submit" value="Toevoegen aan winkelmand">
                         </form>
-                        <?php  if (isset($_POST['submit1'])){
+                        <?php  if (isset($_POST['submit'])){
                             AddProductToCart($_POST['stockItemID']); ?>
                             <script> Notification_();
                             setTimeout(StopNotification, 2000);

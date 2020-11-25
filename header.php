@@ -1,7 +1,8 @@
 <?php
 session_start();
 include "connect.php";
-$cart = $_SESSION["cart"];
+include "CartFuncties.php";
+$cart = GetCart();
 ?>
 <!DOCTYPE html>
 <html lang="en" style="background-color: rgb(35, 35, 47);">
@@ -79,7 +80,7 @@ $cart = $_SESSION["cart"];
         </div>
         <ul id="ul-class-navigation" class="">
             <li>
-             <?php if(isset($_POST['submit1']) || $cart != null) { ?>
+             <?php if($cart != null) { ?>
                  <a href="shoppingcart.php" class="HrefDecoration col-4"><i class="fas fa-shopping-cart" style="color:#ffff00"></i> Winkelmand</a>
                 <?php } else { ?>
                  <a href="shoppingcart.php" class="HrefDecoration col-4"><i class="fas fa-shopping-cart"></i> Winkelmand</a>

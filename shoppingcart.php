@@ -8,16 +8,13 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 session_start();
 include __DIR__ . "/header.php";
-include "CartFuncties.php";
 include "viewFunctions.php";
 
-if (!isset($_POST["submit2"])){
+if (!isset($_POST["submit"])){
     $cart = GetCart();
-    $_SESSION["cart"] = $cart;
     } else {
     RemoveProductFromCart($_POST["stockItemID"]);
     $cart = GetCart();
-    $_SESSION["cart"] = $cart;
 }
 
 ?>
@@ -95,7 +92,7 @@ if (!isset($_POST["submit2"])){
                 <td>
                     <form method="post" >
                         <input type="number" value='<?php print($item) ?>' name="stockItemID" hidden>
-                        <input type="submit" class="btn btn-primary btn-outline-dark removeFromCartButton" name="submit2" value="Verwijder product">
+                        <input type="submit" class="btn btn-primary btn-outline-dark removeFromCartButton" name="submit" value="Verwijder product">
                     </form>
                 </td>
             </tr>
