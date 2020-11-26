@@ -132,7 +132,7 @@ if (!isset($_POST["submit"])){
 
     <form method="post" action="orderpage.php">
         <div style="text-align: center;">
-            <input type="submit" class="btn btn-primary" style="width: 20%;" name="naarbetaal" value="Naar betaalpagina">
-    </form>
+            <a href="orderpage.php" class="btn btn-primary btn-outline-dark" style="background-color: #FFFF00;" role="button"> Vedergaan &nbsp; <i class="fas fa-arrow-right"></i></a>
         </div>
+    </form>
 
