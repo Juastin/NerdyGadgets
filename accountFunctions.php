@@ -66,5 +66,5 @@ function getInformation($connection, $email){
         "SELECT firstName, middleName, lastName, postalCode, 
         email, city, address, houseNumber, tel FROM user WHERE email = '".$email."'";
     $result = mysqli_query($connection, $query);
-    return $row = mysqli_fetch_assoc($result);
+    return mysqli_fetch_assoc($result);
 }
