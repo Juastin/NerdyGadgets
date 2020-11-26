@@ -55,13 +55,7 @@ function RemoveProductFromCart($stockItemID){
             unset($cart[$stockItemID]); // item uit winkelmand verwijderen
         SaveCart($cart); // winkelmandje opslaan
     }
-
-
-//winkelmandje opslaan in sessie variabele
-function SaveCart($cart) {
-    $_SESSION['cart'] = $cart;
-}
-
+    
 function UpdateProduct($stockItemID,$quantity){
     $cart = GetCart();
 
