@@ -39,10 +39,17 @@ if (!isset($_POST["submit"])) {
         UpdateProduct($productId,$quantity);
     }
 
+
     foreach ($_SESSION['cart'] as $item => $amount) {
         $Result = GetResult($Connection, $item);
         $Image = GetSingleImage($Connection, $item);
-
+        $sql = "SELECT QuantityOnHand FROM stockitemholdings WHERE stockitemid=" . $item;
+        $results = mysqli_query($Connection, $sql);
+        $voorraadcheck = mysqli_fetch_all($results, MYSQLI_ASSOC);
+        foreach ($voorraadcheck as $voorraad) {
+            if ($amount > $voorraad['QuantityOnHand']) {
+                $aantal = $voorraad;
+            }
         ?>
         <table class="tbl-cart" cellpadding="10" cellspacing="5">
             <tbody>
@@ -79,7 +86,7 @@ if (!isset($_POST["submit"])) {
                     <div id="field1">
                         <form method="post">
                             Selecteer aantal:
-                            <input type="number" min="1" name="quantity" id="quantity" value="<?php print_r($amount) ?>"  class="field">
+                            <input type="number" min="1" max="<?php print($voorraad['QuantityOnHand'])?>" name="quantity" id="quantity" value="<?php print_r($amount) ?>"  class="field">
                             <input type="text" name="productId" id="productId" value="<?php print_r($item) ?>" hidden>
                             <button type="submit" name="update" id="update" class="update">Update</button>
                         </form>
@@ -107,7 +114,8 @@ if (!isset($_POST["submit"])) {
             </tr>
             </tbody>
         </table>
-    <?php } ?>
+    <?php }
+    }?>
 
     <br>
     <hr color="white">
