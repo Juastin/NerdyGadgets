@@ -27,6 +27,9 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple");?>
                 <input class="loginInput btn btn-primary btn-outline-dark addToCartButton" type="submit" value="Ga terug naar de homepagina." />
             </form>
             <?php
+            if ($_SESSION['loggedIn'] == TRUE){
+                header('Location: ./');
+            }
         }
         else {
             echo "<script type='text/javascript'>alert('De inloggegevens zijn onjuist, probeer het overnieuw.');</script>";
