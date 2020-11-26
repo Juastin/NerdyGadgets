@@ -79,7 +79,9 @@ include "CartFuncties.php";
         </div>
         <ul id="ul-class-navigation" class="">
             <li>
-                <a href="shoppingcart.php" class="HrefDecoration col-4"><i class="fas fa-shopping-cart"></i> Winkelmand <?php headerCartAmount()?></a>
+                <div style="font-size: 14px; font-weight: 900; color: #FFFF00; margin-left: 40px; height: 14px; width: 8px;"> <?php headerCartAmount();?> </div>
+                <a href="shoppingcart.php" class="HrefDecoration col-4"><i class="fas fa-shopping-cart">
+                    </i> &nbsp; Winkelmand </a>
             </li>
             <li>
                 <a href="browse.php" class="HrefDecoration col-4"><i class="fas fa-search" style="color:#676EFF;"></i> Zoeken</a>

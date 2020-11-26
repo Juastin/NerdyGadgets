@@ -64,3 +64,10 @@ function headerCartAmount() {
         }
         print($totaalartikelen);
 }
+function headerItem() {
+    if ($totaalartikelen=1) {
+        print("item");
+    }  else {
+        print("items");
+    }
+}
