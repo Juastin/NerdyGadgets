@@ -90,7 +90,9 @@ GetImages($Connection);
                         </form>
                         <?php
                         if (isset($_POST['submit'])){
-                            AddProductToCart($_POST['stockItemID']);
+                            AddProductToCart($_POST['stockItemID']); ?>
+                            <script> window.location.href = 'view.php?id=<?php print($Result["StockItemID"])?>'; </script>
+                        <?php
                         }
                         ?>
                     </div>
