@@ -129,3 +129,8 @@ if (!isset($_POST["submit"])){
     <td style="text-align:right;" name="Prijs3">Prijs</td>
     </td>
 </table>
+
+<form method="post" action="orderpage.php">
+<input type="submit" style="background-color: green; width: 30%; align-items: center;" name="naarbetaal" value="Naar betaalpagina">
+</form>
+

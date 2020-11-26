@@ -74,8 +74,8 @@ $cart = GetCart();
         <div class="col-4">
             <div class="container">
                 <h4 style="text-align: center">Cart</h4>
-                <br><h4>Totaal artikelen:</h4>
-                <br><h4>Verzendkosten:</h4>
+                <br><h4>Totaal artikelen:   <?php headerCartAmount()?></h4>
+                <br><h4>Verzendkosten:  7,5</h4>
                 <br><h4>Kortingscode:</h4>
                 <br><hr color="white">
 
