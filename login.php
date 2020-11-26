@@ -13,7 +13,8 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple");?>
         <a class="row">Vul hier uw logingegevens in.</a>
         <input placeholder="E-mail" name="email" class="loginInput">
         <input placeholder="Wachtwoord" type="password" name="password" class="loginInput">
-        <input type="submit" class="loginInput col-2 btn btn-primary btn-outline-dark addToCartButton" value="Inloggen" name="submit">
+        <input type="submit" class="loginInput col-2 btn btn-primary btn-outline-dark addToCartButton" value="Inloggen" name="submit"><br><br>
+        <a href="register.php">Heeft u nog geen account? Klik dan hier!</a>
     </form>
     <?php
     if (isset($_POST['email']) && isset($_POST['password'])){
