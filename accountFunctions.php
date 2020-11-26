@@ -61,3 +61,8 @@ function checkEmailExist($connection, $email){
         return false;
     }
 }
+function getInformation($connection, $userID){
+    $query = "SELECT ... WHERE userId = ".$userID."";
+    $result = mysqli_query($connection, $query);
+    return $row = mysqli_fetch_assoc($result);
+}
