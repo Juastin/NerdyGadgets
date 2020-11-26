@@ -116,7 +116,7 @@ if (!isset($_POST["submit"])){
 </div>
 <table style="text-align:right">
     <td style="text-align:right;" name="Totaal">Totaal Artikelen</td>
-    <td style="text-align:right;" name="Prijs1">Prijs <?php print_r($cart); ?></td>
+    <td style="text-align:right;" name="Prijs1">Prijs</td>
 </table>
 
 <table>
