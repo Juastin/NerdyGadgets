@@ -2,7 +2,7 @@
     <title> </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
-<body>
+<div>
 <?php
 $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
@@ -130,7 +130,9 @@ if (!isset($_POST["submit"])){
     </td>
 </table>
 
-<form method="post" action="orderpage.php">
-<input type="submit" style="background-color: green; width: 30%; align-items: center;" name="naarbetaal" value="Naar betaalpagina">
-</form>
+    <form method="post" action="orderpage.php">
+        <div style="text-align: center;">
+            <input type="submit" class="btn btn-primary" style="width: 20%;" name="naarbetaal" value="Naar betaalpagina">
+    </form>
+        </div>
 
