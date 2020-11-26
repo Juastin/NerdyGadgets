@@ -84,7 +84,8 @@ GetImages($Connection);
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $Result['SellPrice']); ?></b></p>
-                        <h6> Inclusief BTW </h6>
+                        <h6><b>Inclusief BTW</b></h6>
+                        <h10> Gratis Verzending </h10>
                         <form method="post">
                             <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockItemID" hidden>
                             <input type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="submit" value="Toevoegen aan winkelmand">
@@ -99,8 +100,8 @@ GetImages($Connection);
             </div>
         </div>
 
-        <div id="StockItemDescription">
-            <h3><b>Product Informatie</b></h3>
+        <div id="StockItemDescription" >
+            <h3 ><b>Product Informatie</b></h3>
             <?php print $Result['SearchDetails'];?></p>
             <table>
                 <tr>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -128,6 +129,11 @@ GetImages($Connection);
                 <tr><i class="fas fa-minus-circle" style="color:#ff0000"></i></tr>
                 <tr>Maecenas auctor est in tellus ullamcorper venenatis.
                 Aenean vestibulum velit vel laoreet bibendum.</tr>
+
+                <br>
+                <br>
+
+                <tr><b>Verzending</b><br>Verzending bij alle producten is gratis. Daarbij duurt verwerking en verzending van producten zo'n 2-4 dagen.</tr>
             </table>
         </div>
 
