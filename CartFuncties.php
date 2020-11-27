@@ -60,7 +60,7 @@ function RemoveProductFromCart($stockItemID){
 <script>
     // Melding op knop dat het product is toegevoegd na toevoegen van het product, de knop is (veranderd van paars naar) groen
     function NotificationAddedItem() {
-        document.getElementById('button').value = "Aantal verhogen"; // de waarde van value wordt vervangen
+        document.getElementById('button').value = "Aantal verhogen ++"; // de waarde van value wordt vervangen
     }
 
 </script>
