@@ -55,18 +55,13 @@ function RemoveProductFromCart($stockItemID){
             unset($cart[$stockItemID]); // item uit winkelmand verwijderen
         SaveCart($cart); // winkelmandje opslaan
     }
-    ?>
+?>
 
 <script>
     // Melding op knop dat het product is toegevoegd na toevoegen van het product, de knop is (veranderd van paars naar) groen
-    function Notification_() {
-        document.getElementById('button').value = "Item is toegevoegd!"; // de waarde van value wordt vervangen
+    function NotificationAddedItem() {
+        document.getElementById('button').value = "Aantal verhogen"; // de waarde van value wordt vervangen
         document.getElementById('button').className = "btn btn-primary btn-outline-dark addedToCartButton"; // de waarde van class wordt vervangen
     }
 
-    // De knop krijgt de tekst "toevoegen aan winkelwagen" en de kleur paars (terug)
-    function StopNotification() {
-        document.getElementById('button').value = "Toevoegen aan winkelmand"; // de waarde van value wordt vervangen
-        document.getElementById('button').className = "btn btn-primary btn-outline-dark addToCartButton"; // de waarde van class wordt vervangen
-    }
 </script>

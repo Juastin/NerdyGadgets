@@ -14,7 +14,9 @@ if (!isset($_POST["submit"])){
     $cart = GetCart();
     } else {
     RemoveProductFromCart($_POST["stockItemID"]);
-    $cart = GetCart();
+    $cart = GetCart(); ?>
+    <script> window.location.href = 'shoppingcart.php'; </script>
+<?php
 }
 
 ?>

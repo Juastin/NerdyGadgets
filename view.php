@@ -6,18 +6,17 @@ include "viewFunctions.php";
 $ShowStockLevel = 1000;
 $Result = GetResult($Connection, $_GET['id']);
 GetImages($Connection);
-
+$cart = GetCart();
 ?>
 <head>
   <div id="CenteredContent">
-  <?php  if (isset($_POST['submit'])){ ?>
-          <p id="MessageAfterAddingItem"><?php print("Wilt u verder winkelen of naar de winkelwagen gaan?") ?> </p>
+   <?php   if(isset($cart[$Result["StockItemID"]])) { ?>
+          <p id="MessageAfterAddingItem"><?php print("Dit item zit al in de winkelwagen, wilt u verder winkelen of naar de winkelwagen gaan?") ?> </p>
         <div class="btn-group" id="ArticleHeader" style="height: 50px">
             <a href="browse.php" class="btn btn-primary btn-outline-dark continueShopping" role="button"> <i class="fas fa-arrow-left"></i> &nbsp; Verder winkelen</a>
             <a href="shoppingcart.php" class="btn btn-primary btn-outline-dark goToCart" role="button"> Naar de winkelwagen &nbsp; <i class="fas fa-arrow-right"></i></a>
         </div>
-    <?php }
-    ?>
+      <?php } ?>
   </div>
 </head>
 <div id="CenteredContent">
@@ -98,13 +97,13 @@ GetImages($Connection);
                             <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockItemID" hidden>
                             <input id= "button" type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="submit" value="Toevoegen aan winkelmand">
                         </form>
-                        <?php  if (isset($_POST['submit'])){
+                        <?php  if (isset($cart[$Result["StockItemID"]]) && (($cart[$Result["StockItemID"]]) > 0)) { ?>
+                        <script> NotificationAddedItem() </script>
+                          <?php }
+                          if (isset($_POST['submit'])){
                             AddProductToCart($_POST['stockItemID']); ?>
-                            <script> Notification_();
-                            setTimeout(StopNotification, 2000);
-                            </script>
-                        <?php }
-                        ?>
+                          <script>  window.location.href = 'view.php?id=<?php print($Result["StockItemID"])?>'; </script>
+                       <?php  } ?>
                     </div>
                 </div>
             </div>

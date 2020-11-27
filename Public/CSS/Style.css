@@ -485,7 +485,7 @@ ul#ul-class-price li {
 }
 /* voegt een paarse knop toe met dikgedrukte letters voor het toevoegen van producten aan de winkelmand*/
 .addToCartButton.btn {
-    background-color: #676eff;
+    background-color: #ffff00;
     font-weight: bold;
 }
 /* voegt een rode knop toe met dikgedrukte letters voor het verwijderen van producten uit de winkelmand */
