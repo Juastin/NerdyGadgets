@@ -1,4 +1,8 @@
 <?php
+// Registers user with information out of post from register.php
+// @Param $connection: mysqli_connect
+// @Param $post: $_POST
+// @Return: void
 function register ($connection, $post) {
     print_r($post);
     print($post['firstname']);
@@ -22,6 +26,11 @@ function register ($connection, $post) {
     $statement = mysqli_prepare($connection, $query);
     mysqli_stmt_execute($statement);
 }
+// User login set $_SESSION['loggedIn'] true when email and password are correct from login.php
+// @Param $connection: mysqli_connect
+// @Param $email: $_POST['email']
+// @Param $password: $_POST['password']
+// @Return: void
 function login ($connection, $email, $password) {
     $query = "
                     SELECT email, password
@@ -49,6 +58,10 @@ function login ($connection, $email, $password) {
         return false;
     }
 }
+// Checks if email exists in table user of database
+// @Param $connection: mysqli_connect
+// @Param $email: string email
+// @Return: True || False
 function checkEmailExist($connection, $email){
     $query = "SELECT email FROM user WHERE email = '".$email."'";
     $statement = mysqli_prepare($connection, $query);
@@ -61,6 +74,10 @@ function checkEmailExist($connection, $email){
         return false;
     }
 }
+// Returns data of specific user from database
+// @Param $connection: mysqli_connect
+// @Param $email: string email
+// @Return: array(firstName, middleName, lastName, postalCode, email, city, address, houseNumber, tel)
 function getInformation($connection, $email){
     $query =
         "SELECT firstName, middleName, lastName, postalCode, 
