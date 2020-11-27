@@ -18,12 +18,13 @@ if (!isset($_POST["submit"])) {
 
 
 ?>
+<div >
 
-<div>
     <header>
         <h2 style="text-align: left;">Winkelwagen</h2>
         <h6 style="text-align:right;">Aanvullende beschrijving</h6>
     </header>
+
 
     <style>
 
@@ -81,8 +82,7 @@ if (!isset($_POST["submit"])) {
                 ?>
                 <td style="text-align:left;" name="Productname"><?php print ($Result['StockItemName']); ?><br>Beschrijving
                 </td>
-
-                <td style="text-align:left;">Verzend Informatie<br>Aanvullende Informatie</td>
+                <td style="text-align:left;">Gratis verzending<br>2-4 dagen</td>
                 <td>
                     <div id="field1">
                         <form method="post">
@@ -129,20 +129,24 @@ if (!isset($_POST["submit"])) {
         <br>
     </form>
 </div>
-<table style="text-align:right">
-    <td style="text-align:right;" name="Totaal">Totaal Artikelen</td>
-    <td style="text-align:right;" name="Prijs1">Prijs</td>
-</table>
 
-<table>
-    <td style="text-align:right;" name="Verzendkosten">Verzendkosten</td>
-    <td style="text-align:right;" name="Prijs2">Prijs</td>
-</table>
+<div>
+    <table style="text-align:right">
+        <td style="text-align:right;" name="Totaal">Totaal Artikelen</td>
+        <td style="text-align:right;" name="Prijs1">Prijs</td>
+    </table>
 
-<hr color="white" style="width:10%;">
+    <table>
+        <td style="text-align:right;" name="Verzendkosten">Verzendkosten</td>
+        <td style="text-align:right;" name="Prijs2">Gratis</td>
+    </table>
 
-<table>
-    <td style="text-align:right;" name="Totaal">Totaal Artikelen</td>
-    <td style="text-align:right;" name="Prijs3">Prijs</td>
-    </td>
-</table>
+    <hr color="white" style="width:10%;">
+
+    <table>
+        <td style="text-align:right;" name="Totaal">Totaal Artikelen</td>
+        <td style="text-align:right;" name="Prijs3">Prijs</td>
+        </td>
+    </table>
+</div>
+
