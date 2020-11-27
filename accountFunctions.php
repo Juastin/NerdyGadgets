@@ -80,7 +80,7 @@ function checkEmailExist($connection, $email){
 // @Return: array(firstName, middleName, lastName, postalCode, email, city, address, houseNumber, tel)
 function getInformation($connection, $email){
     $query =
-        "SELECT firstName, middleName, lastName, postalCode, 
+        "SELECT userId, firstName, middleName, lastName, postalCode, 
         email, city, address, houseNumber, tel FROM user WHERE email = '".$email."'";
     $result = mysqli_query($connection, $query);
     return mysqli_fetch_assoc($result);
