@@ -58,3 +58,14 @@ $Query = "
             return null;
         }
 }
+// Aanpassen van voorraad bij afronden bestelling
+function UpdateVoorraad($connection,$voorraad,$quantity,$id){
+$Query = "
+                UPDATE QuantityOnHand 
+                SET '($voorraad[QuantityOnHand] - $quantity' 
+                FROM Stockitemholdings 
+                WHERE StockItemID=" . $id;
+
+
+
+}
