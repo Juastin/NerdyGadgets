@@ -483,8 +483,8 @@ ul#ul-class-price li {
     border: 1px rgb(98, 158, 255) solid;
     color: #fff;
 }
-/* voegt een paarse knop toe met dikgedrukte letters voor het toevoegen van producten aan de winkelmand*/
-.addToCartButton.btn {
+/* voegt een gele knop toe met dikgedrukte letters voor het toevoegen en verhogen van producten aan/in de winkelmand*/
+.addAndAddedToCartButton.btn {
     background-color: #ffff00;
     font-weight: bold;
 }
@@ -493,11 +493,7 @@ ul#ul-class-price li {
     background-color: #ff0000;
     font-weight: bold;
 }
-/* maakt de (voorheen paarse) knop geel voor het melden dat er een item is toegevoegd aan de winkelwagen*/
-.addedToCartButton.btn {
-    background-color: #ffff00;
-    font-weight: bold;
-}
+
 /*Voegt een paarse knop toe met dikgedrukte letters voor het verder kunnen winkelen */
 .continueShopping.btn {
     background-color: #676eff;

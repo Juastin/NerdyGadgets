@@ -95,7 +95,7 @@ $cart = GetCart();
                         <h6> Inclusief BTW </h6>
                         <form method="post">
                             <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockItemID" hidden>
-                            <input id= "button" type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="submit" value="Toevoegen aan winkelmand">
+                            <input id= "button" type="submit" class="btn btn-primary btn-outline-dark addAndAddedToCartButton" name="submit" value="Toevoegen aan winkelmand">
                         </form>
                         <?php  if (isset($cart[$Result["StockItemID"]]) && (($cart[$Result["StockItemID"]]) > 0)) { ?>
                         <script> NotificationAddedItem() </script>
