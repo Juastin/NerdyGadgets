@@ -1,5 +1,6 @@
 <?php
 
+
 //ophalen van winkelmandje
 function GetCart() {
     if (isset($_SESSION['cart'])) { //controleren of winkelmandje al bestaat

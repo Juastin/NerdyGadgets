@@ -11,8 +11,11 @@ include __DIR__ . "/header.php";
 include "viewFunctions.php";
 include "CartFuncties.php";
 
+
 $nameErr = $emailErr = $addressErr = $placeErr = $postalcodeErr = $houseErr = "";
 $name = $email = $address = $place = $postalcode = $housenumber = "";
+$totaalprijs = 0;
+$verzendkosten = 7.50;
 
 $cart = GetCart();
 
@@ -75,12 +78,18 @@ $cart = GetCart();
             <div class="container">
                 <h4 style="text-align: center">Cart</h4>
                 <br><h4>Totaal artikelen:   <?php headerCartAmount()?></h4>
-                <br><h4>Verzendkosten:  7,5</h4>
-                <br><h4>Kortingscode:</h4>
+                <br><h4>Verzendkosten:  <?php print($verzendkosten)?></h4>
+                <br><h4>Kortingscode: Geen</h4>
                 <br><hr color="white">
+                <?php foreach ($cart as $item => $amount) {
+                    $Result = GetResult($Connection, $item);
+                    $Image = GetSingleImage($Connection, $item);
+                    $totaalprijs = ($amount * $Result['SellPrice'] + ($totaalprijs));
+                }
+                ?>
 
                 <hr>
-                <h4>Totaal:</h4>
+                <h4>Totaal: <?php print sprintf("€ %.2f", $totaalprijs+$verzendkosten);?></h4>
             </div>
         </div>
     </div>
@@ -93,10 +102,11 @@ $cart = GetCart();
     </div>
 
 
-        <?php foreach ($cart as $item => $amount) {
-        $Result = GetResult($Connection, $item);
-        $Image = GetSingleImage($Connection, $item);
-        ?>
+<?php foreach ($cart as $item => $amount) {
+    $Result = GetResult($Connection, $item);
+    $Image = GetSingleImage($Connection, $item);
+    $totaalprijs = ($amount*$Result['SellPrice']+($totaalprijs));
+    ?>
 
             <div class="col-6"
             <table class="tbl-cart" cellpadding="10" cellspacing="5">
@@ -138,7 +148,7 @@ $cart = GetCart();
             <br><h2 style="text-align: center;">Bezorging</h2><br>
         <div style="height: auto;">
             <p>Dag</p><br>
-            <p>Tijd</p><br>
+            <p>Tijd <?php //print sprintf("€ %.2f", $Result['SellPrice']); ?></p><br>
             <p>Verzendingstype</p>
         </div>
     </div>
