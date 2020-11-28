@@ -131,19 +131,19 @@ if (!isset($_POST["submit"])) {
             </td>
                 <br>
         </form>
-        <table class="col-2">
-            <td style="text-align:left;" name="Totaal">Totaal Artikelen</td>
-            <td style="text-align:left;" name="Prijs1">Prijs</td>
+        <table class="col-2" style="margin-left:auto">
+            <td style="text-align:right;" name="Totaal">Totaal Artikelen</td>
+            <td style="text-align:right;" name="Prijs1">Prijs</td>
 
             <thead><br></thead>
 
-            <td style="text-align:left;" name="Verzendkosten">Verzendkosten</td>
-            <td style="text-align:left;" name="Prijs2">Gratis</td>
+            <td style="text-align:right;" name="Verzendkosten">Verzendkosten</td>
+            <td style="text-align:right;" name="Prijs2">Gratis</td>
 
             <thead><br></thead>
 
-            <td style="text-align:left;" name="Totaal">Totaal Artikelen</td>
-            <td style="text-align:left;" name="Prijs3">Prijs</td>
+            <td style="text-align:right;" name="Totaal">Totaal Artikelen</td>
+            <td style="righttext-align:right;" name="Prijs3">Prijs</td>
         </table>
     </div>
 </div>
