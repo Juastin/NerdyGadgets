@@ -18,6 +18,7 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple"); ?>
         <label for="lastname" class="loginInput">Achternaam*</label>
             <input placeholder="Achternaam*" name="lastname" required>
         <label for="email" class="loginInput">E-mail*</label>
+        <br><a class="regfieldInfo">Wij gebruiken uw E-mail om facturen te versturen of u op de hoogte te stellen van uw bestelling</a>
             <input placeholder="E-mail*" type="email" name="email" required>
         <label for="password" class="loginInput">Wachtwoord*</label>
             <input placeholder="Wachtwoord*" type="password" name="password" required>
@@ -32,6 +33,7 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple"); ?>
         <label for="postalcode" class="loginInput">Postcode*</label>
             <input placeholder="Postcode*" name="postalcode" required>
         <label for="tel" class="loginInput">Telefoonnummer</label>
+        <br><a class="regfieldInfo">Wij kunnen uw telefoonnumer gebruiken om u te bellen als er wat mis is met uw bestelling</a>
             <input placeholder="Telefoonnummer" name="tel">
         <input type="submit" class="loginInput col-2 btn btn-primary btn-outline-dark addToCartButton" value="Registreren" name="submit">
     </form>

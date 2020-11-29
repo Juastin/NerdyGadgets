@@ -502,6 +502,9 @@ input.field {
     margin: 4px;
     color: #23232F;
 }
+.regfieldInfo {
+    font-size: 13px;
+}
 .loginTekst, .loginInput {
     margin-top: 50px;
 }
