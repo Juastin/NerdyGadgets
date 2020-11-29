@@ -508,3 +508,12 @@ input.field {
 .loginTekst {
     color: #ffff00;
 }
+.accountHeader {
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 20px;
+}
+.accountContainer {
+    margin-top: 30px;
+    margin-left: 110px;
+}
