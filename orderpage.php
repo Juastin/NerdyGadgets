@@ -37,7 +37,7 @@ $cart = GetCart();
     <!--Kale witte lijn: <hr color="white">-->
     <!--Begin hieronder aan de formulieren.-->
     <div class="row">
-        <div class="col-8">
+        <div class="col-8" style="border: 1px solid;">
         <form method='post'>
                      <h4 style="text-align: center;">Order gegevens</h4><br>
             <!--Name + Email-->
@@ -71,10 +71,10 @@ $cart = GetCart();
             <div style="text-align: center;">
             <br><input type='submit' style="width: 20%;"value='Send' name="submit">
                 </form>
+            </div>
         </div>
-    </div>
 
-        <div class="col-4">
+        <div class="col-4" style="border: 1px solid;">
             <div class="container">
                 <h4 style="text-align: center">Cart</h4>
                 <br><h4>Totaal artikelen:   <?php headerCartAmount()?></h4>
@@ -88,7 +88,6 @@ $cart = GetCart();
                 }
                 ?>
 
-                <hr>
                 <h4>Totaal: <?php print sprintf("€ %.2f", $totaalprijs+$verzendkosten);?></h4>
             </div>
         </div>
@@ -97,8 +96,7 @@ $cart = GetCart();
     <div class="row">
         <div class="col-8"
              <h6 style="text-align: center">Artikelen</h6>
-        <br>
-        <hr color="white">
+        <br><br>
     </div>
 
 
@@ -108,7 +106,7 @@ $cart = GetCart();
     $totaalprijs = ($amount*$Result['SellPrice']+($totaalprijs));
     ?>
 
-            <div class="col-6"
+            <div class="col-6" style="border: 1px solid; margin-left: 20px;"
             <table class="tbl-cart" cellpadding="10" cellspacing="5">
                 <tbody>
                 <tr>
@@ -140,10 +138,10 @@ $cart = GetCart();
                                         <h2 style="text-align: center;">Aantal: <?php print($amount)?></h2><br><br><br><br>
                         <br><br>
 
-                        <hr color="white">
+
                     </td>
             </div>
-    <div class="col-2">
+    <div class="col-2" style="border: 1px solid;">
     <div class="container">
             <br><h2 style="text-align: center;">Bezorging</h2><br>
         <div style="height: auto;">
