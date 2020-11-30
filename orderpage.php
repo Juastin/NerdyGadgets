@@ -44,7 +44,7 @@ $cart = GetCart();
     <!--Begin hieronder aan de formulieren.-->
     <div class="row">
         <div class="col-8" style="border: 1px solid;">
-        <form method='post'>
+        <form method='post' action="afrekenpagina.php">
                      <h4 style="text-align: center;">Order gegevens</h4><br>
             <!--Name + Email-->
             <label for='fname'><i class='fa fa-user' style=" margin-left: 50px;"></i> Full Name</label>
@@ -77,7 +77,7 @@ $cart = GetCart();
             <br>
             <div style="text-align: center;">
             <br><input type='submit' style="width: 20%;"value='Send' name="submit">
-                <?php
+                <?php /*
         if (isset($_POST["submit"])) {
                 $email = test_input($_POST["email"]);
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -85,8 +85,8 @@ $cart = GetCart();
                 } else { ?>
                     <h3 style="color: green; text-align: center;"><?php print("Ga naar andere pagina"); ?></h3> <?php
                 }
-        }?>
-                <h3 style="color: red; text-align: center;"><?php print($emailErr); ?></h3>
+        } */ ?>
+                <!--<h3 style="color: red; text-align: center;"><?php // print($emailErr); ?></h3> -->
                 </form>
             </div>
         </div>
