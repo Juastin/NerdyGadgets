@@ -76,13 +76,16 @@ include "connect.php";
 
             </ul>
         </div>
-        <ul id="ul-class-navigation" class="">
-            <li>
-                <a href="shoppingcart.php" class="HrefDecoration col-4"><i class="fas fa-shopping-cart"></i> Winkelmand</a>
-            </li>
-            <li>
-                <a href="browse.php" class="HrefDecoration col-4"><i class="fas fa-search" style="color:#676EFF;"></i> Zoeken</a>
-            </li>
+        <ul id="ul-class-navigation">
+                <li>
+                    <a href="accountpage.php" class="HrefDecoration col-2"><i class="fas fa-user"></i></a>
+                </li>
+                <li>
+                    <a href="shoppingcart.php" class="HrefDecoration col-2"><i class="fas fa-shopping-cart"></i></a>
+                </li>
+                <li>
+                    <a href="browse.php" class="HrefDecoration col-2"><i class="fas fa-search" style="color:#676EFF;"></i> Zoeken</a>
+                </li>
         </ul>
     </div>
     <div class="row" id="Content">
