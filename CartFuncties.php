@@ -1,5 +1,6 @@
 <?php
 
+
 //ophalen van winkelmandje
 function GetCart() {
     if (isset($_SESSION['cart'])) { //controleren of winkelmandje al bestaat
@@ -55,3 +56,11 @@ function RemoveProductFromCart($stockItemID){
             unset($cart[$stockItemID]); // item uit winkelmand verwijderen
         SaveCart($cart); // winkelmandje opslaan
     }
+function headerCartAmount() {
+    $totaalartikelen = 0;
+    $cart = GetCart();
+    foreach ($cart as $item => $amount) {
+        $totaalartikelen = $totaalartikelen+$amount;
+    }
+    print($totaalartikelen);
+}

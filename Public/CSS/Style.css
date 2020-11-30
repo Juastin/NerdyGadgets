@@ -520,3 +520,10 @@ input.field {
     margin-top: 30px;
     margin-left: 110px;
 }
+.img-container {
+    text-align: center;
+}
+.borderOrderItems{
+    border: 1px;
+    color: #ffffff;
+}
