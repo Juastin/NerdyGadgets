@@ -8,7 +8,7 @@ include "viewFunctions.php";
 
 if (!isset($_POST["afronden"])) {
     $cart = GetCart();
-    UpdateVoorraad($Connection);
+    UpdateVoorraad($Connection,$quantity, $id);
 } else {
     RemoveProductFromCart($_POST["stockItemID"]);
     $cart = GetCart();
