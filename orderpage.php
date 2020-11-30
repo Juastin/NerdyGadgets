@@ -44,8 +44,8 @@ $cart = GetCart();
             <label for='fname'><i class='fa fa-user' style=" margin-left: 50px;"></i> Full Name</label>
             <label for='email'><i class='fa fa-envelope' style=" margin-left: 510px;"></i> Email</label><br>
             <!--Input Name + Email-->
-            <input style="width:43.5%; margin-left: 50px;" type='text' name='name' placeholder="John" required>
-            <input style="width:43.5%; margin-left: 50px;" type='text' id='email' name='email' placeholder='john@example.com' required><br>
+            <input style="width:43.5%; margin-left: 50px;" type='text' name='name' required>
+            <input style="width:43.5%; margin-left: 50px;" type='text' id='email' name='email' required><br>
             <!--Gender en Address-->
             <br><label for="gender" style="margin-left: 50px;"> Gender</label>
             <label for='adr'><i style="margin-left: 125px;"></i> Address</label><br>
@@ -57,19 +57,29 @@ $cart = GetCart();
                 <option value="onzijdig">Onzijdig</option>
             </select>
             <!--Adress input-->
-            <input type='text' style="margin-left: 50px; width:76.8%" id='adr' name='address' placeholder='42 W. 15th Street' required><br>
+            <input type='text' style="margin-left: 50px; width:76.8%" id='adr' name='address' required><br>
             <!--Place-->
             <br><label for='place'><i style="margin-left: 50px;"></i> Place</label><br>
-            <input type='text' style="margin-left: 50px; width: 91%" id='place' name='place' placeholder='New York' required><br>
+            <input type='text' style="margin-left: 50px; width: 91%" id='place' name='place' value="<?php ?>" required><br>
             <!--Postal code and house number-->
             <br><label for='adr' style="margin-left: 50px;"> Postal Code</label>
             <label for='adr'><i style="margin-left: 960px;"></i> House Number</label><br>
             <!--Input postal code and House number-->
-            <input type='text' style="margin-left: 50px; width: 85%" id='postalcode' name='postalcode' placeholder='4444KA' required>
-            <input type='text' style="margin-left: 15px; width: 4%" id='adr' name='housenumber' placeholder='10' required><br>
+            <input type='text' style="margin-left: 50px; width: 85%" id='postalcode' name='postalcode' required>
+            <input type='text' style="margin-left: 15px; width: 4%" id='adr' name='housenumber' required><br>
             <br>
             <div style="text-align: center;">
             <br><input type='submit' style="width: 20%;"value='Send' name="submit">
+                <?php
+        if (isset($_POST["submit"])) {
+                $email = test_input($_POST["email"]);
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $emailErr = "Dit is geen email";
+                } else { ?>
+                    <h3 style="color: green; text-align: center;"><?php print("Ga naar andere pagina"); ?></h3> <?php
+                }
+        }?>
+                <h3 style="color: red; text-align: center;"><?php print($emailErr); ?></h3>
                 </form>
             </div>
         </div>
@@ -173,11 +183,11 @@ $cart = GetCart();
             // Onderstaande code checkt of het een email is. en print dat uit onder de send knop.
             $email = test_input($_POST["email"]);
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $emailErr = "Dit is geen email joh"; ?>
+                $emailErr = "Dit is geen email"; ?>
                 <h3 style="color: red; text-align: center;"><?php print($emailErr); ?></h3>
         <?php
             } else { ?>
-                <h3 style="color: green; text-align: center;"><?php print("Ja dat kan kloppen!"); ?></h3> <?php
+                <h3 style="color: green; text-align: center;"><?php print("Ga naar andere pagina"); ?></h3> <?php
             }
 
 
