@@ -474,7 +474,7 @@ ul#ul-class-price li {
     color: #fff;
 }
 .addToCartButton.btn {
-    background-color: #ffff00;
+    background-color: #32cd32;
     font-weight: bold;
 }
 /* voegt een rode knop toe met dikgedrukte letters voor het verwijderen van producten uit een winkelmand */
@@ -501,22 +501,4 @@ input.field {
     width: 50px;
     margin: 4px;
     color: #23232F;
-}
-.regfieldInfo {
-    font-size: 13px;
-}
-.loginTekst, .loginInput {
-    margin-top: 50px;
-}
-.loginTekst {
-    color: #ffff00;
-}
-.accountHeader {
-    font-weight: bold;
-    font-size: 20px;
-    margin-left: 20px;
-}
-.accountContainer {
-    margin-top: 30px;
-    margin-left: 110px;
 }
