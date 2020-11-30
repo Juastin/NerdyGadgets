@@ -6,8 +6,9 @@ include __DIR__ . "/header.php";
 include "CartFuncties.php";
 include "viewFunctions.php";
 
-if (!isset($_POST["submit"])) {
+if (!isset($_POST["afronden"])) {
     $cart = GetCart();
+    UpdateVoorraad($Connection);
 } else {
     RemoveProductFromCart($_POST["stockItemID"]);
     $cart = GetCart();
@@ -15,25 +16,7 @@ if (!isset($_POST["submit"])) {
 ?>
 
 <?php //hover in bootstrap nog aanpassen van FFF naar 000, geeft foutmelding ?>
-<?php
-SaveCart($cart);
-if (isset($_POST['update'])) {
-    $productId = $_POST['productId'];
-    $quantity = $_POST['quantity'];
-    UpdateProduct($productId, $quantity);
-}
 
-
-    foreach ($_SESSION['cart'] as $item => $amount) {
-    $Result = GetResult($Connection, $item);
-    $sql = "SELECT QuantityOnHand FROM stockitemholdings WHERE stockitemid=" . $item;
-    $results = mysqli_query($Connection, $sql);
-    $voorraadcheck = mysqli_fetch_all($results, MYSQLI_ASSOC);
-    foreach ($voorraadcheck as $voorraad) {
-    if ($amount > $voorraad['QuantityOnHand']) {
-        $aantal = $voorraad;
-    }
-?>
 <body>
 <div>
     <form method="post" action="afrondingBestelling.php">

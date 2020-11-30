@@ -25,47 +25,49 @@ function GetResult ($Connection, $id) {
         return $Result = null;
     }
 }
-// Gets Images from db of product by using $_GET['id']
-function GetImages ($Connection) {
+// Aanpassen van voorraad bij afronden bestelling                           Wouter hulp nodig
+function UpdateVoorraad($Connection, $quantity, $id)
+{
     $Query = "
+                UPDATE Stockitemholdings 
+                SET QuantityOnHand '($quantity)' 
+                WHERE StockItemID=" . $id;
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
+    mysqli_stmt_execute($Statement);
+    }
+// Gets Images from db of product by using $_GET['id']
+    function GetImages($Connection)
+    {
+        $Query = "
                     SELECT ImagePath
                     FROM stockitemimages 
                     WHERE StockItemID = ?";
-    $Statement = mysqli_prepare($Connection, $Query);
+        $Statement = mysqli_prepare($Connection, $Query);
         mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
         mysqli_stmt_execute($Statement);
-    $R = mysqli_stmt_get_result($Statement);
-    $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+        $R = mysqli_stmt_get_result($Statement);
+        $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
         if ($R) {
             return $Images = $R;
         }
-}
+    }
+
 // Gets single image from db of product by passing $id as productID as parameter.
-function GetSingleImage ($Connection, $id) {
-$Query = "
+    function GetSingleImage($Connection, $id)
+    {
+        $Query = "
                     SELECT ImagePath
                     FROM stockitemimages 
                     WHERE StockItemID = ?";
-    $Statement = mysqli_prepare($Connection, $Query);
-    mysqli_stmt_bind_param($Statement, "i", $id);
-    mysqli_stmt_execute($Statement);
-    $R = mysqli_stmt_get_result($Statement);
-    $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+        $Statement = mysqli_prepare($Connection, $Query);
+        mysqli_stmt_bind_param($Statement, "i", $id);
+        mysqli_stmt_execute($Statement);
+        $R = mysqli_stmt_get_result($Statement);
+        $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
         if (isset($R[0]['ImagePath'])) {
             return $R[0]['ImagePath'];
-        }
-        else {
+        } else {
             return null;
         }
-}
-// Aanpassen van voorraad bij afronden bestelling
-function UpdateVoorraad($connection,$voorraad,$quantity,$id){
-$Query = "
-                UPDATE QuantityOnHand 
-                SET '($voorraad[QuantityOnHand] - $quantity' 
-                FROM Stockitemholdings 
-                WHERE StockItemID=" . $id;
-
-
-
-}
+    }
