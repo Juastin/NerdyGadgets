@@ -98,12 +98,17 @@ GetImages($Connection);
                 </div>
             </div>
         </div>
+</div></div></div></div>
 
-        <div id="StockItemDescription">
+
+        <div class="row">
+            <div class ="CenteredContent2">
+            <div class= "col-6" id="StockItemDescription">
             <h3>Artikel beschrijving</h3>
             <p><?php print $Result['SearchDetails']; ?></p>
-        </div>
-        <div id="StockItemSpecifications">
+             </div>
+
+            <div class= "col-6" id="StockItemSpecifications">
             <h3>Artikel specificaties</h3>
             <?php
             $CustomFields = json_decode($Result['CustomFields'], true);
@@ -144,4 +149,19 @@ GetImages($Connection);
     } else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
+            </div>
+        </div>
+
+
+<div class="row">
+    <div class="col-12">
+    <div class="CenteredContent2">
+<div class="Reviews">
+    <h3>Reviews</h3>
+    <br>
+    <i class="far fa-user-circle ProfileImage "></i>
+    <hr style="background-color:#ffffff">
+</div>
+    </div>
+    </div>
 </div>
