@@ -30,7 +30,7 @@ function UpdateVoorraad($Connection, $quantity, $id)
 {
     $Query = "
                 UPDATE Stockitemholdings 
-                SET QuantityOnHand '($quantity)' 
+                SET QuantityOnHand = (QuantityOnHand - '($quantity)') 
                 WHERE StockItemID=" . $id;
     $Statement = mysqli_prepare($Connection, $Query);
     mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
