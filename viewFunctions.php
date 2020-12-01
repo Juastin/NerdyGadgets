@@ -30,15 +30,13 @@ function GetResult($Connection, $id)
 // Aanpassen van voorraad bij afronden bestelling
 function UpdateVoorraad($Connection, $quantity, $id)
 {
-
+    print($quantity . " " . $id);
     $Query = "
-                UPDATE Stockitemholdings 
-                SET QuantityOnHand = (QuantityOnHand - '($quantity)') 
-                WHERE StockItemID=" . $id;
+                UPDATE stockitemholdings 
+                SET QuantityOnHand = QuantityOnHand - ".$quantity." 
+                WHERE StockItemID=".$id.";";
     $Statement = mysqli_prepare($Connection, $Query);
-    mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
     mysqli_stmt_execute($Statement);
-
 }
 
 // Gets Images from db of product by using $_GET['id']
