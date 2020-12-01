@@ -28,7 +28,7 @@ function GetResult($Connection, $id)
 }
 
 // Aanpassen van voorraad bij afronden bestelling
-function UpdateVoorraad($Connection, $cart, $quantity, $id)
+function UpdateVoorraad($Connection, $quantity, $id)
 {
 
     $Query = "

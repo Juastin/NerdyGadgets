@@ -7,14 +7,16 @@ include "CartFuncties.php";
 include "viewFunctions.php";
 
 
-if (!isset($_POST["afronden"])) {
+if (isset($_POST["afronden"])) {
     $cart = GetCart();
-    $quantity = $_POST['quantity'];
-    $id = $_POST['stockItemID'];
-    UpdateVoorraad($Connection, $cart, $quantity, $id);
-
+    foreach ($cart as $id => $quantity){
+        $quantity = $_POST['quantity'];
+        $id = $_POST['stockItemID'];
+    }
+    UpdateVoorraad($Connection, $quantity, $id);
 }
-print_r($cart);
+
+
 
 ?>
 
