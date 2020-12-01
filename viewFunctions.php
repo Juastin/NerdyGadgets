@@ -27,9 +27,10 @@ function GetResult($Connection, $id)
     }
 }
 
-// Aanpassen van voorraad bij afronden bestelling                           Wouter hulp nodig
-function UpdateVoorraad($Connection, $quantity, $id)
+// Aanpassen van voorraad bij afronden bestelling
+function UpdateVoorraad($Connection, $cart, $quantity, $id)
 {
+
     $Query = "
                 UPDATE Stockitemholdings 
                 SET QuantityOnHand = (QuantityOnHand - '($quantity)') 
@@ -37,6 +38,7 @@ function UpdateVoorraad($Connection, $quantity, $id)
     $Statement = mysqli_prepare($Connection, $Query);
     mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
     mysqli_stmt_execute($Statement);
+
 }
 
 // Gets Images from db of product by using $_GET['id']

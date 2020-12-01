@@ -6,13 +6,16 @@ include __DIR__ . "/header.php";
 include "CartFuncties.php";
 include "viewFunctions.php";
 
+
 if (!isset($_POST["afronden"])) {
     $cart = GetCart();
-    UpdateVoorraad($Connection,$quantity, $id);
-} else {
-    RemoveProductFromCart($_POST["stockItemID"]);
-    $cart = GetCart();
+    $quantity = $_POST['quantity'];
+    $id = $_POST['stockItemID'];
+    UpdateVoorraad($Connection, $cart, $quantity, $id);
+
 }
+print_r($cart);
+
 ?>
 
 <?php //hover in bootstrap nog aanpassen van FFF naar 000, geeft foutmelding ?>
