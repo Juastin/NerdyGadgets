@@ -2,47 +2,12 @@
 $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 include __DIR__ . "/header.php";
-
-$Query = " 
-           SELECT SI.StockItemID, 
-            (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
-            StockItemName,
-            CONCAT('Voorraad: ',QuantityOnHand)AS QuantityOnHand,
-            SearchDetails, 
-            (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
-            (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath   
-            FROM stockitems SI 
-            JOIN stockitemholdings SIH USING(stockitemid)
-            JOIN stockitemstockgroups ON SI.StockItemID = stockitemstockgroups.StockItemID
-            JOIN stockgroups USING(StockGroupID)
-            WHERE SI.stockitemid = ?
-            GROUP BY StockItemID";
-
+include "viewFunctions.php";
+include 'CartFuncties.php';
 $ShowStockLevel = 1000;
-$Statement = mysqli_prepare($Connection, $Query);
-mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
-mysqli_stmt_execute($Statement);
-$ReturnableResult = mysqli_stmt_get_result($Statement);
-if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
-    $Result = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC)[0];
-} else {
-    $Result = null;
-}
-//Get Images
-$Query = "
-                SELECT ImagePath
-                FROM stockitemimages 
-                WHERE StockItemID = ?";
+$Result = GetResult($Connection, $_GET['id']);
+GetImages($Connection);
 
-$Statement = mysqli_prepare($Connection, $Query);
-mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
-mysqli_stmt_execute($Statement);
-$R = mysqli_stmt_get_result($Statement);
-$R = mysqli_fetch_all($R, MYSQLI_ASSOC);
-
-if ($R) {
-    $Images = $R;
-}
 ?>
 <div id="CenteredContent">
     <?php
@@ -81,7 +46,7 @@ if ($R) {
                             </ul>
 
                             <!-- The slideshow -->
-                            <div class="carousel-inner">
+                            <div class="carousel-inner" >
                                 <?php for ($i = 0; $i < count($Images); $i++) {
                                     ?>
                                     <div class="carousel-item <?php print ($i == 0) ? 'active' : ''; ?>">
@@ -119,37 +84,73 @@ if ($R) {
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $Result['SellPrice']); ?></b></p>
-                        <h6> Inclusief BTW </h6>
+                        <h6><b>Inclusief BTW</b></h6>
+                        <h10> Gratis Verzending </h10>
                         <form method="post">
                             <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockItemID" hidden>
                             <input type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="submit" value="Toevoegen aan winkelmand">
                         </form>
                         <?php
                         //Controleren of er op de knop is gedrukt, zo ja voer functie AddProductToCart in het bestand CartFuncties.php uit.
-                        include 'CartFuncties.php';
                         if (isset($_POST['submit'])){
-                            AddProductToCart($_POST['stockItemID']);
+                            AddProductToCart($_POST['stockItemID']); ?>
+                            <script> window.location.href = 'view.php?id=<?php print($Result["StockItemID"])?>'; </script>
+                        <?php
                         }
                         ?>
                     </div>
                 </div>
             </div>
         </div>
+</div></div></div></div>
+        <div id="StockItemDescription" >
+            <h3 ><b>Product Informatie</b></h3>
+            <?php print $Result['SearchDetails'];?></p>
+            <table>
+                <tr>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Etiam a facilisis turpis. In a nulla vestibulum, porttitor eros sit amet, lobortis leo.
+                    Nam malesuada faucibus velit, eu ultrices sapien condimentum vitae.</tr>
 
-        <div id="StockItemDescription">
-            <h3>Artikel beschrijving</h3>
-            <p><?php print $Result['SearchDetails']; ?></p>
+                    <br>
+                    <br>
+
+                <tr>Sed ut libero euismod, vulputate risus id, hendrerit nibh. Maecenas auctor est in tellus ullamcorper venenatis.
+                    Aenean vestibulum velit vel laoreet bibendum.</tr>
+
+                    <br>
+                    <br>
+
+                <hd><b>Plus- en minpunten</b></hd>
+
+                <br>
+
+                <tr><i class="fas fa-plus-circle" style="color:green"></i></tr>
+                <tr>Donec pellentesque odio in nulla mollis, id convallis elit molestie. Nulla facilisi.</tr>
+
+                <br>
+
+                <tr><i class="fas fa-minus-circle" style="color:#ff0000"></i></tr>
+                <tr>Maecenas auctor est in tellus ullamcorper venenatis.
+                Aenean vestibulum velit vel laoreet bibendum.</tr>
+
+                <br>
+                <br>
+
+                <tr><b>Verzending</b><br>Verzending bij alle producten is gratis. Daarbij duurt verwerking en verzending van producten zo'n 2-4 dagen.</tr>
+            </table>
         </div>
+
+    <div>
         <div id="StockItemSpecifications">
-            <h3>Artikel specificaties</h3>
+            <h3><b>Artikel specificaties</b></h3>
             <?php
             $CustomFields = json_decode($Result['CustomFields'], true);
             if (is_array($CustomFields)) { ?>
                 <table>
-                <thead>
-                <th>Naam</th>
-                <th>Data</th>
-                </thead>
+
+                <td><hd><b>Name</b></hd></td>
+                <td><hd><b>Data</b></hd></td>
+
                 <?php
                 foreach ($CustomFields as $SpecName => $SpecText) { ?>
                     <tr>
@@ -177,8 +178,24 @@ if ($R) {
             }
             ?>
         </div>
+    </div>
         <?php
     } else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
+            </div>
+        </div>
+
+
+<div class="row">
+    <div class="col-12">
+    <div class="CenteredContent2">
+<div class="Reviews">
+    <h3>Reviews</h3>
+    <br>
+    <i class="far fa-user-circle ProfileImage "></i>
+    <hr style="background-color:#ffffff">
+</div>
+    </div>
+    </div>
 </div>

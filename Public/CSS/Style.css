@@ -59,7 +59,7 @@ input {
 }
 table tr th,
 table tr td {
-    padding: 10px;
+    padding: 50px;
 }
 ul#ul-class-navigation {
     right: 10px;
@@ -189,7 +189,7 @@ ul#ul-class-navigation li {
     position: absolute;
     height: 100%;
     right: 0;
-    width: 300px;
+    width: 250px;
 }
 .CenterPriceLeftChild {
     position: relative;
@@ -413,6 +413,11 @@ ul#ul-class-price li {
     width: 70%;
     padding-top: 10px;
 }
+.CenteredContent2 {
+    margin: 0 auto;
+    width: 70%;
+    padding-top: 10px;
+}
 .carousel-inner img {
     width: 100%;
     height: 100%;
@@ -475,6 +480,66 @@ ul#ul-class-price li {
 }
 /* Zorgt ervoor dat de add to cart button groen is en dat de tekst bold is */
 .addToCartButton.btn {
-    background-color: #32CD32;
+    background-color: #ffff00;
     font-weight: bold;
+}
+/* voegt een rode knop toe met dikgedrukte letters voor het verwijderen van producten uit een winkelmand */
+.removeFromCartButton.btn {
+    background-color: #ff0000;
+    font-weight: bold;
+}
+button.update {
+    margin: 4px;
+    cursor: pointer;
+    width: 100px;
+    height: 45px;
+    background-color: #676EFF;
+    font-weight: bold;
+}
+
+input.field {
+    text-align: center;
+    width: 70px;
+    heigt: 40px;
+    margin: 4px;
+    color: #23232F;
+}
+
+.regfieldInfo {
+    font-size: 13px;
+}
+.loginTekst, .loginInput {
+    margin-top: 50px;
+}
+.loginTekst {
+    color: #ffff00;
+}
+.accountHeader {
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 20px;
+}
+.accountContainer {
+    margin-top: 30px;
+    margin-left: 110px;
+}
+.img-container {
+    text-align: center;
+}
+.borderOrderItems{
+    border: 1px;
+    color: #ffffff;
+
+.ProfileImage {
+    font-size: 60px;
+    margin: 10px;
+}
+.Reviews {
+    margin-top:10px;
+    background-color:rgba(35, 40, 47, 0.8);
+    border:1px solid;
+    font-family:pt-sans, sans-serif;
+    font-size: 20px;
+    padding: 10px;
+
 }
