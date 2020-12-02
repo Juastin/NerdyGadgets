@@ -30,7 +30,6 @@ function GetResult($Connection, $id)
 // Aanpassen van voorraad bij afronden bestelling
 function UpdateVoorraad($Connection, $quantity, $id)
 {
-    print($quantity . " " . $id);
     $Query = "
                 UPDATE stockitemholdings 
                 SET QuantityOnHand = QuantityOnHand - ".$quantity." 
