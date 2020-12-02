@@ -5,11 +5,18 @@
 <>
 <?php
 $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
+$ConnectionSimple = mysqli_connect("localhost", "root", "", "nerdygadgets_simple");
 mysqli_set_charset($Connection, 'latin1');
 session_start();
 include __DIR__ . "/header.php";
 include "viewFunctions.php";
 include "CartFuncties.php";
+include "accountFunctions.php";
+
+
+if (isset($_SESSION['loggedIn']) == True) {
+    $user = getInformation($ConnectionSimple, $_SESSION['user']);
+}
 
 $nameErr = $emailErr = $addressErr = $placeErr = $postalcodeErr = $houseErr = "";
 $name = $email = $address = $place = $postalcode = $housenumber = "";
@@ -37,14 +44,14 @@ $cart = GetCart();
     <!--Begin hieronder aan de formulieren.-->
     <div class="row">
         <div class="col-8" style="border: 1px solid;">
-        <form method='post'>
+        <form method='post' action="afrekenpagina.php">
                      <h4 style="text-align: center;">Order gegevens</h4><br>
             <!--Name + Email-->
             <label for='fname'><i class='fa fa-user' style=" margin-left: 50px;"></i> Full Name</label>
             <label for='email'><i class='fa fa-envelope' style=" margin-left: 510px;"></i> Email</label><br>
             <!--Input Name + Email-->
-            <input style="width:43.5%; margin-left: 50px;" type='text' name='name' value="<?php if (isset($_SESSION['name'])) {print($_SESSION['name']);} ?>" required>
-            <input style="width:43.5%; margin-left: 50px;" type='text' id='email' name='email' value="<?php if (isset($_SESSION['email'])) {print($_SESSION['email']);} ?>" required><br>
+            <input style="width:43.5%; margin-left: 50px;" type='text' name='name' value="<?php if (isset($user)) { print($user['firstName'] . " "); if (!empty($user['middleName'])) { print($user['middleName'] . " "); }; print($user['lastName']); } ?>" required>
+            <input style="width:43.5%; margin-left: 50px;" type='text' id='email' name='email' value="<?php if (isset($user)) { print($user['email']); } ?>" required><br>
             <!--Gender en Address-->
             <br><label for="gender" style="margin-left: 50px;"> Gender</label>
             <label for='adr'><i style="margin-left: 125px;"></i> Address</label><br>
@@ -56,21 +63,21 @@ $cart = GetCart();
                 <option value="onzijdig">Onzijdig</option>
             </select>
             <!--Adress input-->
-            <input type='text' style="margin-left: 50px; width:76.8%" id='adr' name='address' value="<?php if (isset($_SESSION['address'])) {print($_SESSION['address']);} ?>" required><br>
+            <input type='text' style="margin-left: 50px; width:76.8%" id='adr' name='address' value="<?php if (isset($user)) { print($user['address']); } ?>" required><br>
             <!--Place-->
             <br><label for='place'><i style="margin-left: 50px;"></i> Place</label><br>
-            <input type='text' style="margin-left: 50px; width: 91%" id='city' name='city' value="<?php if (isset($_SESSION['city'])) {print($_SESSION['city']);} ?>" required><br>
+            <input type='text' style="margin-left: 50px; width: 91%" id='city' name='city' value="<?php if (isset($user)) { print($user['city']); } ?>" required><br>
 
             <!--Postal code and house number-->
             <br><label for='adr' style="margin-left: 50px;"> Postal Code</label>
             <label for='adr'><i style="margin-left: 960px;"></i> House Number</label><br>
             <!--Input postal code and House number-->
-            <input type='text' style="margin-left: 50px; width: 85%" id='postalcode' name='postalcode' value="<?php if (isset($_SESSION['postalcode'])) {print($_SESSION['postalcode']);} ?>" required>
-            <input type='text' style="margin-left: 15px; width: 4%" id='adr' name='housenumber' value="<?php if (isset($_SESSION['housenumber'])) {print($_SESSION['housenumber']);} ?>" required><br>
+            <input type='text' style="margin-left: 50px; width: 85%" id='postalcode' name='postalcode' value="<?php if (isset($user)) { print($user['postalCode']); } ?>" required>
+            <input type='text' style="margin-left: 15px; width: 4%" id='adr' name='housenumber' value="<?php if (isset($user)) { print($user['houseNumber']); } ?>" required><br>
             <br>
             <div style="text-align: center;">
             <br><input type='submit' style="width: 20%;"value='Send' name="submit">
-                <?php
+                <?php /*
         if (isset($_POST["submit"])) {
                 $email = test_input($_POST["email"]);
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -78,8 +85,8 @@ $cart = GetCart();
                 } else { ?>
                     <h3 style="color: green; text-align: center;"><?php print("Ga naar andere pagina"); ?></h3> <?php
                 }
-        }?>
-                <h3 style="color: red; text-align: center;"><?php print($emailErr); ?></h3>
+        } */ ?>
+                <!--<h3 style="color: red; text-align: center;"><?php // print($emailErr); ?></h3> -->
                 </form>
             </div>
         </div>
