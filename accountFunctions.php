@@ -89,8 +89,8 @@ function getInformation($connection, $email){
 // Saves a review together with the id of the belonging user and the id of the belonging stockitem out of posts from view.php
 // @Param $connection: mysqli_connect
 // @Param $userId: $_POST['reviewer']
-// $Param $review: $_POST['review']
-// $Param $stockitem: $_POST['stockitemid']
+// @Param $review: $_POST['review']
+// @Param $stockitem: $_POST['stockitemid']
 // @Return: void
 function PlaceReview($connection, $userId, $review, $stockitem) {
     $query = "INSERT INTO review (reviewer, review, stockitem) VALUES ('".$userId."','".$review."','".$stockitem."')";
