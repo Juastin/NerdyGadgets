@@ -43,7 +43,7 @@ include "CartFuncties.php";
 </head>
 <body>
 <div class="Background">
-    <span class="row" id="Header">
+    <div class="row" id="Header">
         <div class="col-2"><a href="./" id="LogoA">
                 <div id="LogoImage"></div>
             </a></div>
@@ -82,9 +82,9 @@ include "CartFuncties.php";
                     <a href="accountpage.php" class="HrefDecoration col-2"><i class="fas fa-user"></i></a>
                 </li>
                 <li>
-                    <span style="font-size: 14px; font-weight: 900; color: #FFFF00; margin-left: 40px; margin-right: -52px; vertical-align: 9px; width: 8px;"><?php headerCartAmount();?> </span>
+                    <span style="font-size: 14px; font-weight: 900; color: #FFFF00; margin-left: 40px; margin-right: -53px; vertical-align: 7px; width: 8px;"> <?php headerCartAmount();?> </span>
                 <a href="shoppingcart.php" class="HrefDecoration col-2"><i class="fas fa-shopping-cart">
-                    </i> &nbsp;</a>
+                    </i> &nbsp; </a>
                 </li>
                 <li>
                     <a href="browse.php" class="HrefDecoration col-2"><i class="fas fa-search" style="color:#676EFF;"></i></a>
