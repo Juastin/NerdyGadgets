@@ -30,12 +30,11 @@ $cart = GetCart();
 
 <div>
     <header>
-        <h2 style="text-align:left;">Orderpage</h2>
-        <h6 style="text-align:right;">Aanvullende beschrijving</h6>
+        <div class="row col-12">
+            <h2 style="text-align: left;" class="col-2">Orderpagina</h2>
+            <h4 style="text-align:right;" class="col-10">Aanvullende informatie</h4>
+        </div>
     </header>
-
-    <hr color="white">
-
     <style>
 
     </style>
@@ -75,7 +74,7 @@ $cart = GetCart();
             <input type='text' style="margin-left: 15px; width: 4%" id='adr' name='housenumber' value="<?php if (isset($user)) { print($user['houseNumber']); } ?>" required><br>
             <br>
             <div style="text-align: center;">
-            <br><input type='submit' style="width: 20%;"value='Send' name="submit">
+            <br><input type='submit' style="width: 20%; background-color: #FFFF00;"value='Send' class="btn btn-primary btn-outline-dark font-weight-bold" name="submit">
                 <?php /*
         if (isset($_POST["submit"])) {
                 $email = test_input($_POST["email"]);
