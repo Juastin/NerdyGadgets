@@ -79,7 +79,7 @@ function headerCartAmount() {
     foreach ($cart as $item => $amount) {
         $totaalartikelen = $totaalartikelen+$amount;
     }
-    print($totaalartikelen);
+    return($totaalartikelen);
 }    
 function UpdateProduct($stockItemID,$quantity){
     $cart = GetCart();
