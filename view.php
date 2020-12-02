@@ -5,7 +5,6 @@ mysqli_set_charset($Connection, 'latin1');
 mysqli_set_charset($Connection2, 'latin1');
 include __DIR__ . "/header.php";
 include "viewFunctions.php";
-include 'CartFuncties.php';
 include 'accountFunctions.php';
 $ShowStockLevel = 1000;
 $Result = GetResult($Connection, $_GET['id']);
