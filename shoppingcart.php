@@ -6,14 +6,16 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 session_start();
 include __DIR__ . "/header.php";
-include "CartFuncties.php";
 include "viewFunctions.php";
 
 if (!isset($_POST["submit"])) {
     $cart = GetCart();
-} else {
-    RemoveProductFromCart($_POST["stockItemID"]);
-    $cart = GetCart();
+    $_SESSION['cart'] = $cart;
+    } else {
+    RemoveProductFromCart($_POST["stockItemID"]); ?>
+    <script> window.location.href = 'shoppingcart.php'; </script>
+<?php $cart = GetCart();
+    $_SESSION['cart'] = $cart;
 }
 
 

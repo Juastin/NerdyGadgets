@@ -478,6 +478,7 @@ ul#ul-class-price li {
     border: 1px rgb(98, 158, 255) solid;
     color: #fff;
 }
+/* Zorgt ervoor dat de add to cart button groen is en dat de tekst bold is */
 .addToCartButton.btn {
     background-color: #ffff00;
     font-weight: bold;
