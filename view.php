@@ -15,8 +15,19 @@ If (isset($_SESSION['user'])) {
 }
 $ResultReviewers= ViewReview($Connection2, $Result["StockItemID"]);
 GetImages($Connection);
-
+$cart = GetCart();
 ?>
+<head>
+  <div id="CenteredContent">
+   <?php   if(isset($cart[$Result["StockItemID"]])) { ?>
+          <p id="MessageAfterAddingItem"><?php print("Dit item zit al in de winkelwagen, wilt u verder winkelen of naar de winkelwagen gaan?") ?> </p>
+        <div class="btn-group" id="ArticleHeader" style="height: 50px">
+            <a href="browse.php" class="btn btn-primary btn-outline-dark continueShopping" role="button"> <i class="fas fa-arrow-left"></i> &nbsp; Verder winkelen</a>
+            <a href="shoppingcart.php" class="btn btn-primary btn-outline-dark goToCart" role="button"> Naar de winkelwagen &nbsp; <i class="fas fa-arrow-right"></i></a>
+        </div>
+      <?php } ?>
+  </div>
+</head>
 <div id="CenteredContent">
     <?php
     if ($Result != null) {
@@ -54,7 +65,7 @@ GetImages($Connection);
                             </ul>
 
                             <!-- The slideshow -->
-                            <div class="carousel-inner">
+                            <div class="carousel-inner" >
                                 <?php for ($i = 0; $i < count($Images); $i++) {
                                     ?>
                                     <div class="carousel-item <?php print ($i == 0) ? 'active' : ''; ?>">
@@ -81,8 +92,6 @@ GetImages($Connection);
                 <?php
             }
             ?>
-
-
             <h1 class="StockItemID">Artikelnummer: <?php print $Result["StockItemID"]; ?></h1>
             <h2 class="StockItemNameViewSize StockItemName">
                 <?php print $Result['StockItemName']; ?>
@@ -92,40 +101,72 @@ GetImages($Connection);
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $Result['SellPrice']); ?></b></p>
-                        <h6> Inclusief BTW </h6>
+                        <h6><b>Inclusief BTW</b></h6>
+                        <h10> Gratis Verzending </h10>
                         <form method="post">
                             <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockItemID" hidden>
-                            <input type="submit" class="btn btn-primary btn-outline-dark addToCartButton" name="submit" value="Toevoegen aan winkelmand">
+                            <input id= "button" type="submit" class="btn btn-primary btn-outline-dark addAndAddedToCartButton" name="submit" value="Toevoegen aan winkelmand +">
                         </form>
-                        <?php
-                        if (isset($_POST['submit'])){
-                            AddProductToCart($_POST['stockItemID']);
-                        }
-                        ?>
+                        <?php  if (isset($cart[$Result["StockItemID"]]) && (($cart[$Result["StockItemID"]]) > 0)) { ?>
+                        <script> NotificationAddedItem() </script>
+                          <?php }
+                          if (isset($_POST['submit'])){
+                            AddProductToCart($_POST['stockItemID']); ?>
+                          <script>  window.location.href = 'view.php?id=<?php print($Result["StockItemID"])?>'; </script>
+                       <?php  } ?>
                     </div>
                 </div>
             </div>
         </div>
 </div></div></div></div>
+        <div id="StockItemDescription" >
+            <h3 ><b>Product Informatie</b></h3>
+            <?php print $Result['SearchDetails'];?></p>
+            <table>
+                <tr>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Etiam a facilisis turpis. In a nulla vestibulum, porttitor eros sit amet, lobortis leo.
+                    Nam malesuada faucibus velit, eu ultrices sapien condimentum vitae.</tr>
 
+                    <br>
+                    <br>
 
-        <div class="row">
-            <div class ="CenteredContent2">
-            <div class= "col-6" id="StockItemDescription">
-            <h3>Artikel beschrijving</h3>
-            <p><?php print $Result['SearchDetails']; ?></p>
-             </div>
+                <tr>Sed ut libero euismod, vulputate risus id, hendrerit nibh. Maecenas auctor est in tellus ullamcorper venenatis.
+                    Aenean vestibulum velit vel laoreet bibendum.</tr>
 
-            <div class= "col-6" id="StockItemSpecifications">
-            <h3>Artikel specificaties</h3>
+                    <br>
+                    <br>
+
+                <hd><b>Plus- en minpunten</b></hd>
+
+                <br>
+
+                <tr><i class="fas fa-plus-circle" style="color:green"></i></tr>
+                <tr>Donec pellentesque odio in nulla mollis, id convallis elit molestie. Nulla facilisi.</tr>
+
+                <br>
+
+                <tr><i class="fas fa-minus-circle" style="color:#ff0000"></i></tr>
+                <tr>Maecenas auctor est in tellus ullamcorper venenatis.
+                Aenean vestibulum velit vel laoreet bibendum.</tr>
+
+                <br>
+                <br>
+
+                <tr><b>Verzending</b><br>Verzending bij alle producten is gratis. Daarbij duurt verwerking en verzending van producten zo'n 2-4 dagen.</tr>
+            </table>
+        </div>
+
+    <div>
+        <div id="StockItemSpecifications">
+            <h3><b>Artikel specificaties</b></h3>
             <?php
             $CustomFields = json_decode($Result['CustomFields'], true);
             if (is_array($CustomFields)) { ?>
                 <table>
-                <thead>
-                <th>Naam</th>
-                <th>Data</th>
-                </thead>
+
+                <td><hd><b>Name</b></hd></td>
+                <td><hd><b>Data</b></hd></td>
+
                 <?php
                 foreach ($CustomFields as $SpecName => $SpecText) { ?>
                     <tr>
@@ -153,6 +194,7 @@ GetImages($Connection);
             }
             ?>
         </div>
+    </div>
         <?php
     } else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
