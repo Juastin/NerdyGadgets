@@ -20,12 +20,7 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple");?>
     if (isset($_POST['email']) && isset($_POST['password'])){
         if (login($Connection, $_POST['email'], $_POST['password']) == true) {
             ?>
-            <div class="row"></div>
-            <div class="col-2"></div><br>
-            <form class="col-8" action="http://localhost/nerdygadgets/">
-                <a>U bent ingelogd, klik op de knop om terug te gaan.</a>
-                <input class="loginInput btn btn-primary btn-outline-dark addToCartButton" type="submit" value="Ga terug naar de homepagina." />
-            </form>
+            <script>window.location.href = 'index.php'</script>
             <?php
         }
         else {
