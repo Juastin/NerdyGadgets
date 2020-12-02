@@ -1,5 +1,6 @@
 <?php
 
+
 //ophalen van winkelmandje
 function GetCart() {
     if (isset($_SESSION['cart'])) { //controleren of winkelmandje al bestaat
@@ -64,3 +65,24 @@ function RemoveProductFromCart($stockItemID){
     }
 
 </script>
+<?php 
+function headerCartAmount() {
+    $totaalartikelen = 0;
+    $cart = GetCart();
+    foreach ($cart as $item => $amount) {
+        $totaalartikelen = $totaalartikelen+$amount;
+    }
+    print($totaalartikelen);
+}    
+function UpdateProduct($stockItemID,$quantity){
+    $cart = GetCart();
+
+    if (array_key_exists($stockItemID, $cart)) { // controleren of product al in winkelmandje zit
+        $cart[$stockItemID] = $quantity;//zo ja, verander aantal in winkelmandje
+    } else {
+        $cart[$stockItemID] = 1;//zo nee, product toevoegen aan winkelmandje
+    }
+
+    SaveCart($cart);
+}
+
