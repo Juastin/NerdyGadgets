@@ -85,3 +85,25 @@ function getInformation($connection, $email){
     $result = mysqli_query($connection, $query);
     return mysqli_fetch_assoc($result);
 }
+
+// Saves a review together with the id of the belonging user and the id of the belonging stockitem out of posts from view.php
+// @Param $connection: mysqli_connect
+// @Param $userId: $_POST['reviewer']
+// @Param $review: $_POST['review']
+// @Param $stockitem: $_POST['stockitemid']
+// @Return: void
+function PlaceReview($connection, $userId, $review, $stockitem) {
+    $query = "INSERT INTO review (reviewer, review, stockitem) VALUES ('".$userId."','".$review."','".$stockitem."')";
+    $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_execute($statement);
+}
+
+// Returns reviewers with their reviews and datetime of placing, belonging to the specific article at view.php from database
+// @Param $connection: mysqli_connect
+// @Param $stockitemAtshop: $Result["StockItemID"]
+// @Return: associative array: Array ([] => Array (firstName, middleName, lastName, review, stockitem, date);
+function ViewReview($connection, $stockitemAtShop) {
+    $query = "SELECT firstName, middleName, lastName, review, stockitem , date FROM review JOIN user ON userId = reviewer WHERE stockitem = $stockitemAtShop ORDER BY date DESC";
+    $result = mysqli_query($connection, $query);
+    return  mysqli_fetch_all($result,MYSQLI_ASSOC);
+}

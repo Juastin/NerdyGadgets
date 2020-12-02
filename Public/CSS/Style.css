@@ -572,15 +572,65 @@ button.toevoegen {
     border: 1px;
     color: #ffffff;
 }
-.ProfileImage {
+/* Bepaalt de opmaak van het profielplaatje van de reviewer */
+.profileImage {
     font-size: 60px;
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom:10px;
+    margin-left: 10px;
+    margin-right: 0px;
 }
-.Reviews {
+/* Bepaalt de opmaak van het gedeelte waar reviews in geplaatst kunnen worden */
+.reviewsArea {
     margin-top:10px;
     background-color:rgba(35, 40, 47, 0.8);
     border:1px solid;
     font-family:pt-sans, sans-serif;
     font-size: 20px;
     padding: 10px;
-  }
+    margin-bottom: 10px;
+}
+/* Bepaalt de opmaak van de plaats waar een review geschreven wordt */
+.writeAReview {
+    margin-left: 80px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Bepaalt de plaats van de naam van de reviewer */
+.nameReviewer {
+    margin-left: 8px;
+}
+
+/* Bepaalt de opmaak van de knop voor het plaatsen van een review*/
+.addReviewButton.btn {
+    background-color: #ffff00;
+    font-weight: bold;
+    width: 200px;
+}
+
+/* Bepaalt de opmaak van de knop voor het willen schrijven van een review */
+.writeReviewButton.btn {
+    background-color: #ffff00;
+    font-weight: bold;
+    width: 300px;
+    float: right;
+    margin-bottom: 10px;
+}
+
+/* Bepaalt de opmaak van de scheidingslijnen tussen de reviews*/
+.breakLine {
+    background-color:#ffffff;
+}
+
+/*Bepaalt de grootte van de datum die bij een review geplaatst wordt*/
+.dateTime {
+    font-size: 17px;
+}
+
+/* Bepaalt de opmaak van de tekst die aangeeft dat er nog geen reviews geplaats zijn van een bepaald product*/
+.noReviewsYet{
+    margin-bottom:30px;
+    margin-left:80px;
+    color:#007bff;
+}
