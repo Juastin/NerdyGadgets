@@ -82,12 +82,12 @@ include "CartFuncties.php";
                     <a href="accountpage.php" class="HrefDecoration col-2"><i class="fas fa-user"></i></a>
                 </li>
                 <li>
-                    <div style="font-size: 14px; font-weight: 900; color: #FFFF00; margin-left: 40px; height: 14px; width: 8px;"> <?php headerCartAmount();?> </div>
+                    <span style="font-size: 14px; font-weight: 900; color: #FFFF00; margin-left: 40px; margin-right: -53px; vertical-align: 7px; width: 8px;"> <?php headerCartAmount();?> </span>
                 <a href="shoppingcart.php" class="HrefDecoration col-2"><i class="fas fa-shopping-cart">
-                    </i> &nbsp; Winkelmand </a>
+                    </i> &nbsp; </a>
                 </li>
                 <li>
-                    <a href="browse.php" class="HrefDecoration col-2"><i class="fas fa-search" style="color:#676EFF;"></i> Zoeken</a>
+                    <a href="browse.php" class="HrefDecoration col-2"><i class="fas fa-search" style="color:#676EFF;"></i></a>
                 </li>
         </ul>
     </div>
