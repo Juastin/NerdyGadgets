@@ -91,7 +91,7 @@ if (!isset($_POST["submit"])) {
                                     Selecteer aantal:
                                     <input type="number" min="1" max="<?php print($voorraad['QuantityOnHand'])?>" name="quantity" id="quantity" value="<?php print_r($amount) ?>"  class="field">
                                     <input type="text" name="productId" id="productId" value="<?php print_r($item) ?>" hidden>
-                                    <button type="submit" name="update" id="update" class="update">Update</button>
+                                    <button type="submit" name="update" id="update" class="toevoegen">Update</button>
                                 </form>
                             </div>
                         </td>
