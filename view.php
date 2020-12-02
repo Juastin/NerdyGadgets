@@ -198,9 +198,6 @@ $cart = GetCart();
     } else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
-            </div>
-        </div>
-
 
 <div class="row">
     <div class="col-12">
