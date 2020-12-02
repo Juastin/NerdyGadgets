@@ -16,12 +16,12 @@ if (isset($_SESSION['cart'])) {
     unset($_SESSION['cart']);
     ?>
     <body>
-
+    <div class="container" style="text-align: center;">
     <?php print "U heeft betaald!🎉 🎉 🙌. <br> Wij gaan meteen voor u aan de slag!👷 🛒 "; ?>
-
+    </div>
     </body>
 <?php
 }
 else {
-    
+
 }
