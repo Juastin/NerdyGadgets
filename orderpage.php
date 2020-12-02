@@ -43,7 +43,7 @@ $cart = GetCart();
     <!--Begin hieronder aan de formulieren.-->
     <div class="row">
         <div class="col-8" style="border: 1px solid;">
-        <form method='post' action="afrekenpagina.php">
+        <form method='post' action="afrondingBestelling.php">
                      <h4 style="text-align: center;">Order gegevens</h4><br>
             <!--Name + Email-->
             <label for='fname'><i class='fa fa-user' style=" margin-left: 50px;"></i> Full Name</label>
