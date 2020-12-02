@@ -3,7 +3,6 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 include __DIR__ . "/header.php";
 include "viewFunctions.php";
-include 'CartFuncties.php';
 $ShowStockLevel = 1000;
 $Result = GetResult($Connection, $_GET['id']);
 GetImages($Connection);
@@ -92,7 +91,9 @@ GetImages($Connection);
                         </form>
                         <?php
                         if (isset($_POST['submit'])){
-                            AddProductToCart($_POST['stockItemID']);
+                            AddProductToCart($_POST['stockItemID']); ?>
+                            <script> window.location.href = 'view.php?id=<?php print($Result["StockItemID"])?>'; </script>
+                        <?php
                         }
                         ?>
                     </div>
