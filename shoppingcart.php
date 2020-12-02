@@ -1,19 +1,21 @@
 <head>
 </head>
-<body>
+<div>
 <?php
 $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 session_start();
 include __DIR__ . "/header.php";
-include "CartFuncties.php";
 include "viewFunctions.php";
 
 if (!isset($_POST["submit"])) {
     $cart = GetCart();
-} else {
-    RemoveProductFromCart($_POST["stockItemID"]);
-    $cart = GetCart();
+    $_SESSION['cart'] = $cart;
+    } else {
+    RemoveProductFromCart($_POST["stockItemID"]); ?>
+    <script> window.location.href = 'shoppingcart.php'; </script>
+<?php $cart = GetCart();
+    $_SESSION['cart'] = $cart;
 }
 
 
@@ -132,7 +134,6 @@ if (!isset($_POST["submit"])) {
         <br>
     </form>
 </div>
-
 <div>
     <table style="text-align:right">
         <td style="text-align:right;" name="Totaal">Totaal Artikelen</td>
@@ -160,4 +161,3 @@ if (!isset($_POST["submit"])) {
         <a href="afrondingBestelling.php" class="btn btn-primary btn-outline-dark font-weight-bold" style="background-color: #FFFF00;" id="afronden" role="button"> Verder Gaan &nbsp; <i class="fas fa-arrow-right"></i></a>
     </div>
 </form>
-
