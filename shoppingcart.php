@@ -154,7 +154,7 @@ if (!isset($_POST["submit"])) {
     <div style="text-align: center;">
         <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockItemID" hidden>
         <input type="number" value='<?php print($Result["QuantityOnHand"]) ?>' name="QuantityOnHand" hidden>
-        <a href="afrondingBestelling.php" class="btn btn-primary btn-outline-dark font-weight-bold" style="background-color: #FFFF00;" id="afronden" role="button"> Verder Gaan &nbsp; <i class="fas fa-arrow-right"></i></a>
+        <a href="orderpage.php" class="btn btn-primary btn-outline-dark font-weight-bold" style="background-color: #FFFF00;" id="afronden" role="button"> Verder Gaan &nbsp; <i class="fas fa-arrow-right"></i></a>
     </div>
 </form>
 </div>
