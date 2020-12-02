@@ -539,7 +539,14 @@ input.field {
     margin: 4px;
     color: #23232F;
 }
-
+button.toevoegen {
+    margin: 4px;
+    cursor: pointer;
+    width: 100px;
+    height: 45px;
+    background-color: #676EFF;
+    font-weight: bold;
+}
 .regfieldInfo {
     font-size: 13px;
 }
@@ -576,5 +583,4 @@ input.field {
     font-family:pt-sans, sans-serif;
     font-size: 20px;
     padding: 10px;
-
-}
+  }
