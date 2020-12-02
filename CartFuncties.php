@@ -55,3 +55,15 @@ function RemoveProductFromCart($stockItemID){
             unset($cart[$stockItemID]); // item uit winkelmand verwijderen
         SaveCart($cart); // winkelmandje opslaan
     }
+    
+function UpdateProduct($stockItemID,$quantity){
+    $cart = GetCart();
+
+    if (array_key_exists($stockItemID, $cart)) { // controleren of product al in winkelmandje zit
+        $cart[$stockItemID] = $quantity;//zo ja, verander aantal in winkelmandje
+    } else {
+        $cart[$stockItemID] = 1;//zo nee, product toevoegen aan winkelmandje
+    }
+
+    SaveCart($cart);
+}
