@@ -1,11 +1,19 @@
 <?php
 $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
+$Connection2 = mysqli_connect("localhost", "root", "", "nerdygadgets_simple");
 mysqli_set_charset($Connection, 'latin1');
+mysqli_set_charset($Connection2, 'latin1');
 include __DIR__ . "/header.php";
 include "viewFunctions.php";
 include 'CartFuncties.php';
+include 'accountFunctions.php';
 $ShowStockLevel = 1000;
 $Result = GetResult($Connection, $_GET['id']);
+
+If (isset($_SESSION['user'])) {
+    $ResultUser = getInformation($Connection2, $_SESSION['user']);
+}
+$ResultReviewers= ViewReview($Connection2, $Result["StockItemID"]);
 GetImages($Connection);
 
 ?>
@@ -156,12 +164,66 @@ GetImages($Connection);
 <div class="row">
     <div class="col-12">
     <div class="CenteredContent2">
-<div class="Reviews">
+<div class="reviewsArea">
+
+    <div>
     <h3>Reviews</h3>
     <br>
-    <i class="far fa-user-circle ProfileImage "></i>
-    <hr style="background-color:#ffffff">
+    </div>
+
+   <div>
+       <div>
+           <?php  if ($ResultReviewers == null) { ?>
+              <div class="noReviewsYet"> <?php print("Er zijn nog geen reviews over dit product geschreven. Wees de eerste!"); ?> </div>
+        <?php   }
+           else {?>
+
+           <?php foreach ($ResultReviewers as $reviewer) { ?>
+               <i class="far fa-user-circle ProfileImage "></i>
+               <span class="nameReviewer"> <?php print($reviewer['firstName'] . " " . $reviewer['middleName'] . " " . $reviewer['lastName'] . " " )?> <i class="dateTime"><?php print($reviewer['date']) ?> </i> <?php print("<br>")?></span>
+          <div class= "writeAReview ">
+           <textarea readonly="readonly" disabled="disabled" rows="3" cols="80"> <?php print($reviewer['review']) ?> </textarea>
+          </div>
+               <hr class="breakLine">
+               <?php
+           }}?>
+       </div>
+   </div>
+
+<?php if(isset($_SESSION['user'])) {?>
+    <div>
+        <div>
+        <i class="far fa-user-circle ProfileImage "></i>
+        <span class="nameReviewer"><?php print($ResultUser['firstName'] . " " . $ResultUser['middleName'] . " " .$ResultUser['lastName'])?> </span>
+    </div>
+        <div class="writeAReview">
+            <form method="post">
+                <textarea maxlength="10000" rows="5" cols="80" placeholder="Schrijf hier uw review" name="review"></textarea>
+                <input type="number" value='<?php print($ResultUser['userId']) ?>' name="reviewer" hidden>
+                <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockitemid" hidden>
+                <input type="submit" class="btn btn-primary btn-outline-dark addReviewButton" value="Review plaatsen" name="submit3">
+           <?php if(isset($_POST['submit3'])) {
+               PlaceReview($Connection2, $_POST['reviewer'], $_POST['review'], $_POST['stockitemid']); ?>
+               <script> window.location.href = 'view.php?id=<?php print($Result["StockItemID"])?>'; </script>
+         <?php  }?>
+            </form>
+        </div>
+    </div>
+    <?php } ?>
+
 </div>
     </div>
     </div>
 </div>
+
+<?php if(!isset($_SESSION['user'])) { ?>
+    <div class="row">
+            <div class="CenteredContent2">
+                <div class="col-12">
+                    <form>
+                        <a href="login.php" class="btn btn-primary btn-outline-dark writeReviewButton" role="button">Ik wil een review schrijven <i class="fas fa-pen-fancy"></i></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+<?php } ?>
