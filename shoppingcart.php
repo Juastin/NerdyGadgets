@@ -40,6 +40,7 @@ if (!isset($_POST["submit"])) {
             $productId = $_POST['productId'];
             $quantity = $_POST['quantity'];
             UpdateProduct($productId,$quantity);
+            ?> <script> window.location.href = 'shoppingcart.php'; </script> <?php
         }
 
 
