@@ -99,7 +99,7 @@ GetImages($Connection);
                 </div>
             </div>
         </div>
-
+</div></div></div></div>
         <div id="StockItemDescription" >
             <h3 ><b>Product Informatie</b></h3>
             <?php print $Result['SearchDetails'];?></p>
@@ -180,4 +180,19 @@ GetImages($Connection);
     } else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
+            </div>
+        </div>
+
+
+<div class="row">
+    <div class="col-12">
+    <div class="CenteredContent2">
+<div class="Reviews">
+    <h3>Reviews</h3>
+    <br>
+    <i class="far fa-user-circle ProfileImage "></i>
+    <hr style="background-color:#ffffff">
+</div>
+    </div>
+    </div>
 </div>

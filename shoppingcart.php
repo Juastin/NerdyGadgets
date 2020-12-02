@@ -1,6 +1,6 @@
 <head>
 </head>
-<body>
+<div>
 <?php
 $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
@@ -129,24 +129,26 @@ if (!isset($_POST["submit"])) {
         <br>
     </form>
 </div>
+<table style="text-align:right">
+    <td style="text-align:right;" name="Totaal">Totaal Artikelen</td>
+    <td style="text-align:right;" name="Prijs1">Prijs</td>
+</table>
 
-<div>
-    <table style="text-align:right">
-        <td style="text-align:right;" name="Totaal">Totaal Artikelen</td>
-        <td style="text-align:right;" name="Prijs1">Prijs</td>
-    </table>
+<table>
+    <td style="text-align:right;" name="Verzendkosten">Verzendkosten</td>
+    <td style="text-align:right;" name="Prijs2">Prijs</td>
+</table>
 
-    <table>
-        <td style="text-align:right;" name="Verzendkosten">Verzendkosten</td>
-        <td style="text-align:right;" name="Prijs2">Gratis</td>
-    </table>
+<hr color="white" style="width:10%;">
 
-    <hr color="white" style="width:10%;">
+<table>
+    <td style="text-align:right;" name="Totaal">Totaal Artikelen</td>
+    <td style="text-align:right;" name="Prijs3">Prijs</td>
+    </td>
+</table>
 
-    <table>
-        <td style="text-align:right;" name="Totaal">Totaal Artikelen</td>
-        <td style="text-align:right;" name="Prijs3">Prijs</td>
-        </td>
-    </table>
-</div>
-
+    <form method="post" action="orderpage.php">
+        <div style="text-align: center;">
+            <a href="orderpage.php" class="btn btn-primary btn-outline-dark" style="background-color: #FFFF00;" role="button"> Vedergaan &nbsp; <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </form>
