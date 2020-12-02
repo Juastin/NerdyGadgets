@@ -91,7 +91,7 @@ if (!isset($_POST["submit"])) {
                                     Selecteer aantal:
                                     <input type="number" min="1" max="<?php print($voorraad['QuantityOnHand'])?>" name="quantity" id="quantity" value="<?php print_r($amount) ?>"  class="field">
                                     <input type="text" name="productId" id="productId" value="<?php print_r($item) ?>" hidden>
-                                    <button type="submit" name="update" id="update" class="toevoegen">Update</button>
+                                    <button type="submit" name="update" id="update" class="btn btn-primary btn-outline-dark toevoegen">Update</button>
                                 </form>
                             </div>
                         </td>
@@ -131,7 +131,7 @@ if (!isset($_POST["submit"])) {
             <td>
                 <label for="kortingsbon">Vul hier je kortingscode in (optioneel):</label><br>
                 <input type="text" id="kortingsbon" name="kortingsbon" style="width:350px">
-                <button type="submit" name="codetoevoegen" id="toevoegen" class="toevoegen">Toevoegen</button>
+                <button type="submit" name="codetoevoegen" id="toevoegen" class="btn btn-primary btn-outline-dark toevoegen">Toevoegen</button>
             </td>
                 <br>
         </form>
