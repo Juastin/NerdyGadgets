@@ -1,16 +1,23 @@
+
+<head>
+</head>
+<div>
 <?php
 $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
 mysqli_set_charset($Connection, 'latin1');
 session_start();
 include __DIR__ . "/header.php";
-include "CartFuncties.php";
 include "viewFunctions.php";
 
 if (!isset($_POST["submit"])) {
     $cart = GetCart();
-} else {
+    $_SESSION['cart'] = $cart;
+    } else {
     RemoveProductFromCart($_POST["stockItemID"]);
-    $cart = GetCart();
+    $cart = GetCart(); ?>
+    <script> window.location.href = 'shoppingcart.php'; </script>
+<?php
+    $_SESSION['cart'] = $cart;
 }
 
 
@@ -24,10 +31,7 @@ if (!isset($_POST["submit"])) {
             </div>
         <hr color="white">
     </header>
-
-
-
-
+  
         <br>
 
         <?php
@@ -146,8 +150,11 @@ if (!isset($_POST["submit"])) {
             <td style="righttext-align:right;" name="Prijs3">Prijs</td>
         </table>
     </div>
+  <form method="post" action="shoppingcart.php">
+    <div style="text-align: center;">
+        <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockItemID" hidden>
+        <input type="number" value='<?php print($Result["QuantityOnHand"]) ?>' name="QuantityOnHand" hidden>
+        <a href="afrondingBestelling.php" class="btn btn-primary btn-outline-dark font-weight-bold" style="background-color: #FFFF00;" id="afronden" role="button"> Verder Gaan &nbsp; <i class="fas fa-arrow-right"></i></a>
+    </div>
+</form>
 </div>
-
-
-
-
