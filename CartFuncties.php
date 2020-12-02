@@ -41,8 +41,6 @@ function ProductVooraad($Connection, $id) {
     foreach ($voorraadcheck as $voorraad) {
         if ($aantal > $voorraad['QuantityOnHand']) {
             print ("Product $id heeft minder dan het geselecteerde aantal beschikbaar!<br>");
-            // De cart moet het ID van het product aanpassen naar de (MAX) vooraad 
-            $aantal=$voorraad;
         }
     }
     //"product ID: " . $voorraadcheck["StockItemID"] . " heeft nog " . $voorraadcheck["QuantityOnHand"] . " op voorraad " . "<br>");
@@ -55,9 +53,9 @@ function ProductVooraad($Connection, $id) {
 // Parameter: StockitemId van het item dat verwijderd wordt
 function RemoveProductFromCart($stockItemID){
     $cart = GetCart(); // winkelmandje ophalen
-      unset($cart[$stockItemID]); // item uit winkelmand verwijderen
-      SaveCart($cart); // winkelmandje opslaan
-}
+            unset($cart[$stockItemID]); // item uit winkelmand verwijderen
+        SaveCart($cart); // winkelmandje opslaan
+    }
 function headerCartAmount() {
     $totaalartikelen = 0;
     $cart = GetCart();
