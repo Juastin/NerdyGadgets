@@ -2,7 +2,8 @@
 
 
 //ophalen van winkelmandje
-function GetCart() {
+function GetCart()
+{
     if (isset($_SESSION['cart'])) { //controleren of winkelmandje al bestaat
         $cart = $_SESSION['cart']; //zo ja, winkelmandje ophalen
     } else {
@@ -13,7 +14,8 @@ function GetCart() {
 
 // Toevoegen van product aan winkelmandje
 // Parameter: StockitemId van item dat toegevoegd wordt
-function AddProductToCart($stockItemID) {
+function AddProductToCart($stockItemID)
+{
     $cart = GetCart();
 
     if (array_key_exists($stockItemID, $cart)) { // controleren of product al in winkelmandje zit
@@ -24,16 +26,20 @@ function AddProductToCart($stockItemID) {
 
     SaveCart($cart);
 }
+
 //winkelmandje opslaan in sessie variabele
-function SaveCart($cart){
+function SaveCart($cart)
+{
     $_SESSION['cart'] = $cart;
 }
+
 //winkelmand product niet boven de vooraad
-function ProductVooraad($Connection, $id) {
+function ProductVooraad($Connection, $id)
+{
 
     $cart = GetCart();
     foreach ($cart as $product => $aantal) {
-        $sql = "SELECT QuantityOnHand FROM stockitemholdings WHERE stockitemid=".$id;
+        $sql = "SELECT QuantityOnHand FROM stockitemholdings WHERE stockitemid=" . $id;
         $result = mysqli_query($Connection, $sql);
         $voorraadcheck = mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
@@ -51,9 +57,10 @@ function ProductVooraad($Connection, $id) {
 
 // Verwijderen van product uit winkelmandje
 // Parameter: StockitemId van het item dat verwijderd wordt
-function RemoveProductFromCart($stockItemID){
+function RemoveProductFromCart($stockItemID)
+{
     $cart = GetCart(); // winkelmandje ophalen
-            unset($cart[$stockItemID]); // item uit winkelmand verwijderen
+        unset($cart[$stockItemID]); // item uit winkelmand verwijderen
         SaveCart($cart); // winkelmandje opslaan
     }
 function headerCartAmount() {
