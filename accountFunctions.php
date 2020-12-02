@@ -101,10 +101,9 @@ function PlaceReview($connection, $userId, $review, $stockitem) {
 // Returns reviewers with their reviews and datetime of placing, belonging to the specific article at view.php from database
 // @Param $connection: mysqli_connect
 // @Param $stockitemAtshop: $Result["StockItemID"]
-// @Return: $reviewers;
+// @Return: associative array: Array ([] => Array (firstName, middleName, lastName, review, stockitem, date);
 function ViewReview($connection, $stockitemAtShop) {
     $query = "SELECT firstName, middleName, lastName, review, stockitem , date FROM review JOIN user ON userId = reviewer WHERE stockitem = $stockitemAtShop ORDER BY date DESC";
     $result = mysqli_query($connection, $query);
-    $reviewers = mysqli_fetch_all($result,MYSQLI_ASSOC);
-    return $reviewers;
+    return  mysqli_fetch_all($result,MYSQLI_ASSOC);
 }

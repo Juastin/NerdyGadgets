@@ -179,7 +179,7 @@ GetImages($Connection);
            else {?>
 
            <?php foreach ($ResultReviewers as $reviewer) { ?>
-               <i class="far fa-user-circle ProfileImage "></i>
+               <i class="far fa-user-circle profileImage "></i>
                <span class="nameReviewer"> <?php print($reviewer['firstName'] . " " . $reviewer['middleName'] . " " . $reviewer['lastName'] . " " )?> <i class="dateTime"><?php print($reviewer['date']) ?> </i> <?php print("<br>")?></span>
           <div class= "writeAReview ">
            <textarea readonly="readonly" disabled="disabled" rows="3" cols="80"> <?php print($reviewer['review']) ?> </textarea>
@@ -193,7 +193,7 @@ GetImages($Connection);
 <?php if(isset($_SESSION['user'])) {?>
     <div>
         <div>
-        <i class="far fa-user-circle ProfileImage "></i>
+        <i class="far fa-user-circle profileImage "></i>
         <span class="nameReviewer"><?php print($ResultUser['firstName'] . " " . $ResultUser['middleName'] . " " .$ResultUser['lastName'])?> </span>
     </div>
         <div class="writeAReview">
