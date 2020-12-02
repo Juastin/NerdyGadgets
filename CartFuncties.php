@@ -63,6 +63,16 @@ function RemoveProductFromCart($stockItemID)
         unset($cart[$stockItemID]); // item uit winkelmand verwijderen
         SaveCart($cart); // winkelmandje opslaan
     }
+?>
+
+<script>
+    // Melding op knop dat het product is toegevoegd na toevoegen van het product, de knop is (veranderd van paars naar) groen
+    function NotificationAddedItem() {
+        document.getElementById('button').value = "Aantal verhogen ++"; // de waarde van value wordt vervangen
+    }
+
+</script>
+<?php 
 function headerCartAmount() {
     $totaalartikelen = 0;
     $cart = GetCart();
@@ -82,3 +92,4 @@ function UpdateProduct($stockItemID,$quantity){
 
     SaveCart($cart);
 }
+

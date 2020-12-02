@@ -12,9 +12,10 @@ if (!isset($_POST["submit"])) {
     $cart = GetCart();
     $_SESSION['cart'] = $cart;
     } else {
-    RemoveProductFromCart($_POST["stockItemID"]); ?>
+    RemoveProductFromCart($_POST["stockItemID"]);
+    $cart = GetCart(); ?>
     <script> window.location.href = 'shoppingcart.php'; </script>
-<?php $cart = GetCart();
+<?php
     $_SESSION['cart'] = $cart;
 }
 

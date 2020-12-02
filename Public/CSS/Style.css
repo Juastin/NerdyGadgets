@@ -218,6 +218,16 @@ ul#ul-class-navigation li {
     font-family: pt-sans, sans-serif;
     font-size: 20px;
 }
+
+#MessageAfterAddingItem {
+    background-color: rgba(35, 40, 47, 0.8);
+    width: 100%;
+    padding: 10px;
+    border: 1px solid;
+    font-family: pt-sans, sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
 .Labels {
     margin-bottom: 0;
     padding: 10px;
@@ -478,17 +488,42 @@ ul#ul-class-price li {
     border: 1px rgb(98, 158, 255) solid;
     color: #fff;
 }
-/* Zorgt ervoor dat de add to cart button groen is en dat de tekst bold is */
-.addToCartButton.btn {
+/* voegt een gele knop toe met dikgedrukte letters voor het toevoegen en verhogen van producten aan/in de winkelmand*/
+.addAndAddedToCartButton.btn {
     background-color: #ffff00;
     font-weight: bold;
 }
-/* voegt een rode knop toe met dikgedrukte letters voor het verwijderen van producten uit een winkelmand */
+/* voegt een rode knop toe met dikgedrukte letters voor het verwijderen van producten uit de winkelmand */
 .removeFromCartButton.btn {
     background-color: #ff0000;
     font-weight: bold;
 }
-button.update {
+/*Voegt een paarse knop toe met dikgedrukte letters voor het verder kunnen winkelen */
+.continueShopping.btn {
+    background-color: #676eff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+}
+/*Voegt een gele knop toe met dikgedrukte letters voor het naar de winkelmand kunnen gaan*/
+.goToCart.btn {
+    background-color: #ffff00;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+}
+button.add {
+    margin: 4px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background-color: #676EFF;
+}
+button.sub {
     margin: 4px;
     cursor: pointer;
     width: 100px;
