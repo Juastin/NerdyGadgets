@@ -59,8 +59,9 @@ function login ($connection, $email, $password) {
 // @Param $email: string email
 // @Return: True || False
 function checkEmailExist($connection, $email){
-    $query = "SELECT email FROM user WHERE email = '".$email."'";
+    $query = "SELECT email FROM user WHERE email = ?";
     $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($statement, 's', $email);
     mysqli_stmt_execute($statement);
     mysqli_stmt_store_result($statement);
     if (mysqli_stmt_num_rows($statement) > 0) {
@@ -77,7 +78,8 @@ function checkEmailExist($connection, $email){
 function getInformation($connection, $email){
     $query =
         "SELECT userId, firstName, middleName, lastName, postalCode, 
-        email, city, address, houseNumber, tel FROM user WHERE email = '".$email."'";
+        email, city, address, houseNumber, tel FROM user WHERE email = ?";
+    mysqli_stmt_bind_param($statement, 's', $email);
     $result = mysqli_query($connection, $query);
     return mysqli_fetch_assoc($result);
 }
@@ -89,7 +91,8 @@ function getInformation($connection, $email){
 // @Param $stockitem: $_POST['stockitemid']
 // @Return: void
 function PlaceReview($connection, $userId, $review, $stockitem) {
-    $query = "INSERT INTO review (reviewer, review, stockitem) VALUES ('".$userId."','".$review."','".$stockitem."')";
+    $query = "INSERT INTO review (reviewer, review, stockitem) VALUES (?,?,?)";
+    mysqli_stmt_bind_param($statement, 'iss', $userId, $review, $stockitem);
     $statement = mysqli_prepare($connection, $query);
     mysqli_stmt_execute($statement);
 }
