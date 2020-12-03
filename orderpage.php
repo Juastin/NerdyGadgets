@@ -38,7 +38,6 @@ $cart = GetCart();
     <style>
 
     </style>
-    <!--Kale witte lijn: <hr color="white">-->
     <!--Begin hieronder aan de formulieren.-->
     <div class="row">
         <div class="col-8" style="border: 1px solid;">
@@ -75,16 +74,6 @@ $cart = GetCart();
             <br>
             <div style="text-align: center;">
             <br><input type='submit' style="width: 20%; background-color: #FFFF00;"value='Send' class="btn btn-primary btn-outline-dark font-weight-bold" name="submit">
-                <?php /*
-        if (isset($_POST["submit"])) {
-                $email = test_input($_POST["email"]);
-                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $emailErr = "Dit is geen email";
-                } else { ?>
-                    <h3 style="color: green; text-align: center;"><?php print("Ga naar andere pagina"); ?></h3> <?php
-                }
-        } */ ?>
-                <!--<h3 style="color: red; text-align: center;"><?php // print($emailErr); ?></h3> -->
                 </form>
             </div>
         </div>
