@@ -30,9 +30,10 @@ function login ($connection, $email, $password) {
     $query = "
                     SELECT email, password
                     FROM user
-                    WHERE email='$email'";
+                    WHERE email= ?";
 
     $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($statement, 's', $email);
     mysqli_stmt_execute($statement);
     mysqli_stmt_store_result($statement);
     if (mysqli_stmt_num_rows($statement) > 0) {
