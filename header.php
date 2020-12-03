@@ -83,7 +83,7 @@ $cart = GetCart();
                     <a href="accountpage.php" class="HrefDecoration col-2"><i class="fas fa-user"></i></a>
                 </li>
                 <li>
-                    <span style="font-size: 14px; font-weight: 900; color: #FFFF00; margin-left: 40px; margin-right: -<?php if (headerCartAmount()<10) {print("53");} else {print("59");} ?>px; vertical-align: 7px; width: 8px;"> <?php print(headerCartAmount());?> </span>
+                    <span style="font-size: 14px; font-weight: 900; color: #FFFF00; margin-left: 40px; margin-right: -<?php if (headerCartAmount()<10) {print("53");} elseif (headerCartAmount()<100) {print("59");} else {print("65");} ?>px; vertical-align: 7px; width: 8px;"> <?php print(headerCartAmount());?> </span>
 
                     <?php if($cart != null) { ?>
                     <a href="shoppingcart.php" class="HrefDecoration col-2"><i class="fas fa-shopping-cart" style="color:#ffff00"></i> &nbsp; </a>
