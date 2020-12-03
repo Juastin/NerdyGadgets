@@ -19,7 +19,7 @@ if (!isset($_POST["submit"])) {
 <?php
     $_SESSION['cart'] = $cart;
 }
-
+$totaalprijs = 0;
 
 ?>
 <div>
