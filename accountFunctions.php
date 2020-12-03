@@ -4,8 +4,6 @@
 // @Param $post: $_POST
 // @Return: void
 function register ($connection, $post) {
-    print_r($post);
-    print($post['firstname']);
     $firstname = $post['firstname'];
     $middlename = $post['middlename'];
     $lastname = $post['lastname'];

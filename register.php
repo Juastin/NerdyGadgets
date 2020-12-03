@@ -42,6 +42,7 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple"); ?>
         if ($_POST['password'] == $_POST['passwordcheck']) {
             if (checkEmailExist($Connection, $_POST['email']) == false){
                 register($Connection, $_POST);
+                ?> <script>  window.location.href = 'index.php' </script> <?php
             }
             else {
                 echo "<script type='text/javascript'>alert('Email is al bekend bij ons, gebruik een ander email');</script>";
@@ -50,9 +51,8 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple"); ?>
         else {
             echo "<script type='text/javascript'>alert('Wachtwoorden komen niet overeen met elkaar');</script>";
         }
+
     }
-//    Register($Connection, $_POST)
-//    print_r($_POST);
     ?>
     <div class="col-2"></div>
 </div>
