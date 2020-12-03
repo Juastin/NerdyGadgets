@@ -1,6 +1,8 @@
 <?php
 session_start();
 include "connect.php";
+include "CartFuncties.php";
+$cart = GetCart();
 ?>
 <!DOCTYPE html>
 <html lang="en" style="background-color: rgb(35, 35, 47);">
@@ -73,16 +75,31 @@ include "connect.php";
                 <li>
                     <a href="categories.php" class="HrefDecoration">Alle categorieën</a>
                 </li>
+
             </ul>
         </div>
         <ul id="ul-class-navigation">
-            <li>
-                <a href="browse.php" class="HrefDecoration"><i class="fas fa-search" style="color:#676EFF;"></i> Zoeken</a>
-            </li>
+                <li>
+                    <a href="accountpage.php" class="HrefDecoration col-2"><i class="fas fa-user"></i></a>
+                </li>
+                <li>
+                    <span style="font-size: 14px; font-weight: 900; color: #FFFF00; margin-left: 40px; margin-right: -<?php if (headerCartAmount()<10) {print("53");} elseif (headerCartAmount()<100) {print("59");} else { print("65");} ?>px; vertical-align: 7px; width: 8px;"> <?php print(headerCartAmount());?> </span>
+
+                    <?php if($cart != null) { ?>
+                    <a href="shoppingcart.php" class="HrefDecoration col-2"><i class="fas fa-shopping-cart" style="color:#ffff00"></i> &nbsp; </a>
+                  <?php } else { ?>
+                    <a href="shoppingcart.php" class="HrefDecoration col-2"><i class="fas fa-shopping-cart"></i> &nbsp; </a>
+                  <?php } ?>
+                </li>
+                <li>
+                    <a href="browse.php" class="HrefDecoration col-2"><i class="fas fa-search" style="color:#676EFF;"></i></a>
+                </li>
         </ul>
     </div>
     <div class="row" id="Content">
         <div class="col-12">
             <div id="SubContent">
+
+
 
 
