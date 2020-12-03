@@ -155,40 +155,11 @@ $cart = GetCart();
         </div>
     </div>
 </div>
-
-
             </tr>
             </tbody>
         </table>
             <br>
         <?php } ?>
-
-                <?php
-
-
-
-
-//Code hieronder zou de ingevulde gegevns ophalen uit de ingevoerde velden.
-//$name = test_input($_POST["name"]);
-//$email = test_input($_POST["email"]);
-//$address = test_input($_POST["address"]);
-//$place = test_input($_POST["place"]);
-//$postalcode = test_input($_POST["postalcode"]);
-//$housenumber = test_input($_POST["housenumber"]);
-            //Functie test_input maakt de string mooier.
-            //trim($data) zorgt ervoor dat de spatie voor en achteraan worden weg gehaald
-            //stripslashes($data) haalt de \ weg.
-            //htmlspecialchars($data) doet ook iets. kunnen we vast zonder leven.!
-
-
-        function test_input($data) {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-        }
-
-        ?>
     </div>
 </body>
 <br>
