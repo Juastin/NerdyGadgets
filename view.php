@@ -109,7 +109,11 @@ $cart = GetCart();
                         <?php  if (isset($cart[$Result["StockItemID"]]) && (($cart[$Result["StockItemID"]]) > 0)) { ?>
                         <script> NotificationAddedItem() </script>
                           <?php }
-                          if (isset($_POST['submit'])){
+                        $sql = "SELECT QuantityOnHand FROM stockitemholdings WHERE stockitemid=" . $Result["StockItemID"];
+                        $results = mysqli_query($Connection, $sql);
+                        $voorraadcheck = mysqli_fetch_assoc($results);
+                        print_r($voorraadcheck);
+                        if (isset($_POST['submit'] ) && (($cart[$Result["StockItemID"]]) < $voorraadcheck['QuantityOnHand'])){
                             AddProductToCart($_POST['stockItemID']); ?>
                           <script>  window.location.href = 'view.php?id=<?php print($Result["StockItemID"])?>'; </script>
                        <?php  } ?>
