@@ -16,12 +16,9 @@ function register ($connection, $post) {
     $tel = $post['tel'];
         $query = "
         INSERT INTO user (firstName, middleName, lastName, password, postalCode, email, city, address, houseNumber, tel) 
-        VALUES ('".$firstname."',
-        '".$middlename."','".$lastname."',
-        '".$password."','".$postalcode."',
-        '".$email."','".$city."',
-        '".$address."','".$housenumber."','".$tel."')";
+        VALUES (?,?,?,?,?,?,?,?,?,?);";
     $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($statement, 'ssssssssss', $firstname, $middlename, $lastname, $password, $postalcode, $email, $city, $address, $housenumber, $tel);
     mysqli_stmt_execute($statement);
 }
 // User login set $_SESSION['loggedIn'] true when email and password are correct from login.php
