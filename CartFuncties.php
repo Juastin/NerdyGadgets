@@ -49,10 +49,6 @@ function ProductVooraad($Connection, $id)
             print ("Product $id heeft minder dan het geselecteerde aantal beschikbaar!<br>");
         }
     }
-    //"product ID: " . $voorraadcheck["StockItemID"] . " heeft nog " . $voorraadcheck["QuantityOnHand"] . " op voorraad " . "<br>");
-
-//Stap 4 Verbinding opruimen
-//    mysqli_close($Connection);
 }
 
 // Verwijderen van product uit winkelmandje
