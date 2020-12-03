@@ -9,6 +9,7 @@ session_start();
 include __DIR__ . "/header.php";
 include "viewFunctions.php";
 
+$totaalprijs = 0;
 if (!isset($_POST["submit"])) {
     $cart = GetCart();
     $_SESSION['cart'] = $cart;
@@ -51,7 +52,7 @@ if (!isset($_POST["submit"])) {
             $results = mysqli_query($Connection, $sql);
             $voorraadcheck = mysqli_fetch_all($results, MYSQLI_ASSOC);
             $artikelprijs = ($amount * $Result['SellPrice']);
-            $totaalprijs = ($amount * $Result['SellPrice'] + ($totaalprijs));
+            $totaalprijs = ($amount * $Result['SellPrice'] + $totaalprijs);
             foreach ($voorraadcheck as $voorraad) {
                 if ($amount > $voorraad['QuantityOnHand']) {
                     $aantal = $voorraad;
