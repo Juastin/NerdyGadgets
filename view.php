@@ -118,7 +118,11 @@ $cart = GetCart();
             </div>
         </div>
 </div></div></div></div>
-        <div id="StockItemDescription" >
+
+<div class="row">
+    <div class ="CenteredContent2">
+
+        <div class= "col-6" id="StockItemDescription">
             <h3 ><b>Product Informatie</b></h3>
             <?php print $Result['SearchDetails'];?></p>
             <table>
@@ -155,8 +159,8 @@ $cart = GetCart();
             </table>
         </div>
 
-    <div>
-        <div id="StockItemSpecifications">
+
+        <div class= "col-6" id="StockItemSpecifications">
             <h3><b>Artikel specificaties</b></h3>
             <?php
             $CustomFields = json_decode($Result['CustomFields'], true);
@@ -193,13 +197,11 @@ $cart = GetCart();
             }
             ?>
         </div>
-    </div>
         <?php
     } else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
-    } ?>
-            </div>
-        </div>
+    } ?></div>
+</div>
 
 
 <div class="row">
