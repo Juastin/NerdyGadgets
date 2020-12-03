@@ -13,7 +13,7 @@ If (isset($_SESSION['user'])) {
     $ResultUser = getInformation($Connection2, $_SESSION['user']);
 }
 $ResultReviewers= ViewReview($Connection2, $Result["StockItemID"]);
-GetImages($Connection);
+$Images = GetImages($Connection);
 $cart = GetCart();
 ?>
 <head>
