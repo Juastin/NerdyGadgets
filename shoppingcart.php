@@ -8,6 +8,7 @@ mysqli_set_charset($Connection, 'latin1');
 session_start();
 include __DIR__ . "/header.php";
 include "viewFunctions.php";
+$totaalprijs = 0;
 
 $totaalprijs = 0;
 if (!isset($_POST["submit"])) {
@@ -20,7 +21,7 @@ if (!isset($_POST["submit"])) {
 <?php
     $_SESSION['cart'] = $cart;
 }
-
+$totaalprijs = 0;
 
 ?>
 <div>
