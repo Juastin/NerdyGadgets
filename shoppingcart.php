@@ -142,7 +142,7 @@ $totaalprijs = 0;
         </form>
         <table class="col-2" style="margin-left:auto">
             <td style="text-align:right;" name="Totaal">Totaal Artikelen</td>
-            <td style="text-align:right;" name="Prijs1">Prijs <?php print sprintf("€ %.2f", $totaalprijs) ?></td>
+            <td style="text-align:right;" name="Prijs1"><?php print sprintf("€ %.2f", $totaalprijs) ?></td>
 
             <thead><br></thead>
 
@@ -152,7 +152,7 @@ $totaalprijs = 0;
             <thead><br></thead>
 
             <td style="text-align:right;" name="Totaal">Totaal</td>
-            <td style="righttext-align:right;" name="Prijs3">Prijs <?php print sprintf("€ %.2f", $totaalprijs) ?></td>
+            <td style="righttext-align:right;" name="Prijs3"> <?php print sprintf("€ %.2f", $totaalprijs) ?></td>
         </table>
     </div>
   <form method="post" action="shoppingcart.php">

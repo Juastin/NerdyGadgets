@@ -20,7 +20,7 @@ if (isset($_SESSION['loggedIn']) == True) {
 $nameErr = $emailErr = $addressErr = $placeErr = $postalcodeErr = $houseErr = "";
 $name = $email = $address = $place = $postalcode = $housenumber = "";
 $totaalprijs = 0;
-$verzendkosten = 7.50;
+$verzendkosten = 0;
 
 $cart = GetCart();
 
