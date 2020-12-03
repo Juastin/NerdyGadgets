@@ -50,6 +50,8 @@ if (!isset($_POST["submit"])) {
             $sql = "SELECT QuantityOnHand FROM stockitemholdings WHERE stockitemid=" . $item;
             $results = mysqli_query($Connection, $sql);
             $voorraadcheck = mysqli_fetch_all($results, MYSQLI_ASSOC);
+            $artikelprijs = ($amount * $Result['SellPrice']);
+            $totaalprijs = ($amount * $Result['SellPrice'] + ($totaalprijs));
             foreach ($voorraadcheck as $voorraad) {
                 if ($amount > $voorraad['QuantityOnHand']) {
                     $aantal = $voorraad;
@@ -107,7 +109,7 @@ if (!isset($_POST["submit"])) {
                         <!--                        <option value="5">5</option>-->
                         <!--                    </select></td>-->
 
-                        <td style="text-align:right;">Prijs:</td>
+                        <td style="text-align:right;">Prijs: <?php print sprintf("€ %.2f", $artikelprijs)?></td>
                             <td>
                                 <form method="post">
                                     <input type="number" value='<?php print($item) ?>' name="stockItemID" hidden>
@@ -138,7 +140,7 @@ if (!isset($_POST["submit"])) {
         </form>
         <table class="col-2" style="margin-left:auto">
             <td style="text-align:right;" name="Totaal">Totaal Artikelen</td>
-            <td style="text-align:right;" name="Prijs1">Prijs</td>
+            <td style="text-align:right;" name="Prijs1">Prijs <?php print sprintf("€ %.2f", $totaalprijs) ?></td>
 
             <thead><br></thead>
 
@@ -147,8 +149,8 @@ if (!isset($_POST["submit"])) {
 
             <thead><br></thead>
 
-            <td style="text-align:right;" name="Totaal">Totaal Artikelen</td>
-            <td style="righttext-align:right;" name="Prijs3">Prijs</td>
+            <td style="text-align:right;" name="Totaal">Totaal</td>
+            <td style="righttext-align:right;" name="Prijs3">Prijs <?php print sprintf("€ %.2f", $totaalprijs) ?></td>
         </table>
     </div>
   <form method="post" action="shoppingcart.php">
