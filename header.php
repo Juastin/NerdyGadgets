@@ -79,9 +79,15 @@ $cart = GetCart();
             </ul>
         </div>
         <ul id="ul-class-navigation">
+            <?php if(isset($_SESSION['user'])) { ?>
                 <li>
+                    <a href="accountpage.php" class="HrefDecoration col-2"><i class="fas fa-user" style="color:#007bff"></i></a>
+                </li>
+            <?php  } else {?>
+            <li>
                     <a href="accountpage.php" class="HrefDecoration col-2"><i class="fas fa-user"></i></a>
                 </li>
+            <?php }?>
                 <li>
                     <span style="font-size: 14px; font-weight: 900; color: #FFFF00; margin-left: 40px; margin-right: -<?php if (headerCartAmount()<10) {print("53");} elseif (headerCartAmount()<100) {print("59");} else { print("65");} ?>px; vertical-align: 7px; width: 8px;"> <?php print(headerCartAmount());?> </span>
 
