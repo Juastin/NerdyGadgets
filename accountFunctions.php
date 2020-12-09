@@ -72,10 +72,10 @@ function checkEmailExist($connection, $email){
         return false;
     }
 }
-// Returns data of specific user from database
+// Returns data of specific user from user table from database
 // @Param $connection: mysqli_connect
 // @Param $email: string email
-// @Return: array(firstName, middleName, lastName, postalCode, email, city, address, houseNumber, tel)
+// @Return: 2 dimensional array: array(array(userId => int, firstName => string, middleName => string, lastName => string, postalCode => string, email => string, city => string, address => string, houseNumber => string, tel => string));
 function getInformation($connection, $email){
     $query =
         "SELECT userId, firstName, middleName, lastName, postalCode, 
@@ -84,8 +84,8 @@ function getInformation($connection, $email){
     mysqli_stmt_bind_param($statement, 's', $email);
     mysqli_stmt_execute($statement);
     $result = mysqli_stmt_get_result($statement);
-    $userFetch =  mysqli_fetch_all($result, MYSQLI_ASSOC);
-    return $userFetch[0];
+    $user =  mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $user[0];
 }
 
 // Saves a review together with the id of the belonging user and the id of the belonging stockitem out of posts from view.php
@@ -95,8 +95,9 @@ function getInformation($connection, $email){
 // @Param $stockitem: $_POST['stockitemid']
 // @Return: void
 function PlaceReview($connection, $userId, $review, $stockitem) {
-    $query = "INSERT INTO review (reviewer, review, stockitem) VALUES ('".$userId."','".$review."','".$stockitem."')";
+    $query = "INSERT INTO review (reviewer, review, stockitem) VALUES (?,?,?)";
     $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($statement, 'isi', $userId, $review, $stockitem);
     mysqli_stmt_execute($statement);
 }
 
