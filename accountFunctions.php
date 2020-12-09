@@ -106,7 +106,10 @@ function PlaceReview($connection, $userId, $review, $stockitem) {
 // @Param $stockitemAtshop: $Result["StockItemID"]
 // @Return: associative array: Array ([] => Array (firstName, middleName, lastName, review, stockitem, date);
 function ViewReview($connection, $stockitemAtShop) {
-    $query = "SELECT firstName, middleName, lastName, review, stockitem , date FROM review JOIN user ON userId = reviewer WHERE stockitem = $stockitemAtShop ORDER BY date DESC";
-    $result = mysqli_query($connection, $query);
+    $query = "SELECT firstName, middleName, lastName, review, stockitem , date FROM review JOIN user ON userId = reviewer WHERE stockitem = ? ORDER BY date DESC";
+    $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($statement, 'i', $stockitemAtShop);
+    mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
     return  mysqli_fetch_all($result,MYSQLI_ASSOC);
 }
