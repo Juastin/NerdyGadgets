@@ -79,9 +79,13 @@ function checkEmailExist($connection, $email){
 function getInformation($connection, $email){
     $query =
         "SELECT userId, firstName, middleName, lastName, postalCode, 
-        email, city, address, houseNumber, tel FROM user WHERE email = '".$email."'";
-    $result = mysqli_query($connection, $query);
-    return mysqli_fetch_assoc($result);
+        email, city, address, houseNumber, tel FROM user WHERE email = ?";
+    $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($statement, 's', $email);
+    mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
+    $userFetch =  mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $userFetch[0];
 }
 
 // Saves a review together with the id of the belonging user and the id of the belonging stockitem out of posts from view.php
