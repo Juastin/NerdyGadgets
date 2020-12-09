@@ -59,10 +59,13 @@ function login ($connection, $email, $password) {
 // @Param $email: string email
 // @Return: True || False
 function checkEmailExist($connection, $email){
-    $query = "SELECT email FROM user WHERE email = '".$email."'";
+    $query = "SELECT email FROM user WHERE email = ?";
+    print($query);
     $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($statement, 's', $email);
     mysqli_stmt_execute($statement);
-    mysqli_stmt_store_result($statement);
+    print_r(mysqli_stmt_store_result($statement));
+
     if (mysqli_stmt_num_rows($statement) > 0) {
         return true;
     }
