@@ -35,7 +35,7 @@ function SaveCart($cart)
 
 //winkelmand product niet boven de vooraad
 // TODO: Check if function works, otherwise fix it. Probably has to do with array indexes since $voorraadcheck is a 2 dimensional array.
-function ProductVooraad($Connection, $id)
+function ProductVoorraad($Connection, $id)
 {
 
     $cart = GetCart();
@@ -45,10 +45,10 @@ function ProductVooraad($Connection, $id)
         mysqli_stmt_bind_param($statement, 's', $email);
         mysqli_stmt_execute($statement);
         $result = mysqli_stmt_get_result($statement);
-        $vooraadcheck = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $voorraadcheck = mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
-    foreach ($vooraadcheck as $vooraad) {
-        if ($aantal > $vooraad['QuantityOnHand']) {
+    foreach ($voorraadcheck as $voorraad) {
+        if ($aantal > $voorraad['QuantityOnHand']) {
             print ("Product $id heeft minder dan het geselecteerde aantal beschikbaar!<br>");
         }
     }
