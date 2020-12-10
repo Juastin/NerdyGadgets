@@ -5,15 +5,17 @@ session_start();
 include __DIR__ . "/header.php";
 include "viewFunctions.php";
 
+print_r($_POST);
+print_r($_SESSION);
+
 if (isset($_SESSION['cart'])) {
     foreach ($_SESSION['cart'] as $id => $quantity){
     if (isset($_POST["afronden"])){
         UpdateVoorraad($Connection, $quantity, $id);
         unset($_SESSION['cart']); ?>
-        <script> window.location.href = 'bestellingAfgerond.php'; </script>
+<!--        <script> window.location.href = 'bestellingAfgerond.php'; </script>-->
     <?php  }
     }}
-
     ?>
 
     <body>

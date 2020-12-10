@@ -73,6 +73,11 @@ $cart = GetCart();
             <input type='text' style="margin-left: 15px; width: 4%" id='adr' name='housenumber' value="<?php if (isset($user)) { print($user['houseNumber']); } ?>" required><br>
             <br>
             <div style="text-align: center;">
+                <input type='hidden' value="<?php foreach ($cart as $item => $amount) {
+                    $Result = GetResult($Connection, $item);
+                    $totaalprijs = ($amount * $Result['SellPrice'] + ($totaalprijs));
+                    $totaal = $totaalprijs+$verzendkosten;
+                }  print ($totaal); ?>" name="totalPrice">
             <br><input type='submit' style="width: 20%; background-color: #FFFF00;"value='Send' class="btn btn-primary btn-outline-dark font-weight-bold" name="submit">
                 </form>
             </div>
@@ -90,9 +95,10 @@ $cart = GetCart();
                     $Image = GetSingleImage($Connection, $item);
                     $totaalprijs = ($amount * $Result['SellPrice'] + ($totaalprijs));
                 }
+                $totaal = $totaalprijs+$verzendkosten
                 ?>
 
-                <h4>Totaal: <?php print sprintf("€ %.2f", $totaalprijs+$verzendkosten);?></h4>
+                <h4>Totaal: <?php print sprintf("€ %.2f", $totaal);?></h4>
             </div>
         </div>
     </div>

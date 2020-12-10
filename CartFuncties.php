@@ -91,4 +91,7 @@ function UpdateProduct($stockItemID,$quantity){
 
     SaveCart($cart);
 }
+function finishOrder() {
+
+}
 
