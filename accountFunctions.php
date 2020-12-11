@@ -113,3 +113,22 @@ function ViewReview($connection, $stockitemAtShop) {
     $result = mysqli_stmt_get_result($statement);
     return  mysqli_fetch_all($result,MYSQLI_ASSOC);
 }
+function checkPostcode($postalcode){
+    $pattern  = '{
+                \A                                  
+                [1-9][0-9]{3}                       
+                [ ]?                                
+                (                                   
+                    [A-RT-Za-rt-z] [A-Za-z]         
+                    |                              
+                    [sS] [BCbcE-Re-rT-Zt-z]        
+                )
+                \z                                  
+            }x';
+
+    if ( preg_match($pattern,$postalcode)) {           // formaat juist
+        if ($postalcode <= '9999XL')                  // hoogst mogelijke postcode
+            return true;
+        }
+    return false;
+}

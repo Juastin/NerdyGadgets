@@ -54,5 +54,10 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple"); ?>
 
     }
     ?>
+    <?php
+    if (isset($_POST['submit'])) {
+        checkPostcode();
+    }
+    ?>
     <div class="col-2"></div>
 </div>
