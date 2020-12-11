@@ -20,7 +20,7 @@ if (isset($_SESSION['loggedIn']) == True) {
 $nameErr = $emailErr = $addressErr = $placeErr = $postalcodeErr = $houseErr = "";
 $name = $email = $address = $place = $postalcode = $housenumber = "";
 $totaalprijs = 0;
-$verzendkosten = 7.50;
+$verzendkosten = 0;
 
 $cart = GetCart();
 
@@ -93,7 +93,7 @@ $cart = GetCart();
             <div class="container">
                 <h4 style="text-align: center">Cart</h4>
                 <br><h4>Totaal artikelen:   <?php headerCartAmount()?></h4>
-                <br><h4>Verzendkosten:  <?php print($verzendkosten)?></h4>
+                <br><h4>Verzendkosten:  <?php print sprintf("€ %.2f", $verzendkosten)?></h4>
                 <br><h4>Kortingscode: Geen</h4>
                 <br><hr color="white">
                 <?php foreach ($cart as $item => $amount) {
