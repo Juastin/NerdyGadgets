@@ -31,7 +31,7 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple"); ?>
         <label for="housenumber" class="loginInput">Huisnummer*</label>
             <input placeholder="Huisnummer*" name="housenumber" required>
         <label for="postalcode" class="loginInput">Postcode*</label>
-            <input placeholder="Postcode*" name="postalcode" required>
+            <input maxlength="7" placeholder="Postcode*" name="postalcode" required>
         <label for="tel" class="loginInput">Telefoonnummer</label>
         <br><a class="regfieldInfo">Wij kunnen uw telefoonnumer gebruiken om u te bellen als er wat mis is met uw bestelling</a>
             <input placeholder="Telefoonnummer" name="tel">
