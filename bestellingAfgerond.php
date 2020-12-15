@@ -11,7 +11,8 @@ print_r($_SESSION);
 if (isset($_SESSION['cart'])) {
     foreach ($_SESSION['cart'] as $id => $quantity){
     if (isset($_POST["afronden"])){
-        UpdateVoorraad($Connection, $quantity, $id);
+        finishOrder($Connection, $quantity, $id);
+//        UpdateVoorraad($Connection, $quantity, $id);
         unset($_SESSION['cart']); ?>
 <!--        <script> window.location.href = 'bestellingAfgerond.php'; </script>-->
     <?php  }

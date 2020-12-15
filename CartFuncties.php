@@ -91,7 +91,25 @@ function UpdateProduct($stockItemID,$quantity){
 
     SaveCart($cart);
 }
-function finishOrder() {
+function finishOrder($Connection, $quantity, $id) {
+    mysqli_begin_transaction($Connection);
 
+    $Query = "
+    UPDATE stockitemholdings 
+    SET QuantityOnHand = QuantityOnHand - ? 
+    WHERE StockItemID= ?";
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_bind_param($Statement, "ii", $quantity, $id);
+    mysqli_stmt_execute($Statement);
+
+    $Query = "
+    UPDATE stockitemholdings 
+    SET QuantityOnHand = QuantityOnHand + ? 
+    WHERE StockItemID= ?";
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_bind_param($Statement, "ii", $quantity, $id);
+    mysqli_stmt_execute($Statement);
+
+    mysqli_commit($Connection);
 }
 
