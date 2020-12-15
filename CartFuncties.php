@@ -80,7 +80,8 @@ function headerCartAmount() {
     }
     return($totaalartikelen);
 }    
-function UpdateProduct($stockItemID,$quantity){
+function UpdateProduct($stockItemID,$quantity)
+{
     $cart = GetCart();
 
     if (array_key_exists($stockItemID, $cart)) { // controleren of product al in winkelmandje zit
@@ -91,25 +92,22 @@ function UpdateProduct($stockItemID,$quantity){
 
     SaveCart($cart);
 }
-function finishOrder($Connection, $quantity, $id) {
-    mysqli_begin_transaction($Connection);
+function finishOrder($connection, $post, $cart, $quantity, $id) {
+    mysqli_begin_transaction($connection);
+    print_r ($post);
+    $query = "INSERT INTO orders (fullname, address, postalcode, email, totalprice) VALUES (?,?,?,?,?)";
+    $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($statement, "ssssi", $post['fullname'], $post['address'], $post['postalcode'], $post['email'], $post['price']);
+    mysqli_stmt_execute($statement);
 
-    $Query = "
-    UPDATE stockitemholdings 
-    SET QuantityOnHand = QuantityOnHand - ? 
-    WHERE StockItemID= ?";
-    $Statement = mysqli_prepare($Connection, $Query);
-    mysqli_stmt_bind_param($Statement, "ii", $quantity, $id);
-    mysqli_stmt_execute($Statement);
+//    $Query = "
+//    UPDATE stockitemholdings
+//    SET QuantityOnHand = QuantityOnHand + ?
+//    WHERE StockItemID= ?";
+//    $Statement = mysqli_prepare($connection, $Query);
+//    mysqli_stmt_bind_param($Statement, "ii", $quantity, $id);
+//    mysqli_stmt_execute($Statement);
 
-    $Query = "
-    UPDATE stockitemholdings 
-    SET QuantityOnHand = QuantityOnHand + ? 
-    WHERE StockItemID= ?";
-    $Statement = mysqli_prepare($Connection, $Query);
-    mysqli_stmt_bind_param($Statement, "ii", $quantity, $id);
-    mysqli_stmt_execute($Statement);
-
-    mysqli_commit($Connection);
+    mysqli_commit($connection);
 }
 
