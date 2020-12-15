@@ -126,7 +126,7 @@ function checkPostcode($postalcode){
                 \z                                  
             }x';
 
-    if ( preg_match($pattern,$postalcode)) {           // formaat juist
+    if (preg_match($pattern,$postalcode)) {           // formaat juist
         if ($postalcode <= '9999XL')                  // hoogst mogelijke postcode
             return true;
         }

@@ -31,7 +31,7 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple"); ?>
         <label for="housenumber" class="loginInput">Huisnummer*</label>
             <input placeholder="Huisnummer*" name="housenumber" required>
         <label for="postalcode" class="loginInput">Postcode*</label>
-            <input maxlength="7" placeholder="Postcode*" name="postalcode" required>
+            <input pattern="^[1-9][0-9]{3}?(?!sa|sd|ss|SA|SD|SS)[A-Za-z]{2}$" maxlength="6" placeholder="1234AB*" name="postalcode" required>
         <label for="tel" class="loginInput">Telefoonnummer</label>
         <br><a class="regfieldInfo">Wij kunnen uw telefoonnumer gebruiken om u te bellen als er wat mis is met uw bestelling</a>
             <input placeholder="Telefoonnummer" name="tel">
@@ -52,11 +52,6 @@ $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple"); ?>
             echo "<script type='text/javascript'>alert('Wachtwoorden komen niet overeen met elkaar');</script>";
         }
 
-    }
-    ?>
-    <?php
-    if (isset($_POST['submit'])) {
-        checkPostcode();
     }
     ?>
     <div class="col-2"></div>
