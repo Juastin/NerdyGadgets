@@ -94,19 +94,12 @@ function UpdateProduct($stockItemID,$quantity)
 }
 function finishOrder($connection, $post, $cart, $quantity, $id) {
     mysqli_begin_transaction($connection);
+
     print_r ($post);
     $query = "INSERT INTO orders (fullname, address, postalcode, email, totalprice) VALUES (?,?,?,?,?)";
     $statement = mysqli_prepare($connection, $query);
     mysqli_stmt_bind_param($statement, "ssssi", $post['fullname'], $post['address'], $post['postalcode'], $post['email'], $post['price']);
     mysqli_stmt_execute($statement);
-
-//    $Query = "
-//    UPDATE stockitemholdings
-//    SET QuantityOnHand = QuantityOnHand + ?
-//    WHERE StockItemID= ?";
-//    $Statement = mysqli_prepare($connection, $Query);
-//    mysqli_stmt_bind_param($Statement, "ii", $quantity, $id);
-//    mysqli_stmt_execute($Statement);
 
     mysqli_commit($connection);
 }
