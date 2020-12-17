@@ -57,7 +57,7 @@ Temporary Items
 .idea/**/gradle.xml
 .idea/**/libraries
 
-# SonarQube tuff
+# SonarQube stuff
 .scannerwork/
 
 # Gradle and Maven with auto-import
