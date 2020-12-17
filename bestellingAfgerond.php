@@ -12,7 +12,13 @@ mysqli_set_charset($Connection, 'latin1');
 if (isset($_SESSION['cart'])) {
     foreach ($_SESSION['cart'] as $id => $quantity){
     if (isset($_POST["afronden"])){
-        finishOrder($Connection, $_POST, $_SESSION['cart'], $quantity, $id);
+        if (isset($_SESSION['user'])){
+            $email = $_SESSION['user'];
+        }
+        else {
+            $email = null;
+        }
+        finishOrder($Connection, $_POST, $_SESSION['cart'], $quantity, $email);
 //        UpdateVoorraad($Connection, $quantity, $id);
         unset($_SESSION['cart']); ?>
 <!--        <script> window.location.href = 'bestellingAfgerond.php'; </script>-->

@@ -1,6 +1,5 @@
 <?php
 
-
 //ophalen van winkelmandje
 function GetCart()
 {
@@ -92,13 +91,28 @@ function UpdateProduct($stockItemID,$quantity)
 
     SaveCart($cart);
 }
-function finishOrder($connection, $post, $cart, $quantity, $id) {
+
+function finishOrder($connection, $post, $cart, $quantity, $email) {
     mysqli_begin_transaction($connection);
 
     print_r ($post);
-    $query = "INSERT INTO orders (fullname, address, postalcode, email, totalprice) VALUES (?,?,?,?,?)";
+    if ($email != null){
+        $query =
+            "SELECT userId FROM user WHERE email = ?";
+        $statement = mysqli_prepare($connection, $query);
+        mysqli_stmt_bind_param($statement, 's', $email);
+        mysqli_stmt_execute($statement);
+        $i = mysqli_stmt_get_result($statement);
+        $i = mysqli_fetch_all($i, MYSQLI_ASSOC);
+        print_r($i);
+        $id = $i[0]['userId'];
+    }
+    else {
+        $id = null;
+    }
+    $query = "INSERT INTO orders (userId, fullname, address, postalcode, email, totalprice) VALUES (?,?,?,?,?,?)";
     $statement = mysqli_prepare($connection, $query);
-    mysqli_stmt_bind_param($statement, "ssssi", $post['fullname'], $post['address'], $post['postalcode'], $post['email'], $post['price']);
+    mysqli_stmt_bind_param($statement, "issssi", $id,$post['fullname'], $post['address'], $post['postalcode'], $post['email'], $post['price']);
     mysqli_stmt_execute($statement);
 
     mysqli_commit($connection);
