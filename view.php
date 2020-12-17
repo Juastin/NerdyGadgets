@@ -101,6 +101,7 @@ $cart = GetCart();
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $Result['SellPrice']); ?></b></p>
                         <h6><b>Inclusief BTW</b></h6>
+                        <h6><b><?php print_r(IsChillerStock($Connection, $_GET['id'])); ?></b></h6>
                         <h10> Gratis Verzending </h10>
                         <form method="post">
                             <input type="number" value='<?php print($Result["StockItemID"]) ?>' name="stockItemID" hidden>
