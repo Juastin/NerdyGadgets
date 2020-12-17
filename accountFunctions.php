@@ -113,3 +113,4 @@ function ViewReview($connection, $stockitemAtShop) {
     $result = mysqli_stmt_get_result($statement);
     return  mysqli_fetch_all($result,MYSQLI_ASSOC);
 }
+
