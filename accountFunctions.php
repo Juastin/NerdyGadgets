@@ -59,10 +59,12 @@ function login ($connection, $email, $password) {
 // @Param $email: string email
 // @Return: True || False
 function checkEmailExist($connection, $email){
-    $query = "SELECT email FROM user WHERE email = '".$email."'";
+    $query = "SELECT email FROM user WHERE email = ?";
     $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($statement, 's', $email);
     mysqli_stmt_execute($statement);
     mysqli_stmt_store_result($statement);
+
     if (mysqli_stmt_num_rows($statement) > 0) {
         return true;
     }
@@ -70,16 +72,20 @@ function checkEmailExist($connection, $email){
         return false;
     }
 }
-// Returns data of specific user from database
+// Returns data of specific user from user table from database
 // @Param $connection: mysqli_connect
 // @Param $email: string email
-// @Return: array(firstName, middleName, lastName, postalCode, email, city, address, houseNumber, tel)
+// @Return: 2 dimensional array: array([] => array(userId => int, firstName => string, middleName => string, lastName => string, postalCode => string, email => string, city => string, address => string, houseNumber => string, tel => string));
 function getInformation($connection, $email){
     $query =
         "SELECT userId, firstName, middleName, lastName, postalCode, 
-        email, city, address, houseNumber, tel FROM user WHERE email = '".$email."'";
-    $result = mysqli_query($connection, $query);
-    return mysqli_fetch_assoc($result);
+        email, city, address, houseNumber, tel FROM user WHERE email = ?";
+    $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($statement, 's', $email);
+    mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
+    $user =  mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $user[0];
 }
 
 // Saves a review together with the id of the belonging user and the id of the belonging stockitem out of posts from view.php
@@ -89,17 +95,22 @@ function getInformation($connection, $email){
 // @Param $stockitem: $_POST['stockitemid']
 // @Return: void
 function PlaceReview($connection, $userId, $review, $stockitem) {
-    $query = "INSERT INTO review (reviewer, review, stockitem) VALUES ('".$userId."','".$review."','".$stockitem."')";
+    $query = "INSERT INTO review (reviewer, review, stockitem) VALUES (?,?,?)";
     $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($statement, 'isi', $userId, $review, $stockitem);
     mysqli_stmt_execute($statement);
 }
 
 // Returns reviewers with their reviews and datetime of placing, belonging to the specific article at view.php from database
 // @Param $connection: mysqli_connect
 // @Param $stockitemAtshop: $Result["StockItemID"]
-// @Return: associative array: Array ([] => Array (firstName, middleName, lastName, review, stockitem, date);
+// @Return: associative array: array ([] => array (firstName, middleName, lastName, review, stockitem, date);
 function ViewReview($connection, $stockitemAtShop) {
-    $query = "SELECT firstName, middleName, lastName, review, stockitem , date FROM review JOIN user ON userId = reviewer WHERE stockitem = $stockitemAtShop ORDER BY date DESC";
-    $result = mysqli_query($connection, $query);
+    $query = "SELECT firstName, middleName, lastName, review, stockitem , date FROM review JOIN user ON userId = reviewer WHERE stockitem = ? ORDER BY date DESC";
+    $statement = mysqli_prepare($connection, $query);
+    mysqli_stmt_bind_param($statement, 'i', $stockitemAtShop);
+    mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
     return  mysqli_fetch_all($result,MYSQLI_ASSOC);
 }
+
