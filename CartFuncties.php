@@ -65,7 +65,7 @@ function RemoveProductFromCart($stockItemID)
 ?>
 
 <script>
-    // Melding op knop dat het product is toegevoegd na toevoegen van het product, de knop is (veranderd van paars naar) groen
+    // Tekst op knop die item aan winkelmand toevoegt verandert hierdoor van "Toevoegen aan winkelmand+" naar "Aantal verhogen++"
     function NotificationAddedItem() {
         document.getElementById('button').value = "Aantal verhogen ++"; // de waarde van value wordt vervangen
     }
