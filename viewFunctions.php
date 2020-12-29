@@ -27,6 +27,33 @@ function GetResult($Connection, $id)
     }
 }
 
+function IsChillerStock($Connection, $id)
+{
+    $Query = "
+               SELECT IsChillerStock 
+               FROM stockitems
+               WHERE StockItemID = ?";
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_bind_param($Statement, "i",$id);
+    mysqli_stmt_execute($Statement);
+    $R = mysqli_stmt_get_result($Statement);
+    $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+    return $R[0]['IsChillerStock'];
+}
+function ColdroomTemp($Connection, $id){
+    $Query = "
+               SELECT Temperature 
+               FROM coldroomtemperatures
+               WHERE ColdRoomSensorNumber = ?";
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_bind_param($Statement, "i",$id);
+    mysqli_stmt_execute($Statement);
+    $R = mysqli_stmt_get_result($Statement);
+    $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+    return $R[0]['Temperature'];
+
+}
+
 // Aanpassen van voorraad bij afronden bestelling
 function UpdateVoorraad($Connection, $quantity, $id)
 {

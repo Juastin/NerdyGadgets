@@ -48,7 +48,7 @@ $cart = GetCart();
             <label for='email'><i class='fa fa-envelope' style=" margin-left: 510px;"></i> Email</label><br>
             <!--Input Name + Email-->
             <input style="width:43.5%; margin-left: 50px;" type='text' name='name' value="<?php if (isset($user)) { print($user['firstName'] . " "); if (!empty($user['middleName'])) { print($user['middleName'] . " "); }; print($user['lastName']); } ?>" required>
-            <input style="width:43.5%; margin-left: 50px;" type='text' id='email' name='email' value="<?php if (isset($user)) { print($user['email']); } ?>" required><br>
+            <input style="width:43.5%; margin-left: 50px;" type='email' id='email' name='email' value="<?php if (isset($user)) { print($user['email']); } ?>" required><br>
             <!--Gender en Address-->
             <br><label for="gender" style="margin-left: 50px;"> Gender</label>
             <label for='adr'><i style="margin-left: 125px;"></i> Address</label><br>
@@ -69,7 +69,7 @@ $cart = GetCart();
             <br><label for='adr' style="margin-left: 50px;"> Postal Code</label>
             <label for='adr'><i style="margin-left: 960px;"></i> House Number</label><br>
             <!--Input postal code and House number-->
-            <input type='text' style="margin-left: 50px; width: 85%" id='postalcode' name='postalcode' value="<?php if (isset($user)) { print($user['postalCode']); } ?>" required>
+            <input pattern="^[1-9][0-9]{3}?[A-Za-z]{2}$" maxlength="6" type='text' style="margin-left: 50px; width: 85%" id='postalcode' name='postalcode' value="<?php if (isset($user)) { print($user['postalCode']); } ?>" required>
             <input type='text' style="margin-left: 15px; width: 4%" id='adr' name='housenumber' value="<?php if (isset($user)) { print($user['houseNumber']); } ?>" required><br>
             <br>
             <div style="text-align: center;">
