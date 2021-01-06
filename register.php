@@ -4,7 +4,7 @@
 </head><?php
 include __DIR__ . "/header.php";
 include "accountFunctions.php";
-$Connection = mysqli_connect("localhost", "root", "nerdygadgets", "nerdygadgets_simple"); ?>
+$Connection = mysqli_connect("localhost", "root", "MaineCoon18", "nerdygadgets_simple"); ?>
 <div class="row">
     <div class="col-2"></div>
     <form method="post" class="form-group col-8" >
