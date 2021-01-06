@@ -7,7 +7,7 @@ if ($_SESSION['loggedIn'] == false) {
 }
 include __DIR__ . "/header.php";
 include "accountFunctions.php";
-$Connection = mysqli_connect("localhost", "root", "", "nerdygadgets_simple");
+$Connection = mysqli_connect("localhost", "root", "nerdygadgets", "nerdygadgets_simple");
 $row = getInformation($Connection, $_SESSION['user']); ?>
 <div>
     <div class="row">

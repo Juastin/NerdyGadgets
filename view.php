@@ -1,6 +1,6 @@
 <?php
-$Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
-$Connection2 = mysqli_connect("localhost", "root", "", "nerdygadgets_simple");
+$Connection = mysqli_connect("localhost", "root", "nerdygadgets", "nerdygadgets");
+$Connection2 = mysqli_connect("localhost", "root", "nerdygadgets", "nerdygadgets_simple");
 mysqli_set_charset($Connection, 'latin1');
 mysqli_set_charset($Connection2, 'latin1');
 include __DIR__ . "/header.php";

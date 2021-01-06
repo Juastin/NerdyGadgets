@@ -4,8 +4,8 @@
 </head>
 <>
 <?php
-$Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
-$ConnectionSimple = mysqli_connect("localhost", "root", "", "nerdygadgets_simple");
+$Connection = mysqli_connect("localhost", "root", "nerdygadgets", "nerdygadgets");
+$ConnectionSimple = mysqli_connect("localhost", "root", "nerdygadgets", "nerdygadgets_simple");
 mysqli_set_charset($Connection, 'latin1');
 session_start();
 include __DIR__ . "/header.php";
