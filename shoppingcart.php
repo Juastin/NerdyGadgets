@@ -51,7 +51,7 @@ $totaalprijs = 0;
             $Image = GetSingleImage($Connection, $item);
             $query = "SELECT QuantityOnHand FROM stockitemholdings WHERE stockitemid= ?";
             $statement = mysqli_prepare($Connection, $query);
-            mysqli_stmt_bind_param($statement, 's', $item);
+            mysqli_stmt_bind_param($statement, 'i', $item);
             mysqli_stmt_execute($statement);
             $result = mysqli_stmt_get_result($statement);
             $voorraadcheck = mysqli_fetch_all($result, MYSQLI_ASSOC);
