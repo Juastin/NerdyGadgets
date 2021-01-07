@@ -49,9 +49,12 @@ $totaalprijs = 0;
         foreach ($_SESSION['cart'] as $item => $amount) {
             $Result = GetResult($Connection, $item);
             $Image = GetSingleImage($Connection, $item);
-            $sql = "SELECT QuantityOnHand FROM stockitemholdings WHERE stockitemid=" . $item;
-            $results = mysqli_query($Connection, $sql);
-            $voorraadcheck = mysqli_fetch_all($results, MYSQLI_ASSOC);
+            $query = "SELECT QuantityOnHand FROM stockitemholdings WHERE stockitemid= ?";
+            $statement = mysqli_prepare($Connection, $query);
+            mysqli_stmt_bind_param($statement, 's', $item);
+            mysqli_stmt_execute($statement);
+            $result = mysqli_stmt_get_result($statement);
+            $voorraadcheck = mysqli_fetch_all($result, MYSQLI_ASSOC);
             $artikelprijs = ($amount * $Result['SellPrice']);
             $totaalprijs = ($amount * $Result['SellPrice'] + $totaalprijs);
             foreach ($voorraadcheck as $voorraad) {
